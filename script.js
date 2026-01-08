@@ -1,34 +1,43 @@
-const toast = document.getElementById("toast");
-const showToast = (msg="Copied ✅") => {
-  toast.textContent = msg;
-  toast.classList.add("show");
-  clearTimeout(window.__t);
-  window.__t = setTimeout(()=> toast.classList.remove("show"), 1100);
-};
+(() => {
+  const DISCORD_USERNAME = "Morgan_1805";
+  const toast = document.getElementById("toast");
 
-async function copyText(text){
-  try{
-    await navigator.clipboard.writeText(text);
-    showToast("Copied ✅");
-  }catch(e){
-    showToast("Copy not supported");
+  function showToast() {
+    if (!toast) return;
+    toast.classList.add("show");
+    window.clearTimeout(showToast._t);
+    showToast._t = window.setTimeout(() => toast.classList.remove("show"), 2200);
   }
-}
 
-// Discord button: copy username, then open Discord app/web
-document.getElementById("discordBtn")?.addEventListener("click", async () => {
-  await copyText("Morgan_1805");
-  window.open("https://discord.com/app", "_blank", "noopener");
-});
+  async function copyDiscord() {
+    try {
+      await navigator.clipboard.writeText(DISCORD_USERNAME);
+      showToast();
+    } catch (e) {
+      const input = document.createElement("input");
+      input.value = DISCORD_USERNAME;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      input.remove();
+      showToast();
+    }
+  }
 
-// Twitter button: open X profile
-document.getElementById("twitterBtn")?.addEventListener("click", () => {
-  window.open("https://x.com/Morgan_1805", "_blank", "noopener");
-});
+  function openDiscord() {
+    window.location.href = "discord://-/";
+  }
 
-// Footer Discord link
-document.getElementById("discordLink")?.addEventListener("click", async (e) => {
-  e.preventDefault();
-  await copyText("Morgan_1805");
-  window.open("https://discord.com/app", "_blank", "noopener");
-});
+  function bind(id, openToo=false) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("click", async () => {
+      await copyDiscord();
+      if (openToo) openDiscord();
+    });
+  }
+
+  bind("discordBtn", false);
+  bind("discordBtn2", true);
+  bind("discordBtn3", false);
+})();
