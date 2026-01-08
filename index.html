@@ -192,7 +192,33 @@
     <footer class="footer">
       <span>© <span id=></span> Morgan — Frontend Web Creator.<br></br>
 </span>
-      <div class="topbar__cta">
+      <div class="hero-links.hero-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.hero-links .btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: 0.2s ease;
+}
+
+.hero-links .btn:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+.hero-links .btn-primary {
+  background: linear-gradient(135deg, #9b5cff, #c77dff);
+  border: none;
+}
+">
         <a class="btn btn--ghost" href="https://x.com/Morgan_1805" target="_blank" rel="noopener">Twitter</a>
         <button class="btn btn--primary" id="discordBtn" type="button">Discord</button>
       </div>
