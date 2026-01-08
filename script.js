@@ -1,33 +1,32 @@
-(function () {
-  // Change this to your actual Discord handle (what people search for in Add Friend)
-  const DISCORD_USERNAME = "Morgan_1805";
-  const DISCORD_URL = "https://discord.com/channels/@me";
+const toastEl = document.getElementById("toast");
+const yearEl = document.getElementById("year");
+const discordBtn = document.getElementById("discordBtn");
 
-  function openDiscord() {
-    // Copy your username so visitors can paste it in Discord → Add Friend
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(DISCORD_USERNAME);
-      } else {
-        const ta = document.createElement("textarea");
-        ta.value = DISCORD_USERNAME;
-        ta.style.position = "fixed";
-        ta.style.opacity = "0";
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-      }
-    } catch (_) {}
+yearEl.textContent = new Date().getFullYear();
 
-    window.open(DISCORD_URL, "_blank", "noopener");
+function toast(msg){
+  if(!toastEl) return;
+  toastEl.textContent = msg;
+  toastEl.classList.add("show");
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => toastEl.classList.remove("show"), 1600);
+}
+
+// Small “preview/code” buttons in projects section (placeholders)
+document.querySelectorAll("[data-toast]").forEach(btn => {
+  btn.addEventListener("click", () => toast(btn.getAttribute("data-toast")));
+});
+
+// Discord: open Discord + copy username so people can add you fast
+const DISCORD_USERNAME = "Morgan_1805";
+const DISCORD_OPEN_URL = "https://discord.com/app"; // opens Discord web/app page
+
+discordBtn?.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(DISCORD_USERNAME);
+    toast("Discord username copied: Morgan_1805");
+  } catch (e) {
+    toast("Copy failed — username: Morgan_1805");
   }
-
-  ["discordBtn","discordBtn2","discordBtn3","discordBtn4"].forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener("click", openDiscord);
-  });
-
-  const y = document.getElementById("year");
-  if (y) y.textContent = String(new Date().getFullYear());
-})();
+  window.open(DISCORD_OPEN_URL, "_blank", "noopener,noreferrer");
+});
