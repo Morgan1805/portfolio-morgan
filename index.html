@@ -1,21 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Morgan</title>
-  <meta name="description" content="Morgan — Web Developer & Web3 Learner. Clean UI, modern layouts, and premium-feel web experiences." />
+  <meta name="description" content="Morgan — Web Developer focused on premium UI and Web3-ready experiences." />
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg" aria-hidden="true"></div>
 
   <header class="topbar">
     <div class="container topbar__inner">
-      <a class="brand" href="#top" aria-label="Morgan home">
-        <span class="brand__dot"></span>
+      <div class="brand">
+        <span class="brand__dot" aria-hidden="true"></span>
         <span class="brand__name">Morgan</span>
-      </a>
+      </div>
 
       <nav class="nav">
         <a href="#about">About</a>
@@ -25,192 +29,177 @@
       </nav>
 
       <div class="topbar__cta">
-        <a class="btn btn--ghost" href="https://x.com/Morgan_1805" target="_blank" rel="noreferrer">Twitter</a>
-        <button class="btn btn--primary" id="discordBtn" type="button">
-          Discord <span class="btn__chip">copy</span>
-        </button>
+        <a class="btn btn--ghost" href="https://x.com/Morgan_1805" target="_blank" rel="noopener">Twitter</a>
+        <button class="btn btn--primary" id="discordBtn" type="button">Discord</button>
       </div>
     </div>
   </header>
 
-  <main id="top" class="container">
-    <!-- HERO -->
+  <main class="container">
     <section class="hero">
-      <div class="hero__left card card--hero">
-        <p class="kicker">Web Developer & Web3 Learner</p>
-        <h1 class="title">I build modern, clean web experiences with premium feel.</h1>
-        <p class="lead">
-          I focus on strong visuals, smooth UI, and layouts that make brands look trustworthy.
-          I’m also exploring Web3 fundamentals and decentralized systems step-by-step.
+      <div class="hero__main glass">
+        <div class="hero__headline">
+          <h1>Morgan</h1>
+          <p class="tagline">Web Developer • Web3 Builder</p>
+        </div>
+
+        <p class="hero__copy">
+          I build modern, conversion-focused websites with clean UI, strong visual hierarchy, and smooth interactions.
+          I also design Web3-ready frontends that feel premium and ship fast.
         </p>
 
         <div class="hero__actions">
-          <a class="btn btn--primary" href="https://x.com/Morgan_1805" target="_blank" rel="noreferrer">
-            Twitter <span class="btn__chip">x.com</span>
-          </a>
-
-          <button class="btn btn--ghost" id="discordBtn2" type="button">
-            Discord <span class="btn__chip">copy + open</span>
-          </button>
+          <a class="btn btn--ghost" href="https://x.com/Morgan_1805" target="_blank" rel="noopener">Twitter</a>
+          <button class="btn btn--primary" id="discordBtn2" type="button">Discord</button>
         </div>
 
-        <p class="note">
-          Note: Discord doesn’t have a public “username profile” link. This button copies my username
-          and tries to open Discord so you can paste it in search.
-        </p>
+        <div class="hero__meta">
+          <div class="pill">UI / Frontend</div>
+          <div class="pill">Responsive Design</div>
+          <div class="pill">Web3 Interfaces</div>
+        </div>
       </div>
 
-      <aside class="hero__right">
-        <div class="card profile">
+      <aside class="hero__side">
+        <div class="profile glass">
           <div class="profile__top">
-            <img class="avatar" src="assets/pfp.jpeg" alt="Morgan profile picture" />
-            <div class="profile__meta">
-              <h2 class="profile__name">Morgan</h2>
-              <p class="profile__tag">Neon • Tech • Web3</p>
+            <img class="avatar" src="assets/pfp.jpeg" alt="Morgan avatar" />
+            <div>
+              <div class="profile__name">Morgan</div>
+              <div class="profile__sub">Neon • Tech • Web3</div>
             </div>
           </div>
 
-          <div class="profile__grid">
-            <div class="mini">
-              <h3 class="mini__title">Quick Bio</h3>
-              <p class="mini__text">Web Dev | Web3 — building for the decentralized future.</p>
+          <div class="card">
+            <div class="card__title">Quick Bio</div>
+            <div class="card__text">
+              Frontend developer focused on clean, modern interfaces and Web3-native user experiences.
             </div>
-            <div class="mini">
-              <h3 class="mini__title">Focus</h3>
-              <ul class="mini__list">
-                <li>Frontend UI • Clean layouts • Modern design</li>
-                <li>Responsive builds • Speed-minded</li>
-                <li>Web3 fundamentals</li>
-              </ul>
-            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Focus</div>
+            <ul class="list">
+              <li>Landing pages & promo websites</li>
+              <li>Brand & portfolio websites</li>
+              <li>Modern UI systems for Web3 products</li>
+            </ul>
           </div>
         </div>
       </aside>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="section__head">
-        <h2>About</h2>
-        <p>Short, clear, and focused — so people instantly know what you do.</p>
-      </div>
-
-      <div class="card">
-        <p class="paragraph">
-          I’m a frontend-focused web developer who enjoys building clean interfaces with strong visual hierarchy.
-          I like modern UI, smooth interactions, and designs that feel premium. Right now, I’m also learning Web3
-          concepts and applying them through small experiments as I grow.
-        </p>
-      </div>
+    <section id="about" class="section glass">
+      <h2>About</h2>
+      <p>
+        I help individuals and brands launch polished, high-performing websites that look premium and communicate value clearly.
+        My work is focused on UI quality, readability, responsiveness, and fast load times.
+      </p>
     </section>
 
-    <!-- SERVICES -->
     <section id="services" class="section">
       <div class="section__head">
         <h2>Services</h2>
-        <p>What I can help you build right now.</p>
+        <p class="muted">Clear deliverables, clean design, and a smooth handoff.</p>
       </div>
 
-      <div class="grid grid--3">
-        <article class="card service">
+      <div class="grid">
+        <article class="tile glass">
           <h3>Landing Pages & Promo Sites</h3>
-          <p>High-converting pages for launches, events, products, and campaigns — fast, responsive, and clean.</p>
-          <ul class="pillrow">
-            <li class="pill">Fast</li>
-            <li class="pill">Mobile-first</li>
-            <li class="pill">Conversion-ready</li>
-          </ul>
+          <p>
+            High-converting pages for products, launches, events, and campaigns—built for speed, clarity, and strong calls-to-action.
+          </p>
+          <div class="tile__tags">
+            <span class="chip">Conversion</span>
+            <span class="chip">Fast build</span>
+            <span class="chip">Responsive</span>
+          </div>
         </article>
 
-        <article class="card service">
+        <article class="tile glass">
           <h3>Aesthetic Websites</h3>
-          <p>Modern, visually strong websites with a premium vibe — perfect for creatives and personal brands.</p>
-          <ul class="pillrow">
-            <li class="pill">Premium UI</li>
-            <li class="pill">Smooth UX</li>
-            <li class="pill">Clean layout</li>
-          </ul>
+          <p>
+            Visually striking websites with modern layouts, smooth animations, and premium styling that elevates your brand presence.
+          </p>
+          <div class="tile__tags">
+            <span class="chip">Premium UI</span>
+            <span class="chip">Modern design</span>
+            <span class="chip">Motion</span>
+          </div>
         </article>
 
-        <article class="card service">
+        <article class="tile glass">
           <h3>Brand & Portfolio Websites</h3>
-          <p>Professional portfolios and brand sites that build trust, highlight your work, and look great everywhere.</p>
-          <ul class="pillrow">
-            <li class="pill">Trust-building</li>
-            <li class="pill">Showcase-ready</li>
-            <li class="pill">Easy updates</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- WORK / PLACEHOLDERS -->
-    <section id="work" class="section">
-      <div class="section__head">
-        <h2>Practice Builds</h2>
-        <p>You said you don’t have past projects yet — here’s a clean “in progress” section that still looks solid.</p>
-      </div>
-
-      <div class="grid grid--3">
-        <article class="card work">
-          <h3>UI Component Playground</h3>
-          <p>Buttons, cards, navbars, and micro-interactions — built to improve UI speed and consistency.</p>
-          <div class="work__meta">
-            <span class="tag">In progress</span>
-            <span class="tag">Frontend</span>
-          </div>
-        </article>
-
-        <article class="card work">
-          <h3>Landing Page Templates</h3>
-          <p>A small set of reusable landing page layouts (hero, features, testimonials, CTA) for quick launches.</p>
-          <div class="work__meta">
-            <span class="tag">In progress</span>
-            <span class="tag">Templates</span>
-          </div>
-        </article>
-
-        <article class="card work">
-          <h3>Web3 Starter Notes</h3>
-          <p>Learning notes + mini demos (wallet concepts, basics of decentralized apps) as I level up.</p>
-          <div class="work__meta">
-            <span class="tag">Learning</span>
-            <span class="tag">Web3</span>
+          <p>
+            A clean, professional online home to showcase your work, services, and links—optimized for trust, clarity, and credibility.
+          </p>
+          <div class="tile__tags">
+            <span class="chip">Brand</span>
+            <span class="chip">Credibility</span>
+            <span class="chip">SEO-ready</span>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
+    <section id="work" class="section glass">
       <div class="section__head">
-        <h2>Contact</h2>
-        <p>Fastest way to reach me: Twitter or Discord.</p>
+        <h2>Selected Work</h2>
+        <p class="muted">No public case studies listed yet. Here’s what I can build and showcase next.</p>
       </div>
 
-      <div class="card contact">
-        <div class="contact__left">
-          <h3>Let’s build something clean.</h3>
-          <p>If you have an idea, a brand, or a page you want to launch — message me and I’ll reply.</p>
+      <div class="workgrid">
+        <div class="work glass">
+          <div class="work__title">Launch Landing Page</div>
+          <div class="work__text">A crisp, conversion-first page for a product or service launch with sections that guide action.</div>
+          <div class="work__foot">
+            <span class="chip chip--soft">Hero + CTA</span>
+            <span class="chip chip--soft">Social proof</span>
+            <span class="chip chip--soft">Mobile-first</span>
+          </div>
         </div>
 
-        <div class="contact__right">
-          <a class="btn btn--primary btn--wide" href="https://x.com/Morgan_1805" target="_blank" rel="noreferrer">
-            Message on Twitter
-          </a>
-          <button class="btn btn--ghost btn--wide" id="discordBtn3" type="button">
-            Copy Discord: <strong class="mono">Morgan_1805</strong>
-          </button>
-
-          <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
-            Copied: <span class="mono">Morgan_1805</span>
+        <div class="work glass">
+          <div class="work__title">Brand Website</div>
+          <div class="work__text">A premium multi-section site with clean visuals, strong hierarchy, and fast load performance.</div>
+          <div class="work__foot">
+            <span class="chip chip--soft">Sections</span>
+            <span class="chip chip--soft">Design system</span>
+            <span class="chip chip--soft">Speed</span>
           </div>
+        </div>
+
+        <div class="work glass">
+          <div class="work__title">Web3 UI Frontend</div>
+          <div class="work__text">Wallet-ready interface layout patterns (dashboards, cards, modals) designed for clarity and trust.</div>
+          <div class="work__foot">
+            <span class="chip chip--soft">UI patterns</span>
+            <span class="chip chip--soft">Neon style</span>
+            <span class="chip chip--soft">UX clarity</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section glass">
+      <div class="contact">
+        <div>
+          <h2>Contact</h2>
+          <p class="muted">For collaborations, offers, or website work—reach out via Twitter or Discord.</p>
+        </div>
+        <div class="contact__actions">
+          <a class="btn btn--ghost" href="https://x.com/Morgan_1805" target="_blank" rel="noopener">Message on Twitter</a>
+          <button class="btn btn--primary" id="discordBtn3" type="button">Message on Discord</button>
         </div>
       </div>
     </section>
 
     <footer class="footer">
-      <p>Built by Morgan • <a href="https://x.com/Morgan_1805" target="_blank" rel="noreferrer">Twitter</a> • Discord: <span class="mono">Morgan_1805</span></p>
+      <span>© <span id="year"></span> Morgan</span>
+      <span class="dot">•</span>
+      <a href="https://x.com/Morgan_1805" target="_blank" rel="noopener">Twitter</a>
+      <span class="dot">•</span>
+      <button class="linkbtn" id="discordBtn4" type="button">Discord</button>
     </footer>
   </main>
 

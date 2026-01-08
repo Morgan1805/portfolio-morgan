@@ -1,43 +1,33 @@
-(() => {
+(function () {
+  // Change this to your actual Discord handle (what people search for in Add Friend)
   const DISCORD_USERNAME = "Morgan_1805";
-  const toast = document.getElementById("toast");
-
-  function showToast() {
-    if (!toast) return;
-    toast.classList.add("show");
-    window.clearTimeout(showToast._t);
-    showToast._t = window.setTimeout(() => toast.classList.remove("show"), 2200);
-  }
-
-  async function copyDiscord() {
-    try {
-      await navigator.clipboard.writeText(DISCORD_USERNAME);
-      showToast();
-    } catch (e) {
-      const input = document.createElement("input");
-      input.value = DISCORD_USERNAME;
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand("copy");
-      input.remove();
-      showToast();
-    }
-  }
+  const DISCORD_URL = "https://discord.com/channels/@me";
 
   function openDiscord() {
-    window.location.href = "discord://-/";
+    // Copy your username so visitors can paste it in Discord → Add Friend
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(DISCORD_USERNAME);
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = DISCORD_USERNAME;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+      }
+    } catch (_) {}
+
+    window.open(DISCORD_URL, "_blank", "noopener");
   }
 
-  function bind(id, openToo=false) {
+  ["discordBtn","discordBtn2","discordBtn3","discordBtn4"].forEach((id) => {
     const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener("click", async () => {
-      await copyDiscord();
-      if (openToo) openDiscord();
-    });
-  }
+    if (el) el.addEventListener("click", openDiscord);
+  });
 
-  bind("discordBtn", false);
-  bind("discordBtn2", true);
-  bind("discordBtn3", false);
+  const y = document.getElementById("year");
+  if (y) y.textContent = String(new Date().getFullYear());
 })();
