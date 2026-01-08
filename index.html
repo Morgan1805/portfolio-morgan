@@ -1,185 +1,208 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Morgan</title>
+  <meta name="description" content="Morgan — Web Developer focused on premium UI and Web3-ready experiences." />
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <div class="bg"></div>
+  <div class="bg" aria-hidden="true"></div>
 
   <header class="topbar">
-    <div class="brand">Morgan</div>
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container topbar__inner">
+      <div class="brand">
+        <span class="brand__dot" aria-hidden="true"></span>
+        <span class="brand__name">Morgan</span>
+      </div>
+
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="topbar__cta">
+        <a class="btn btn--ghost" href="https://x.com/Morgan_1805" target="_blank" rel="noopener">Twitter</a>
+        <button class="btn btn--primary" id="discordBtn" type="button">Discord</button>
+      </div>
+    </div>
   </header>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero-left">
-        <h1 class="h1">Morgan</h1>
-        <div class="role">Frontend Web Creator • Web3</div>
-        <p class="lead">
-          I build modern, fast, and visually clean websites that help brands look premium and convert better.
-        </p>
-
-        <div class="cta">
-          <a class="btn primary" href="#services">Build my website</a>
-          <a class="btn ghost" href="#projects">See layout samples</a>
+  <main class="container">
+    <section class="hero">
+      <div class="hero__main glass">
+        <div class="hero__headline">
+          <h1>Morgan</h1>
+          <p class="tagline">Web Developer • Web3 Builder</p>
         </div>
 
-        <div class="promise">
-          <div class="pill">Clean UI</div>
-          <div class="pill">Responsive</div>
-          <div class="pill">Performance-focused</div>
+        <p class="hero__copy">
+          I build modern, conversion-focused websites with clean UI, strong visual hierarchy, and smooth interactions.
+          I also design Web3-ready frontends that feel premium and ship fast.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--ghost" href="https://x.com/Morgan_1805" target="_blank" rel="noopener">Twitter</a>
+          <button class="btn btn--primary" id="discordBtn2" type="button">Discord</button>
+        </div>
+
+        <div class="hero__meta">
+          <div class="pill">UI / Frontend</div>
+          <div class="pill">Responsive Design</div>
+          <div class="pill">Web3 Interfaces</div>
         </div>
       </div>
 
-      <aside class="hero-right card">
-        <div class="pfp-wrap">
-          <img class="pfp" src="assets/pfp.jpeg" alt="Morgan profile picture" />
-        </div>
-        <div class="mini">
-          <div class="mini-title">Quick snapshot</div>
-          <div class="mini-grid">
-            <div class="mini-item">
-              <div class="k">Focus</div>
-              <div class="v">Frontend UI • Landing pages • Brand sites</div>
+      <aside class="hero__side">
+        <div class="profile glass">
+          <div class="profile__top">
+            <img class="avatar" src="assets/pfp.jpeg" alt="Morgan avatar" />
+            <div>
+              <div class="profile__name">Morgan</div>
+              <div class="profile__sub">Neon • Tech • Web3</div>
             </div>
-            <div class="mini-item">
-              <div class="k">Style</div>
-              <div class="v">Minimal • Premium • Smooth</div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Quick Bio</div>
+            <div class="card__text">
+              Frontend developer focused on clean, modern interfaces and Web3-native user experiences.
             </div>
-            <div class="mini-item">
-              <div class="k">Stack</div>
-              <div class="v">HTML/CSS/JS • Modern tooling</div>
-            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Focus</div>
+            <ul class="list">
+              <li>Landing pages & promo websites</li>
+              <li>Brand & portfolio websites</li>
+              <li>Modern UI systems for Web3 products</li>
+            </ul>
           </div>
         </div>
       </aside>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="section-head">
-        <h2>About Me</h2>
-        <p>Short, clear, and professional.</p>
-      </div>
-
-      <div class="card">
-        <p class="copy">
-          I’m a frontend web creator focused on building clean, modern interfaces with strong visual hierarchy.
-          I work with brands and creators who want a website that feels premium, loads fast, and looks great on every screen.
-          I’m also active in Web3 and I enjoy building experiences that blend great UI with future-forward ideas.
-        </p>
-      </div>
+    <section id="about" class="section glass">
+      <h2>About</h2>
+      <p>
+        I help individuals and brands launch polished, high-performing websites that look premium and communicate value clearly.
+        My work is focused on UI quality, readability, responsiveness, and fast load times.
+      </p>
     </section>
 
-    <!-- SERVICES -->
-    <section class="section" id="services">
-      <div class="section-head">
+    <section id="services" class="section">
+      <div class="section__head">
         <h2>Services</h2>
-        <p>What I can build for you.</p>
+        <p class="muted">Clear deliverables, clean design, and a smooth handoff.</p>
       </div>
 
-      <div class="grid3">
-        <article class="card service">
+      <div class="grid">
+        <article class="tile glass">
           <h3>Landing Pages & Promo Sites</h3>
-          <p>High-converting pages for launches, offers, waitlists, and campaigns — built to look sharp and move users to action.</p>
-          <ul class="bullets">
-            <li>Launch / waitlist pages</li>
-            <li>Offer pages</li>
-            <li>CTA + conversion sections</li>
-          </ul>
+          <p>
+            High-converting pages for products, launches, events, and campaigns—built for speed, clarity, and strong calls-to-action.
+          </p>
+          <div class="tile__tags">
+            <span class="chip">Conversion</span>
+            <span class="chip">Fast build</span>
+            <span class="chip">Responsive</span>
+          </div>
         </article>
 
-        <article class="card service">
+        <article class="tile glass">
           <h3>Aesthetic Websites</h3>
-          <p>Clean, stylish websites with strong visuals and smooth layout — perfect for personal brands and creative work.</p>
-          <ul class="bullets">
-            <li>Modern UI layout</li>
-            <li>Responsive design</li>
-            <li>Brand-aligned styling</li>
-          </ul>
+          <p>
+            Visually striking websites with modern layouts, smooth animations, and premium styling that elevates your brand presence.
+          </p>
+          <div class="tile__tags">
+            <span class="chip">Premium UI</span>
+            <span class="chip">Modern design</span>
+            <span class="chip">Motion</span>
+          </div>
         </article>
 
-        <article class="card service">
+        <article class="tile glass">
           <h3>Brand & Portfolio Websites</h3>
-          <p>A polished online presence that shows who you are, what you do, and makes it easy for people to contact you.</p>
-          <ul class="bullets">
-            <li>About + services</li>
-            <li>Featured work section</li>
-            <li>Contact + socials</li>
-          </ul>
+          <p>
+            A clean, professional online home to showcase your work, services, and links—optimized for trust, clarity, and credibility.
+          </p>
+          <div class="tile__tags">
+            <span class="chip">Brand</span>
+            <span class="chip">Credibility</span>
+            <span class="chip">SEO-ready</span>
+          </div>
         </article>
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-      <div class="section-head">
-        <h2>Past Projects</h2>
-        <p>Formatted layout — ready to replace with real projects as you build.</p>
+    <section id="work" class="section glass">
+      <div class="section__head">
+        <h2>Selected Work</h2>
+        <p class="muted">No public case studies listed yet. Here’s what I can build and showcase next.</p>
       </div>
 
-      <div class="grid2">
-        <article class="card project">
-          <div class="project-top">
-            <h3>Sample Landing Page</h3>
-            <span class="tag">Template</span>
+      <div class="workgrid">
+        <div class="work glass">
+          <div class="work__title">Launch Landing Page</div>
+          <div class="work__text">A crisp, conversion-first page for a product or service launch with sections that guide action.</div>
+          <div class="work__foot">
+            <span class="chip chip--soft">Hero + CTA</span>
+            <span class="chip chip--soft">Social proof</span>
+            <span class="chip chip--soft">Mobile-first</span>
           </div>
-          <p>Clean hero + CTA + sections layout. Swap this with your first client build.</p>
-          <div class="project-actions">
-            <button class="btn small ghost" type="button" data-toast="Add your live link later">Preview</button>
-            <button class="btn small ghost" type="button" data-toast="Add your GitHub link later">Code</button>
-          </div>
-        </article>
+        </div>
 
-        <article class="card project">
-          <div class="project-top">
-            <h3>Sample Brand Website</h3>
-            <span class="tag">Template</span>
+        <div class="work glass">
+          <div class="work__title">Brand Website</div>
+          <div class="work__text">A premium multi-section site with clean visuals, strong hierarchy, and fast load performance.</div>
+          <div class="work__foot">
+            <span class="chip chip--soft">Sections</span>
+            <span class="chip chip--soft">Design system</span>
+            <span class="chip chip--soft">Speed</span>
           </div>
-          <p>About + services + contact layout with premium styling and responsive spacing.</p>
-          <div class="project-actions">
-            <button class="btn small ghost" type="button" data-toast="Add your live link later">Preview</button>
-            <button class="btn small ghost" type="button" data-toast="Add your GitHub link later">Code</button>
-          </div>
-        </article>
-      </div>
+        </div>
 
-      <div class="note card subtle">
-        When you get your first real project, I’ll help you replace these cards with your actual screenshots + links.
+        <div class="work glass">
+          <div class="work__title">Web3 UI Frontend</div>
+          <div class="work__text">Wallet-ready interface layout patterns (dashboards, cards, modals) designed for clarity and trust.</div>
+          <div class="work__foot">
+            <span class="chip chip--soft">UI patterns</span>
+            <span class="chip chip--soft">Neon style</span>
+            <span class="chip chip--soft">UX clarity</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- FOOTER / CONTACT -->
-    <footer class="footer section" id="contact">
-      <div class="footer-card card">
-        <div class="footer-left">
-          <div class="footer-title">Morgan — Frontend Web Creator</div>
-          <div class="footer-sub">Let’s build something clean and premium.</div>
+    <section id="contact" class="section glass">
+      <div class="contact">
+        <div>
+          <h2>Contact</h2>
+          <p class="muted">For collaborations, offers, or website work—reach out via Twitter or Discord.</p>
         </div>
-
-        <div class="footer-right">
-          <a class="btn ghost" href="https://x.com/Morgan_1805" target="_blank" rel="noopener">Twitter</a>
-          <button class="btn primary" id="discordBtn" type="button">Discord</button>
+        <div class="contact__actions">
+          <a class="btn btn--ghost" href="https://x.com/Morgan_1805" target="_blank" rel="noopener">Message on Twitter</a>
+          <button class="btn btn--primary" id="discordBtn3" type="button">Message on Discord</button>
         </div>
       </div>
+    </section>
 
-      <div class="tiny">
-        <span>© <span id="year"></span> Morgan</span>
-      </div>
+    <footer class="footer">
+      <span>© <span id="year"></span> Morgan</span>
+      <span class="dot">•</span>
+      <a href="https://x.com/Morgan_1805" target="_blank" rel="noopener">Twitter</a>
+      <span class="dot">•</span>
+      <button class="linkbtn" id="discordBtn4" type="button">Discord</button>
     </footer>
   </main>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="script.js"></script>
 </body>
 </html>
