@@ -1,349 +1,432 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Morgan — Frontend Developer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+<!-- saved from url=(0052)file:///C:/Users/USER/Downloads/index_3.html#contact -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morgan — Frontend Developer &amp; Web3 Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./Morgan — Frontend Developer &amp; Web3 Builder_files/css2" rel="stylesheet">
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --black: #080808;
-      --white: #f0ede8;
-      --cream: #d9d3c7;
-      --red: #e8290b;
-      --grey: #1c1c1c;
-      --muted: #555550;
-      --border: #222220;
-    }
-    html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--white); font-family: 'DM Mono', monospace; font-size: 14px; line-height: 1.6; cursor: none; overflow-x: hidden; }
-    .cursor { width: 10px; height: 10px; background: var(--red); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; }
-    .cursor-ring { width: 36px; height: 36px; border: 1px solid rgba(240,237,232,0.3); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid var(--border); background: rgba(8,8,8,0.92); backdrop-filter: blur(12px); }
-    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; color: var(--white); text-decoration: none; }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--white); }
-    .nav-badge { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: 4px 10px; }
-    .hero { min-height: 100vh; display: flex; align-items: center; padding: 140px 40px 80px; position: relative; overflow: hidden; }
-    .hero::before { content: 'MORGAN'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: clamp(120px, 20vw, 280px); color: transparent; -webkit-text-stroke: 1px rgba(240,237,232,0.04); top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none; letter-spacing: 10px; }
-    .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .hero-tag { display: inline-block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 24px; border-left: 2px solid var(--red); padding-left: 12px; }
-    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 8vw, 120px); line-height: 0.9; letter-spacing: 2px; margin-bottom: 32px; color: var(--white); }
-    .hero-title span { color: transparent; -webkit-text-stroke: 1px var(--white); }
-    .hero-desc { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 300; color: var(--cream); line-height: 1.7; max-width: 480px; margin-bottom: 48px; font-style: italic; }
-    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 28px; border: 1px solid var(--border); background: transparent; color: var(--white); cursor: none; transition: all 0.2s; text-decoration: none; display: inline-block; }
-    .btn:hover { background: var(--white); color: var(--black); }
-    .btn-red { background: var(--red); border-color: var(--red); color: var(--white); }
-    .btn-red:hover { background: transparent; color: var(--red); }
-    .hero-right { display: flex; flex-direction: column; gap: 1px; }
-    .stat-row { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border); }
-    .stat-row:first-child { border-top: 1px solid var(--border); }
-    .stat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
-    .stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 2px; color: var(--white); }
-    .ticker { background: var(--red); padding: 12px 0; overflow: hidden; white-space: nowrap; }
-    .ticker-inner { display: inline-block; animation: ticker 20s linear infinite; }
-    .ticker-inner span { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 4px; color: var(--white); padding: 0 40px; }
-    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
-    .section-tag { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; display: block; }
-    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 80px); line-height: 1; letter-spacing: 2px; color: var(--white); margin-bottom: 60px; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .about-text { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300; line-height: 1.8; color: var(--cream); font-style: italic; }
-    .about-text p + p { margin-top: 24px; }
-    .about-details { display: flex; flex-direction: column; }
-    .detail-row { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
-    .detail-row:first-child { border-top: 1px solid var(--border); }
-    .detail-key { color: var(--muted); letter-spacing: 1px; text-transform: uppercase; font-size: 10px; }
-    .detail-val { color: var(--white); }
-    .services-bg { background: var(--grey); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-    .service-card { padding: 48px 40px; border-right: 1px solid var(--border); transition: background 0.2s; }
-    .service-card:last-child { border-right: none; }
-    .service-card:hover { background: rgba(232,41,11,0.05); }
-    .service-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--border); line-height: 1; margin-bottom: 24px; }
-    .service-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: var(--white); margin-bottom: 16px; }
-    .service-desc { color: var(--muted); font-size: 13px; line-height: 1.7; }
-    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-    .service-tag { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 4px 8px; }
-    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .project-card { position: relative; overflow: hidden; background: var(--grey); aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; text-decoration: none; transition: all 0.3s; }
-    .project-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.4) 50%, transparent 100%); z-index: 1; }
-    .project-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%) brightness(0.7); transition: transform 0.6s ease, filter 0.3s; }
-    .project-card:hover .project-img { transform: scale(1.05); filter: grayscale(0%) brightness(0.85); }
-    .project-content { position: relative; z-index: 2; }
-    .project-type { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; display: block; }
-    .project-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 2px; color: var(--white); line-height: 1; margin-bottom: 8px; }
-    .project-desc { font-size: 12px; color: var(--cream); line-height: 1.5; margin-bottom: 20px; }
-    .project-link { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--white); border-bottom: 1px solid var(--red); padding-bottom: 2px; display: inline-block; transition: color 0.2s; }
-    .project-card:hover .project-link { color: var(--red); }
-    .project-card-wide { grid-column: span 2; aspect-ratio: 16/6; }
-    .stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border); }
-    .stack-item { padding: 32px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: background 0.2s; }
-    .stack-item:hover { background: var(--grey); }
-    .stack-icon { font-size: 28px; margin-bottom: 12px; display: block; }
-    .stack-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: var(--white); margin-bottom: 6px; }
-    .stack-desc { font-size: 11px; color: var(--muted); }
-    .contact-bg { background: var(--grey); border-top: 1px solid var(--border); }
-    .contact-inner { max-width: 1200px; margin: 0 auto; padding: 100px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .contact-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 6vw, 90px); line-height: 0.9; letter-spacing: 2px; color: var(--white); }
-    .contact-title span { color: var(--red); }
-    .contact-right { display: flex; flex-direction: column; gap: 24px; }
-    .contact-desc { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 300; color: var(--cream); line-height: 1.7; font-style: italic; }
-    .contact-links { display: flex; flex-direction: column; }
-    .contact-link { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--white); transition: color 0.2s; cursor: none; }
-    .contact-link:first-child { border-top: 1px solid var(--border); }
-    .contact-link:hover { color: var(--red); }
-    .contact-link-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
-    .contact-link-value { font-size: 13px; color: var(--muted); }
-    footer { padding: 24px 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-    footer span { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
-    .footer-right { display: flex; gap: 24px; }
-    .footer-right a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-right a:hover { color: var(--white); }
-    .toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--white); color: var(--black); padding: 12px 24px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: transform 0.3s ease; z-index: 9999; }
-    .toast.show { transform: translateX(-50%) translateY(0); }
-    .divider { height: 1px; background: var(--border); margin: 0 40px; }
-    @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      .hero { padding: 120px 20px 60px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .service-card { border-right: none; border-bottom: 1px solid var(--border); }
-      .projects-grid { grid-template-columns: 1fr; }
-      .project-card-wide { grid-column: span 1; aspect-ratio: 4/3; }
-      .stack-grid { grid-template-columns: repeat(2, 1fr); }
-      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-      .section { padding: 60px 20px; }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    :root{--bg:#060606;--bg2:#0c0c0c;--white:#f2ede6;--cream:#c8bfb0;--dim:#4a4a46;--red:#e8290b;--border:#161614;--gold:#c8963c;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--white);font-family:'DM Mono',monospace;overflow-x:hidden;cursor:none;}
+    #cur{width:6px;height:6px;background:var(--red);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;}
+    #cur-ring{width:40px;height:40px;border:1px solid rgba(232,41,11,.3);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);}
+    #bgc{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6;}
+    body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.35;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:64px;border-bottom:1px solid var(--border);background:rgba(6,6,6,.88);backdrop-filter:blur(20px);}
+    .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:4px;color:var(--white);text-decoration:none;position:relative;}
+    .nav-logo::after{content:'®';font-size:8px;vertical-align:super;color:var(--red);margin-left:2px;}
+    .nav-links{display:flex;gap:40px;list-style:none;}
+    .nav-links a{color:var(--dim);font-size:10px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:color .3s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--red);transition:width .3s;}
+    .nav-links a:hover{color:var(--white);}
+    .nav-links a:hover::after{width:100%;}
+    .nav-status{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);}
+    .status-dot{width:6px;height:6px;background:#2ecc71;border-radius:50%;box-shadow:0 0 8px #2ecc71;animation:blink 2s infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 48px;position:relative;z-index:2;text-align:center;overflow:hidden;}
+    .hero-ghost{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(160px,28vw,400px);color:transparent;-webkit-text-stroke:1px rgba(242,237,230,.03);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;letter-spacing:20px;user-select:none;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--dim);margin-bottom:32px;animation:fadeUp 1s .2s both;}
+    .eyebrow-line{width:40px;height:1px;background:var(--red);}
+    .hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,14vw,200px);line-height:.85;letter-spacing:-2px;color:var(--white);margin-bottom:0;animation:fadeUp 1s .3s both;position:relative;}
+    .hero-name .outline-text{color:transparent;-webkit-text-stroke:2px var(--white);display:block;}
+    .hero-name .red-text{color:var(--red);display:block;font-size:.55em;letter-spacing:8px;-webkit-text-stroke:0;}
+    .hero-tagline{font-family:'Fraunces',serif;font-size:clamp(16px,2.5vw,24px);font-weight:300;font-style:italic;color:var(--cream);margin:32px auto;max-width:600px;line-height:1.6;animation:fadeUp 1s .5s both;}
+    .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s .7s both;margin-bottom:80px;}
+    .btn-primary{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:14px 36px;background:var(--red);color:var(--white);border:none;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));}
+    .btn-primary:hover{background:var(--white);color:var(--bg);transform:translateY(-3px);box-shadow:0 16px 40px rgba(232,41,11,.3);}
+    .btn-secondary{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:14px 36px;background:transparent;color:var(--white);border:1px solid var(--dim);cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;}
+    .btn-secondary:hover{border-color:var(--white);transform:translateY(-3px);}
+    .hero-stats{display:flex;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);width:100%;max-width:800px;animation:fadeUp 1s .9s both;}
+    .h-stat{flex:1;padding:24px 32px;text-align:center;border-right:1px solid var(--border);position:relative;overflow:hidden;}
+    .h-stat:last-child{border-right:none;}
+    .h-stat::before{content:'';position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s;z-index:-1;}
+    .h-stat:hover::before{transform:scaleX(1);}
+    .h-stat-val{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;color:var(--white);display:block;}
+    .h-stat-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:4px;display:block;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .scroll-ind{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);animation:fadeUp 1s 1.2s both;z-index:2;}
+    .scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--red),transparent);animation:scrollAnim 2s ease-in-out infinite;}
+    @keyframes scrollAnim{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.5);opacity:.5}}
+    .section{padding:120px 48px;position:relative;z-index:2;}
+    .section-inner{max-width:1300px;margin:0 auto;}
+    .sec-number{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+    .sec-number::before{content:'';width:32px;height:1px;background:var(--red);}
+    .sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,96px);line-height:.9;letter-spacing:-1px;color:var(--white);}
+    .sec-title span{color:transparent;-webkit-text-stroke:1px var(--dim);}
+    .about-layout{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;margin-top:80px;}
+    .about-bio{font-family:'Fraunces',serif;font-size:clamp(18px,2.2vw,26px);font-weight:300;line-height:1.7;color:var(--cream);}
+    .about-bio em{font-style:italic;color:var(--white);}
+    .about-bio p+p{margin-top:24px;}
+    .about-cta{margin-top:48px;display:flex;gap:16px;flex-wrap:wrap;}
+    .about-right{display:flex;flex-direction:column;gap:0;}
+    .info-row{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--border);font-size:12px;transition:padding .2s;}
+    .info-row:first-child{border-top:1px solid var(--border);}
+    .info-row:hover{padding-left:8px;}
+    .info-key{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);}
+    .info-val{color:var(--white);font-size:13px;}
+    .info-val.available{color:#2ecc71;}
+    .services-bg{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:80px;border:1px solid var(--border);}
+    .svc{padding:52px 44px;border-right:1px solid var(--border);position:relative;overflow:hidden;cursor:default;transition:background .3s;}
+    .svc:last-child{border-right:none;}
+    .svc::before{content:'';position:absolute;inset:0;background:var(--red);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.76,0,.24,1);z-index:0;}
+    .svc:hover::before{transform:scaleY(1);}
+    .svc>*{position:relative;z-index:1;}
+    .svc-num{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--border);line-height:1;margin-bottom:28px;transition:color .3s;}
+    .svc:hover .svc-num{color:rgba(242,237,230,.2);}
+    .svc-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--white);margin-bottom:16px;}
+    .svc-desc{font-size:13px;color:var(--dim);line-height:1.8;transition:color .3s;}
+    .svc:hover .svc-desc{color:rgba(242,237,230,.7);}
+    .svc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
+    .svc-tag{font-size:9px;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;color:var(--dim);transition:all .3s;}
+    .svc:hover .svc-tag{border-color:rgba(242,237,230,.3);color:rgba(242,237,230,.6);}
+    .work-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;}
+    .work-count{font-family:'Bebas Neue',sans-serif;font-size:80px;color:var(--border);line-height:1;}
+    .proj-grid{display:grid;gap:2px;}
+    .row-1{grid-template-columns:3fr 2fr;}
+    .row-2{grid-template-columns:1fr 1fr;margin-top:2px;}
+    .row-3{margin-top:2px;}
+    .proj{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:40px;text-decoration:none;background:var(--bg2);}
+    .proj-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.8);transition:transform 1s cubic-bezier(.25,.46,.45,.94),filter .6s;transform-origin:center;}
+    .proj:hover .proj-img{transform:scale(1.08);filter:brightness(.75) saturate(1);}
+    .proj-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.96) 0%,rgba(6,6,6,.4) 50%,rgba(6,6,6,.1) 100%);z-index:1;transition:opacity .4s;}
+    .proj:hover .proj-overlay{opacity:.8;}
+    .proj::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:3;}
+    .proj:hover::before{transform:scaleX(1);}
+    .proj-content{position:relative;z-index:2;}
+    .proj-meta{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+    .proj-num-badge{font-size:9px;letter-spacing:3px;color:var(--red);border:1px solid rgba(232,41,11,.4);padding:3px 10px;}
+    .proj-type{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);}
+    .proj-year{font-size:9px;letter-spacing:2px;color:var(--dim);margin-left:auto;}
+    .proj-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,72px);letter-spacing:1px;color:var(--white);line-height:.9;margin-bottom:12px;}
+    .proj-desc{font-size:12px;color:var(--cream);line-height:1.6;margin-bottom:24px;max-width:480px;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s;}
+    .proj:hover .proj-desc{opacity:1;transform:translateY(0);}
+    .proj-footer{display:flex;align-items:center;justify-content:space-between;}
+    .proj-link{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--white);display:flex;align-items:center;gap:8px;transition:gap .3s;}
+    .proj:hover .proj-link{gap:16px;color:var(--red);}
+    .proj-link-arrow{transition:transform .3s;}
+    .proj:hover .proj-link-arrow{transform:translateX(4px);}
+    .proj-pill-row{display:flex;gap:6px;flex-wrap:wrap;}
+    .proj-pill{font-size:9px;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(242,237,230,.15);padding:3px 10px;color:rgba(242,237,230,.4);transition:all .3s;}
+    .proj:hover .proj-pill{border-color:rgba(242,237,230,.3);color:rgba(242,237,230,.6);}
+    .proj.h-xl{min-height:640px;}
+    .proj.h-lg{min-height:520px;}
+    .proj.h-cinema{min-height:380px;}
+    .ticker{overflow:hidden;white-space:nowrap;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;background:var(--red);position:relative;z-index:2;}
+    .ticker-inner{display:inline-block;animation:tickerAnim 24s linear infinite;}
+    .ticker-inner span{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:5px;color:var(--white);padding:0 48px;}
+    .ticker-inner .dot{color:rgba(242,237,230,.4);}
+    @keyframes tickerAnim{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);margin-top:80px;}
+    .stack-item{padding:40px 36px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background .3s;position:relative;overflow:hidden;}
+    .stack-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+    .stack-item:hover{background:var(--bg2);}
+    .stack-item:hover::after{transform:scaleX(1);}
+    .stack-icon{font-size:32px;margin-bottom:16px;display:block;}
+    .stack-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--white);margin-bottom:6px;}
+    .stack-desc{font-size:11px;color:var(--dim);line-height:1.6;}
+    .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;margin-top:80px;}
+    .contact-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,10vw,140px);line-height:.85;letter-spacing:-2px;color:var(--white);}
+    .contact-big .red{color:var(--red);}
+    .contact-big .outline{color:transparent;-webkit-text-stroke:1px var(--dim);}
+    .contact-desc{font-family:'Fraunces',serif;font-size:18px;font-weight:300;font-style:italic;color:var(--cream);line-height:1.7;margin-bottom:40px;}
+    .contact-links{display:flex;flex-direction:column;gap:0;}
+    .c-link{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--white);transition:all .3s;position:relative;overflow:hidden;}
+    .c-link:first-child{border-top:1px solid var(--border);}
+    .c-link::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--red);transform:scaleY(0);transition:transform .3s;}
+    .c-link:hover{padding-left:16px;color:var(--red);}
+    .c-link:hover::before{transform:scaleY(1);}
+    .c-link-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;}
+    .c-link-val{font-size:12px;color:var(--dim);transition:color .3s;}
+    .c-link:hover .c-link-val{color:var(--red);}
+    .c-link-arrow{font-size:16px;color:var(--dim);transition:transform .3s,color .3s;}
+    .c-link:hover .c-link-arrow{transform:translateX(4px);color:var(--red);}
+    footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;}
+    .footer-copy{font-size:11px;color:var(--dim);letter-spacing:1px;}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+    .footer-links a{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .2s;}
+    .footer-links a:hover{color:var(--red);}
+    .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--white);color:var(--bg);padding:12px 28px;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:transform .4s cubic-bezier(.34,1.56,.64,1);z-index:9999;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));}
+    .toast.show{transform:translateX(-50%) translateY(0);}
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s,transform .8s;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .8s,transform .8s;}
+    .reveal-left.visible{opacity:1;transform:translateX(0);}
+    .reveal-right{opacity:0;transform:translateX(32px);transition:opacity .8s,transform .8s;}
+    .reveal-right.visible{opacity:1;transform:translateX(0);}
+    @media(max-width:768px){
+      nav{padding:0 20px;}
+      .nav-links{display:none;}
+      .hero,.section{padding:80px 20px 60px;}
+      .about-layout,.contact-layout{grid-template-columns:1fr;gap:48px;}
+      .services-grid{grid-template-columns:1fr;}
+      .svc{border-right:none;border-bottom:1px solid var(--border);}
+      .row-1,.row-2{grid-template-columns:1fr;}
+      .proj.h-xl,.proj.h-lg,.proj.h-cinema{min-height:380px;}
+      .stack-grid{grid-template-columns:repeat(2,1fr);}
+      footer{flex-direction:column;gap:16px;text-align:center;padding:24px 20px;}
+      .work-intro{flex-direction:column;gap:16px;align-items:flex-start;}
     }
   </style>
 </head>
 <body>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+  <canvas id="bgc" width="1366" height="599"></canvas>
+  <div id="cur" style="left: 1163px; top: 4px;"></div>
+  <div id="cur-ring" style="left: 1163px; top: 4px;"></div>
 
   <nav>
-    <a href="#" class="nav-logo">Morgan.</a>
+    <a href="file:///C:/Users/USER/Downloads/index_3.html#" class="nav-logo">Morgan</a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="file:///C:/Users/USER/Downloads/index_3.html#about">About</a></li>
+      <li><a href="file:///C:/Users/USER/Downloads/index_3.html#services">Services</a></li>
+      <li><a href="file:///C:/Users/USER/Downloads/index_3.html#work">Work</a></li>
+      <li><a href="file:///C:/Users/USER/Downloads/index_3.html#contact">Contact</a></li>
     </ul>
-    <span class="nav-badge">Available for work</span>
+    <div class="nav-status"><div class="status-dot"></div>Available for work</div>
   </nav>
 
   <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <span class="hero-tag">Frontend Developer · Web3 Builder · Nigeria</span>
-        <h1 class="hero-title">BUILD<br><span>DIFFERENT</span></h1>
-        <p class="hero-desc">I build premium websites and Web3 frontends that look expensive, load fast, and actually convert. Pure HTML, CSS, and JavaScript — no bloat.</p>
-        <div class="hero-btns">
-          <a href="#work" class="btn btn-red">View Work</a>
-          <a href="#contact" class="btn">Get In Touch</a>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="stat-row"><span class="stat-label">Stack</span><span class="stat-value">HTML · CSS · JS</span></div>
-        <div class="stat-row"><span class="stat-label">Specialty</span><span class="stat-value">Web3 UI</span></div>
-        <div class="stat-row"><span class="stat-label">Location</span><span class="stat-value">Lagos, NG</span></div>
-        <div class="stat-row"><span class="stat-label">Status</span><span class="stat-value" style="color: var(--red)">Open</span></div>
-        <div class="stat-row"><span class="stat-label">Twitter</span><span class="stat-value" style="font-size:18px">@Morgan_1805</span></div>
-      </div>
+    <div class="hero-ghost">MORGAN</div>
+    <div class="hero-eyebrow"><span class="eyebrow-line"></span>Frontend Developer · Web3 Builder · Lagos, Nigeria<span class="eyebrow-line"></span></div>
+    <h1 class="hero-name">
+      <span class="outline-text">BUILD</span>
+      <span style="color:var(--white);display:block;">DIFFERENT</span>
+      <span class="red-text">HTML · CSS · JS</span>
+    </h1>
+    <p class="hero-tagline">I craft digital experiences that feel expensive, move fast, and convert.<br>From Web3 frontends to luxury brand sites — pure code, zero shortcuts.</p>
+    <div class="hero-cta">
+      <a href="file:///C:/Users/USER/Downloads/index_3.html#work" class="btn-primary">View My Work</a>
+      <a href="file:///C:/Users/USER/Downloads/index_3.html#contact" class="btn-secondary">Get In Touch</a>
     </div>
+    <div class="hero-stats">
+      <div class="h-stat"><span class="h-stat-val">5</span><span class="h-stat-label">Live Projects</span></div>
+      <div class="h-stat"><span class="h-stat-val">Web3</span><span class="h-stat-label">Specialty</span></div>
+      <div class="h-stat"><span class="h-stat-val">Lagos</span><span class="h-stat-label">Based In</span></div>
+      <div class="h-stat"><span class="h-stat-val">Open</span><span class="h-stat-label">Status</span></div>
+    </div>
+    <div class="scroll-ind"><div class="scroll-line"></div>Scroll</div>
   </section>
 
   <div class="ticker">
     <div class="ticker-inner">
-      <span>LANDING PAGES</span><span>·</span><span>BRAND WEBSITES</span><span>·</span><span>WEB3 UI</span><span>·</span><span>CRYPTO EXCHANGE</span><span>·</span><span>NFT MARKETPLACE</span><span>·</span><span>SAAS LANDING PAGES</span><span>·</span><span>HTML/CSS/JS</span><span>·</span><span>OPEN FOR WORK</span><span>·</span><span>LANDING PAGES</span><span>·</span><span>BRAND WEBSITES</span><span>·</span><span>WEB3 UI</span><span>·</span><span>CRYPTO EXCHANGE</span><span>·</span><span>NFT MARKETPLACE</span><span>·</span><span>SAAS LANDING PAGES</span><span>·</span><span>HTML/CSS/JS</span><span>·</span><span>OPEN FOR WORK</span><span>·</span>
+      <span>CRYPTO EXCHANGE</span><span class="dot">·</span><span>RESTAURANT BRAND</span><span class="dot">·</span><span>NFT MARKETPLACE</span><span class="dot">·</span><span>SAAS PRODUCT</span><span class="dot">·</span><span>LUXURY STREETWEAR</span><span class="dot">·</span><span>WEB3 UI</span><span class="dot">·</span><span>OPEN FOR WORK</span><span class="dot">·</span><span>CRYPTO EXCHANGE</span><span class="dot">·</span><span>RESTAURANT BRAND</span><span class="dot">·</span><span>NFT MARKETPLACE</span><span class="dot">·</span><span>SAAS PRODUCT</span><span class="dot">·</span><span>LUXURY STREETWEAR</span><span class="dot">·</span><span>WEB3 UI</span><span class="dot">·</span><span>OPEN FOR WORK</span><span class="dot">·</span>
     </div>
   </div>
 
   <section class="section" id="about">
-    <span class="section-tag">001 — About</span>
-    <h2 class="section-title">WHO I AM</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I'm a frontend developer based in Lagos, Nigeria, focused on building clean, modern interfaces that feel premium and load fast.</p>
-        <p>I specialise in landing pages, brand websites, SaaS products, crypto exchanges, and Web3 UI frontends — all built in pure HTML, CSS, and JavaScript. No frameworks. No bloat. Just clean, precise code that ships.</p>
-        <p>Every pixel is intentional. Every interaction is smooth. If you need a site that looks expensive and actually converts — I'm your guy.</p>
-      </div>
-      <div class="about-details">
-        <div class="detail-row"><span class="detail-key">Name</span><span class="detail-val">Morgan (Adeosun Ezekiel)</span></div>
-        <div class="detail-row"><span class="detail-key">Based in</span><span class="detail-val">Lagos, Nigeria</span></div>
-        <div class="detail-row"><span class="detail-key">Specialty</span><span class="detail-val">Frontend & Web3 UI</span></div>
-        <div class="detail-row"><span class="detail-key">Stack</span><span class="detail-val">HTML · CSS · JavaScript</span></div>
-        <div class="detail-row"><span class="detail-key">Tools</span><span class="detail-val">Figma · VS Code · GitHub</span></div>
-        <div class="detail-row"><span class="detail-key">Available</span><span class="detail-val" style="color: var(--red)">Yes — Let's build</span></div>
+    <div class="section-inner">
+      <div class="sec-number reveal visible">001 — About</div>
+      <h2 class="sec-title reveal visible">WHO<br><span>I AM</span></h2>
+      <div class="about-layout">
+        <div class="about-left reveal-left visible">
+          <div class="about-bio">
+            <p>I'm a frontend developer based in <em>Lagos, Nigeria</em> — obsessed with building interfaces that feel expensive, load instantly, and leave people speechless.</p>
+            <p>I specialise in <em>Web3 frontends</em>, crypto exchanges, NFT marketplaces, SaaS landing pages, restaurant brands, and luxury brand sites. Every project is built in pure <em>HTML, CSS, and JavaScript</em>. No frameworks. No bloat. Just precise, performant code.</p>
+            <p>Every pixel is deliberate. Every animation has purpose. If you need a site that looks like it cost $50,000 — I'm your guy.</p>
+          </div>
+          <div class="about-cta">
+            <a href="file:///C:/Users/USER/Downloads/index_3.html#work" class="btn-primary">See My Projects</a>
+            <a href="file:///C:/Users/USER/Downloads/index_3.html#contact" class="btn-secondary">Hire Me</a>
+          </div>
+        </div>
+        <div class="about-right reveal-right visible">
+          <div class="info-row"><span class="info-key">Name</span><span class="info-val">Morgan (Adeosun Ezekiel)</span></div>
+          <div class="info-row"><span class="info-key">Based in</span><span class="info-val">Lagos, Nigeria</span></div>
+          <div class="info-row"><span class="info-key">Specialty</span><span class="info-val">Frontend &amp; Web3 UI</span></div>
+          <div class="info-row"><span class="info-key">Stack</span><span class="info-val">HTML · CSS · JavaScript</span></div>
+          <div class="info-row"><span class="info-key">Tools</span><span class="info-val">Figma · VS Code · GitHub</span></div>
+          <div class="info-row"><span class="info-key">Twitter</span><span class="info-val">@Morgan_1805</span></div>
+          <div class="info-row"><span class="info-key">Discord</span><span class="info-val">morgan_1805</span></div>
+          <div class="info-row"><span class="info-key">Available</span><span class="info-val available">Yes — Let's build something</span></div>
+        </div>
       </div>
     </div>
   </section>
-
-  <div class="divider"></div>
 
   <div class="services-bg" id="services">
-    <div style="max-width:1200px; margin:0 auto; padding: 100px 40px 60px;">
-      <span class="section-tag">002 — Services</span>
-      <h2 class="section-title">WHAT I BUILD</h2>
-    </div>
-    <div class="services-grid" style="max-width:1200px; margin:0 auto; padding: 0 40px 100px;">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <h3 class="service-title">Landing Pages & Promo Sites</h3>
-        <p class="service-desc">High-converting pages built for speed, clarity, and strong calls-to-action. Clean layout, fast load, mobile-first.</p>
-        <div class="service-tags"><span class="service-tag">Conversion</span><span class="service-tag">Fast build</span><span class="service-tag">Responsive</span></div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <h3 class="service-title">SaaS & Brand Websites</h3>
-        <p class="service-desc">Visually striking product sites with pricing sections, feature grids, testimonials, and smooth animations.</p>
-        <div class="service-tags"><span class="service-tag">SaaS</span><span class="service-tag">Premium UI</span><span class="service-tag">Motion</span></div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <h3 class="service-title">Web3 UI Frontends</h3>
-        <p class="service-desc">Wallet-ready interfaces, crypto exchanges, NFT marketplaces and dApp frontends — built for trust and speed.</p>
-        <div class="service-tags"><span class="service-tag">Crypto</span><span class="service-tag">NFT</span><span class="service-tag">dApp UI</span></div>
-      </div>
-    </div>
-  </div>
-
-  <section style="padding: 100px 0;" id="work">
-    <div style="max-width:1200px; margin:0 auto; padding: 0 40px 60px;">
-      <span class="section-tag">003 — Selected Work</span>
-      <h2 class="section-title">PROJECTS</h2>
-    </div>
-    <div class="projects-grid" style="max-width:1200px; margin:0 auto; padding: 0 40px;">
-
-      <!-- KRYPTO — TOP LEFT -->
-      <a href="https://morgan1805.github.io/krypto/" target="_blank" class="project-card">
-        <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800" alt="KRYPTO" class="project-img"/>
-        <div class="project-content">
-          <span class="project-type">Concept · Crypto Exchange · 2025</span>
-          <h3 class="project-title">KRYPTO</h3>
-          <p class="project-desc">Full crypto exchange landing page. Live price ticker, trade widget, markets table, security section. Pure HTML/CSS/JS.</p>
-          <span class="project-link">View Live Site →</span>
-        </div>
-      </a>
-
-      <!-- NEXUS — TOP RIGHT -->
-      <a href="https://morgan1805.github.io/nexus/" target="_blank" class="project-card">
-        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800" alt="NEXUS" class="project-img"/>
-        <div class="project-content">
-          <span class="project-type">Concept · Web3 / NFT · 2025</span>
-          <h3 class="project-title">NEXUS</h3>
-          <p class="project-desc">NFT marketplace. Particle animations, wallet connect modal, live crypto ticker, countdown timer. Pure HTML/CSS/JS.</p>
-          <span class="project-link">View Live Site →</span>
-        </div>
-      </a>
-
-      <!-- FLOWDESK — FULL WIDTH -->
-      <a href="https://morgan1805.github.io/flowdesk/" target="_blank" class="project-card project-card-wide">
-        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200" alt="Flowdesk" class="project-img"/>
-        <div class="project-content">
-          <span class="project-type">Concept · SaaS Landing Page · 2025</span>
-          <h3 class="project-title">FLOWDESK</h3>
-          <p class="project-desc">Full SaaS product landing page. Pricing section, interactive modals, feature grid, testimonials, FAQ, and dashboard preview. Pure HTML/CSS/JS.</p>
-          <span class="project-link">View Live Site →</span>
-        </div>
-      </a>
-
-      <!-- VOIDX — FULL WIDTH -->
-      <a href="https://morgan1805.github.io/voidx/" target="_blank" class="project-card project-card-wide">
-        <img src="https://images.unsplash.com/photo-1673042949302-8ea6f18231a9?w=1200" alt="VOIDX" class="project-img"/>
-        <div class="project-content">
-          <span class="project-type">Concept · Brand Website · 2025</span>
-          <h3 class="project-title">VOIDX</h3>
-          <p class="project-desc">Luxury streetwear brand website. Dark editorial aesthetic, custom cursor, animated ticker, real product photography. Pure HTML/CSS/JS.</p>
-          <span class="project-link">View Live Site →</span>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section class="section">
-    <span class="section-tag">004 — Stack</span>
-    <h2 class="section-title">TOOLS I USE</h2>
-    <div class="stack-grid">
-      <div class="stack-item"><span class="stack-icon">⬛</span><div class="stack-name">HTML5</div><div class="stack-desc">Semantic, accessible markup</div></div>
-      <div class="stack-item"><span class="stack-icon">🎨</span><div class="stack-name">CSS3</div><div class="stack-desc">Animations, Grid, Flexbox</div></div>
-      <div class="stack-item"><span class="stack-icon">⚡</span><div class="stack-name">JavaScript</div><div class="stack-desc">Vanilla JS, DOM, APIs</div></div>
-      <div class="stack-item"><span class="stack-icon">🎯</span><div class="stack-name">Figma</div><div class="stack-desc">UI design & prototyping</div></div>
-      <div class="stack-item"><span class="stack-icon">🐙</span><div class="stack-name">GitHub</div><div class="stack-desc">Version control & hosting</div></div>
-      <div class="stack-item"><span class="stack-icon">🌐</span><div class="stack-name">Web3</div><div class="stack-desc">dApp UI, wallet interfaces</div></div>
-      <div class="stack-item"><span class="stack-icon">📱</span><div class="stack-name">Responsive</div><div class="stack-desc">Mobile-first design</div></div>
-      <div class="stack-item"><span class="stack-icon">🚀</span><div class="stack-name">Performance</div><div class="stack-desc">Fast load, clean code</div></div>
-    </div>
-  </section>
-
-  <div class="contact-bg" id="contact">
-    <div class="contact-inner">
-      <div>
-        <h2 class="contact-title">LET'S<br>BUILD<br><span>TOGETHER</span></h2>
-      </div>
-      <div class="contact-right">
-        <p class="contact-desc">Open for freelance projects, collaborations, and full-time remote roles. If you need a site that looks premium and ships fast — let's talk.</p>
-        <div class="contact-links">
-          <a href="https://x.com/Morgan_1805" target="_blank" class="contact-link"><span class="contact-link-label">Twitter / X</span><span class="contact-link-value">@Morgan_1805</span></a>
-          <a href="#" class="contact-link" id="discordBtn"><span class="contact-link-label">Discord</span><span class="contact-link-value">morgan_1805</span></a>
-          <a href="https://www.linkedin.com/in/adeosun-ezekiel-58800a293" target="_blank" class="contact-link"><span class="contact-link-label">LinkedIn</span><span class="contact-link-value">Adeosun Ezekiel</span></a>
-          <a href="https://contra.com/adeosun_ezekiel_yv5k5caq" target="_blank" class="contact-link"><span class="contact-link-label">Contra</span><span class="contact-link-value">View Profile</span></a>
+    <div class="section">
+      <div class="section-inner">
+        <div class="sec-number reveal visible">002 — Services</div>
+        <h2 class="sec-title reveal visible">WHAT I<br><span>BUILD</span></h2>
+        <div class="services-grid reveal visible">
+          <div class="svc"><div class="svc-num">01</div><h3 class="svc-title">Landing Pages &amp; Promo Sites</h3><p class="svc-desc">High-converting pages built for speed, clarity, and strong calls-to-action. Clean layout, fast load, mobile-first. Clients get results.</p><div class="svc-tags"><span class="svc-tag">Conversion</span><span class="svc-tag">Fast</span><span class="svc-tag">Responsive</span></div></div>
+          <div class="svc"><div class="svc-num">02</div><h3 class="svc-title">SaaS &amp; Brand Websites</h3><p class="svc-desc">Full product sites with pricing, feature grids, testimonials, and smooth interactions. From restaurant brands to SaaS platforms.</p><div class="svc-tags"><span class="svc-tag">SaaS</span><span class="svc-tag">Premium UI</span><span class="svc-tag">Motion</span></div></div>
+          <div class="svc"><div class="svc-num">03</div><h3 class="svc-title">Web3 UI Frontends</h3><p class="svc-desc">Crypto exchanges, NFT marketplaces, wallet interfaces, and dApp frontends. Built for speed, trust, and that premium Web3 feel.</p><div class="svc-tags"><span class="svc-tag">Crypto</span><span class="svc-tag">NFT</span><span class="svc-tag">dApp</span></div></div>
         </div>
       </div>
     </div>
   </div>
+
+  <section class="section" id="work">
+    <div class="section-inner">
+      <div class="work-intro reveal visible">
+        <div>
+          <div class="sec-number">003 — Selected Work</div>
+          <h2 class="sec-title">THE<br><span>PROJECTS</span></h2>
+        </div>
+        <div class="work-count">05</div>
+      </div>
+
+      <div class="proj-grid row-1 reveal visible">
+        <a href="https://morgan1805.github.io/krypto/" target="_blank" class="proj h-xl">
+          <img src="./Morgan — Frontend Developer &amp; Web3 Builder_files/photo-1621761191319-c6fb62004040" alt="KRYPTO" class="proj-img" style="transform: scale(1.08) translateY(-53.3808px);">
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-meta"><span class="proj-num-badge">01</span><span class="proj-type">Crypto Exchange</span><span class="proj-year">2025</span></div>
+            <h3 class="proj-title">KRYPTO</h3>
+            <p class="proj-desc">Full crypto exchange with live price ticker, interactive trade widget, markets table, particle animations, and 30+ clickable modals.</p>
+            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Web3</span><span class="proj-pill">Crypto</span><span class="proj-pill">JS</span></div></div>
+          </div>
+        </a>
+        <a href="https://morgan1805.github.io/ember/" target="_blank" class="proj h-xl">
+          <img src="./Morgan — Frontend Developer &amp; Web3 Builder_files/photo-1555396273-367ea4eb4db5" alt="EMBER" class="proj-img" style="transform: scale(1.08) translateY(-53.3808px);">
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-meta"><span class="proj-num-badge">02</span><span class="proj-type">Restaurant Brand</span><span class="proj-year">2025</span></div>
+            <h3 class="proj-title">EMBER</h3>
+            <p class="proj-desc">Premium Nigerian wood-fire restaurant. Parallax hero, full menu with Naira pricing, chef profiles, live reservation form, and 25+ modals.</p>
+            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Brand</span><span class="proj-pill">Food</span><span class="proj-pill">JS</span></div></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="proj-grid row-2 reveal visible">
+        <a href="https://morgan1805.github.io/nexus/" target="_blank" class="proj h-lg">
+          <img src="./Morgan — Frontend Developer &amp; Web3 Builder_files/photo-1639762681485-074b7f938ba0" alt="NEXUS" class="proj-img" style="transform: scale(1.08) translateY(-69.5074px);">
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-meta"><span class="proj-num-badge">03</span><span class="proj-type">NFT Marketplace</span><span class="proj-year">2025</span></div>
+            <h3 class="proj-title">NEXUS</h3>
+            <p class="proj-desc">NFT marketplace with particle network, 3D card tilt, wallet connect modal with 7 wallets, live crypto ticker, and countdown timer.</p>
+            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Web3</span><span class="proj-pill">NFT</span></div></div>
+          </div>
+        </a>
+        <a href="https://morgan1805.github.io/flowdesk/" target="_blank" class="proj h-lg">
+          <img src="./Morgan — Frontend Developer &amp; Web3 Builder_files/photo-1551434678-e076c223a692" alt="Flowdesk" class="proj-img" style="transform: scale(1.08) translateY(-69.5074px);">
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-meta"><span class="proj-num-badge">04</span><span class="proj-type">SaaS Landing Page</span><span class="proj-year">2025</span></div>
+            <h3 class="proj-title">FLOWDESK</h3>
+            <p class="proj-desc">Full SaaS product page. Dashboard preview, pricing toggle, feature grid, testimonials, FAQ, and 40+ interactive modal flows.</p>
+            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">SaaS</span><span class="proj-pill">Product</span></div></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="proj-grid row-3 reveal visible">
+        <a href="https://morgan1805.github.io/voidx/" target="_blank" class="proj h-cinema">
+          <img src="./Morgan — Frontend Developer &amp; Web3 Builder_files/photo-1673042949302-8ea6f18231a9" alt="VOIDX" class="proj-img" style="transform: scale(1.08) translateY(-88.6811px);">
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-meta"><span class="proj-num-badge">05</span><span class="proj-type">Luxury Brand Website</span><span class="proj-year">2025</span></div>
+            <h3 class="proj-title">VOIDX</h3>
+            <p class="proj-desc">Luxury streetwear concept brand. Dark editorial aesthetic, custom animated cursor, scrolling ticker, product grid with hover effects, real product photography.</p>
+            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Brand</span><span class="proj-pill">Editorial</span><span class="proj-pill">Streetwear</span></div></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="services-bg">
+    <div class="section">
+      <div class="section-inner">
+        <div class="sec-number reveal visible">004 — Stack</div>
+        <h2 class="sec-title reveal visible">TOOLS<br><span>I USE</span></h2>
+        <div class="stack-grid reveal visible">
+          <div class="stack-item"><span class="stack-icon">⬛</span><div class="stack-name">HTML5</div><div class="stack-desc">Semantic, accessible, clean markup</div></div>
+          <div class="stack-item"><span class="stack-icon">🎨</span><div class="stack-name">CSS3</div><div class="stack-desc">Animations, Grid, Flexbox, Custom Properties</div></div>
+          <div class="stack-item"><span class="stack-icon">⚡</span><div class="stack-name">JavaScript</div><div class="stack-desc">Vanilla JS, DOM manipulation, Canvas API</div></div>
+          <div class="stack-item"><span class="stack-icon">🎯</span><div class="stack-name">Figma</div><div class="stack-desc">UI design &amp; interactive prototyping</div></div>
+          <div class="stack-item"><span class="stack-icon">🐙</span><div class="stack-name">GitHub</div><div class="stack-desc">Version control &amp; Pages hosting</div></div>
+          <div class="stack-item"><span class="stack-icon">🌐</span><div class="stack-name">Web3 UI</div><div class="stack-desc">dApp interfaces, wallet connect, DeFi</div></div>
+          <div class="stack-item"><span class="stack-icon">📱</span><div class="stack-name">Responsive</div><div class="stack-desc">Mobile-first, every device, every screen</div></div>
+          <div class="stack-item"><span class="stack-icon">🚀</span><div class="stack-name">Performance</div><div class="stack-desc">Fast load, optimised, zero bloat</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="contact">
+    <div class="section-inner">
+      <div class="sec-number reveal visible">005 — Contact</div>
+      <div class="contact-layout">
+        <div class="reveal-left visible">
+          <div class="contact-big">LET'S<br><span class="red">BUILD</span><br><span class="outline">TOGETHER</span></div>
+        </div>
+        <div class="reveal-right visible">
+          <p class="contact-desc">Open for freelance projects, remote full-time roles, and collaborations. If you need a site that looks premium and ships fast — let's talk.</p>
+          <div class="contact-links">
+            <a href="https://x.com/Morgan_1805" target="_blank" class="c-link"><span class="c-link-label">Twitter / X</span><span class="c-link-val">@Morgan_1805</span><span class="c-link-arrow">→</span></a>
+            <a href="file:///C:/Users/USER/Downloads/index_3.html#" class="c-link" id="discordBtn"><span class="c-link-label">Discord</span><span class="c-link-val">morgan_1805</span><span class="c-link-arrow">→</span></a>
+            <a href="https://www.linkedin.com/in/adeosun-ezekiel-58800a293" target="_blank" class="c-link"><span class="c-link-label">LinkedIn</span><span class="c-link-val">Adeosun Ezekiel</span><span class="c-link-arrow">→</span></a>
+            <a href="https://contra.com/adeosun_ezekiel_yv5k5caq" target="_blank" class="c-link"><span class="c-link-label">Contra</span><span class="c-link-val">View Freelance Profile</span><span class="c-link-arrow">→</span></a>
+            <a href="https://github.com/Morgan1805" target="_blank" class="c-link"><span class="c-link-label">GitHub</span><span class="c-link-val">github.com/Morgan1805</span><span class="c-link-arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <span>© <span id="year"></span> Morgan — Frontend Developer</span>
-    <div class="footer-right">
+    <span class="footer-copy">© <span id="yr">2026</span> Morgan — Frontend Developer. Lagos, Nigeria.</span>
+    <div class="footer-links">
       <a href="https://x.com/Morgan_1805" target="_blank">Twitter</a>
       <a href="https://morgan1805.github.io/krypto/" target="_blank">KRYPTO</a>
+      <a href="https://morgan1805.github.io/ember/" target="_blank">EMBER</a>
       <a href="https://morgan1805.github.io/nexus/" target="_blank">NEXUS</a>
       <a href="https://morgan1805.github.io/flowdesk/" target="_blank">FLOWDESK</a>
       <a href="https://morgan1805.github.io/voidx/" target="_blank">VOIDX</a>
-      <a href="#" id="discordLink">Discord</a>
+      <a href="file:///C:/Users/USER/Downloads/index_3.html#" id="discordLink">Discord</a>
     </div>
   </footer>
 
-  <div class="toast" id="toast">Discord username copied!</div>
+  <div class="toast" id="toast">Discord copied!</div>
 
   <script>
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx - 5 + 'px';
-      cursor.style.top = my - 5 + 'px';
-    });
-    function animateRing() {
-      rx += (mx - rx - 18) * 0.12;
-      ry += (my - ry - 18) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-    function copyDiscord() {
-      navigator.clipboard.writeText('morgan_1805').then(() => {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2500);
+    const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+    function animRing(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+    animRing();
+
+    const canvas=document.getElementById('bgc'),ctx=canvas.getContext('2d');
+    let W,H;
+    function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+    resize();window.addEventListener('resize',resize);
+    const pts=Array.from({length:50},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,dx:(Math.random()-.5)*.25,dy:(Math.random()-.5)*.25,r:Math.random()*1+.2}));
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      pts.forEach((p,i)=>{
+        p.x+=p.dx;p.y+=p.dy;
+        if(p.x<0||p.x>W)p.dx*=-1;if(p.y<0||p.y>H)p.dy*=-1;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='#e8290b';ctx.globalAlpha=.2;ctx.fill();
+        pts.slice(i+1).forEach(p2=>{const d=Math.hypot(p.x-p2.x,p.y-p2.y);if(d<140){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);ctx.strokeStyle='#e8290b';ctx.globalAlpha=(1-d/140)*.05;ctx.lineWidth=.5;ctx.stroke();}});
       });
+      ctx.globalAlpha=1;requestAnimationFrame(draw);
     }
-    document.getElementById('discordBtn').addEventListener('click', e => { e.preventDefault(); copyDiscord(); });
-    document.getElementById('discordLink').addEventListener('click', e => { e.preventDefault(); copyDiscord(); });
-    document.getElementById('year').textContent = new Date().getFullYear();
+    draw();
+
+    function copyDiscord(){navigator.clipboard.writeText('morgan_1805').then(()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);});}
+    document.getElementById('discordBtn').addEventListener('click',e=>{e.preventDefault();copyDiscord();});
+    document.getElementById('discordLink').addEventListener('click',e=>{e.preventDefault();copyDiscord();});
+    document.getElementById('yr').textContent=new Date().getFullYear();
+
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08});
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+
+    window.addEventListener('scroll',()=>{
+      document.querySelectorAll('.proj-img').forEach(img=>{
+        const rect=img.parentElement.getBoundingClientRect();
+        const prog=(window.innerHeight-rect.top)/(window.innerHeight+rect.height);
+        img.style.transform=`scale(1.08) translateY(${(prog-.5)*20}px)`;
+      });
+    });
   </script>
-</body>
-</html>
+
+
+</body></html>
