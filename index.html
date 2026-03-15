@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -152,12 +153,12 @@
     .footer-links a:hover{color:var(--red);}
     .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--white);color:var(--bg);padding:12px 28px;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:transform .4s cubic-bezier(.34,1.56,.64,1);z-index:9999;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));}
     .toast.show{transform:translateX(-50%) translateY(0);}
-    .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s,transform .8s;}
-    .reveal.visible{opacity:1;transform:translateY(0);}
-    .reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .8s,transform .8s;}
-    .reveal-left.visible{opacity:1;transform:translateX(0);}
-    .reveal-right{opacity:0;transform:translateX(32px);transition:opacity .8s,transform .8s;}
-    .reveal-right.visible{opacity:1;transform:translateX(0);}
+    .reveal{opacity:1;transform:translateY(0);}
+    
+    .reveal-left{opacity:1;transform:translateX(0);}
+    
+    .reveal-right{opacity:1;transform:translateX(0);}
+    
     @media(max-width:768px){
       nav{padding:0 20px;}
       .nav-links{display:none;}
@@ -220,4 +221,212 @@
   <section class="section" id="about">
     <div class="section-inner">
       <div class="sec-number reveal">001 — About</div>
-      <h2 class="s
+      <h2 class="sec-title reveal">WHO<br><span>I AM</span></h2>
+      <div class="about-layout">
+        <div class="about-left reveal-left">
+          <div class="about-bio">
+            <p>I'm a frontend developer — obsessed with building interfaces that feel expensive, load instantly, and leave people speechless.</p>
+            <p>I specialise in <em>Web3 frontends</em>, crypto exchanges, NFT marketplaces, SaaS landing pages, restaurant brands, and luxury brand sites. Every project is built in pure <em>HTML, CSS, and JavaScript</em>. No frameworks. No bloat. Just precise, performant code.</p>
+            <p>Every pixel is deliberate. Every animation has purpose. If you need a site that looks like it cost $50,000 — I'm your guy.</p>
+          </div>
+          <div class="about-cta">
+            <a href="#work" class="btn-primary">See My Projects</a>
+            <a href="#contact" class="btn-secondary">Hire Me</a>
+          </div>
+        </div>
+        <div class="about-right reveal-right">
+          <div class="info-row"><span class="info-key">Name</span><span class="info-val">Morgan</span></div>
+          
+          <div class="info-row"><span class="info-key">Specialty</span><span class="info-val">Frontend Developer</span></div>
+          <div class="info-row"><span class="info-key">Stack</span><span class="info-val">HTML · CSS · JavaScript</span></div>
+          <div class="info-row"><span class="info-key">Tools</span><span class="info-val">Figma · VS Code · GitHub</span></div>
+          <div class="info-row"><span class="info-key">Twitter</span><span class="info-val">@Morgan_1805</span></div>
+          <div class="info-row"><span class="info-key">Discord</span><span class="info-val">morgan_1805</span></div>
+          <div class="info-row"><span class="info-key">Available</span><span class="info-val available">Yes — Let's build something</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="services-bg" id="services">
+    <div class="section">
+      <div class="section-inner">
+        <div class="sec-number reveal">002 — Services</div>
+        <h2 class="sec-title reveal">WHAT I<br><span>BUILD</span></h2>
+        <div class="services-grid reveal">
+          <div class="svc"><div class="svc-num">01</div><h3 class="svc-title">Landing Pages & Promo Sites</h3><p class="svc-desc">High-converting pages built for speed, clarity, and strong calls-to-action. Clean layout, fast load, mobile-first. Clients get results.</p><div class="svc-tags"><span class="svc-tag">Conversion</span><span class="svc-tag">Fast</span><span class="svc-tag">Responsive</span></div></div>
+          <div class="svc"><div class="svc-num">02</div><h3 class="svc-title">SaaS & Brand Websites</h3><p class="svc-desc">Full product sites with pricing, feature grids, testimonials, and smooth interactions. From restaurant brands to SaaS platforms.</p><div class="svc-tags"><span class="svc-tag">SaaS</span><span class="svc-tag">Premium UI</span><span class="svc-tag">Motion</span></div></div>
+          <div class="svc"><div class="svc-num">03</div><h3 class="svc-title">Web3 UI Frontends</h3><p class="svc-desc">Crypto exchanges, NFT marketplaces, wallet interfaces, and dApp frontends. Built for speed, trust, and that premium Web3 feel.</p><div class="svc-tags"><span class="svc-tag">Crypto</span><span class="svc-tag">NFT</span><span class="svc-tag">dApp</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="work">
+    <div class="section-inner">
+      <div class="work-intro reveal">
+        <div>
+          <div class="sec-number">003 — Selected Work</div>
+          <h2 class="sec-title">THE<br><span>PROJECTS</span></h2>
+        </div>
+        <div class="work-count">05</div>
+      </div>
+
+      <div class="proj-grid row-1 reveal">
+        <a href="https://morgan1805.github.io/krypto/" target="_blank" class="proj h-xl">
+          <div class="proj-img" style="position:absolute;inset:0;width:100%;height:100%;background:linear-gradient(135deg,#0a0a0f 0%,#0d1117 30%,#0a1628 60%,#071020 100%);overflow:hidden;"><div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 60%,rgba(212,168,67,0.18),transparent)"></div><div style="position:absolute;top:20%;left:10%;font-family:monospace;font-size:11px;color:rgba(212,168,67,0.25);line-height:1.8;">BTC 7,420 ▲2.4%<br>ETH ,241 ▲1.8%<br>SOL 42 ▼0.6%<br>BNB 12 ▲3.2%<br>XRP /bin/sh.71 ▲0.9%<br>BTC 7,420 ▲2.4%<br>ETH ,241 ▲1.8%</div><div style="position:absolute;bottom:20%;right:10%;width:180px;height:80px;border:1px solid rgba(212,168,67,0.2);display:flex;align-items:flex-end;gap:3px;padding:8px;"><div style="flex:1;background:rgba(212,168,67,0.4);height:40%"></div><div style="flex:1;background:rgba(212,168,67,0.4);height:65%"></div><div style="flex:1;background:rgba(212,168,67,0.4);height:45%"></div><div style="flex:1;background:rgba(212,168,67,0.4);height:80%"></div><div style="flex:1;background:rgba(212,168,67,0.4);height:55%"></div><div style="flex:1;background:rgba(212,168,67,0.4);height:90%"></div><div style="flex:1;background:rgba(212,168,67,0.4);height:70%"></div><div style="flex:1;background:rgba(212,168,67,0.4);height:100%"></div></div></div>
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-meta"><span class="proj-num-badge">01</span><span class="proj-type">Crypto Exchange</span><span class="proj-year">2025</span></div>
+            <h3 class="proj-title">KRYPTO</h3>
+            <p class="proj-desc">Full crypto exchange with live price ticker, interactive trade widget, markets table, particle animations, and 30+ clickable modals.</p>
+            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Web3</span><span class="proj-pill">Crypto</span><span class="proj-pill">JS</span></div></div>
+          </div>
+        </a>
+        <a href="https://morgan1805.github.io/ember/" target="_blank" class="proj h-xl">
+          <div class="proj-img" style="position:absolute;inset:0;width:100%;height:100%;background:linear-gradient(160deg,#0a0704 0%,#1a0c06 40%,#2a1008 70%,#0a0704 100%);overflow:hidden;"><div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 40% 70%,rgba(200,68,26,0.35),transparent)"></div><div style="position:absolute;inset:0;background:radial-gradient(ellipse 30% 40% at 70% 30%,rgba(196,154,60,0.15),transparent)"></div><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:serif;font-size:72px;color:rgba(200,68,26,0.12);letter-spacing:8px;white-space:nowrap;">EMBER</div><div style="position:absolute;bottom:25%;left:50%;transform:translateX(-50%);font-family:monospace;font-size:10px;color:rgba(196,154,60,0.4);letter-spacing:3px;text-align:center;">FIRE &amp; FLAVOUR<br><span style="font-size:8px;opacity:0.6;">VICTORIA ISLAND · LAGOS</span></div></div>
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-meta"><span class="proj-num-badge">02</span><span class="proj-type">Restaurant Brand</span><span class="proj-year">2025</span></div>
+            <h3 class="proj-title">EMBER</h3>
+            <p class="proj-desc">Premium Nigerian wood-fire restaurant. Parallax hero, full menu with Naira pricing, chef profiles, live reservation form, and 25+ modals.</p>
+            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Brand</span><span class="proj-pill">Food</span><span class="proj-pill">JS</span></div></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="proj-grid row-2 reveal">
+        <a href="https://morgan1805.github.io/nexus/" target="_blank" class="proj h-lg">
+          <div class="proj-img" style="position:absolute;inset:0;width:100%;height:100%;background:linear-gradient(135deg,#020508 0%,#060d14 50%,#030810 100%);overflow:hidden;"><div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(0,212,255,0.1),transparent)"></div><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;"><div style="position:absolute;inset:0;border:1px solid rgba(0,212,255,0.15);border-radius:50%;"></div><div style="position:absolute;inset:30px;border:1px solid rgba(0,212,255,0.2);border-radius:50%;"></div><div style="position:absolute;inset:60px;border:1px solid rgba(0,212,255,0.3);border-radius:50%;"></div><div style="position:absolute;inset:85px;background:radial-gradient(circle,rgba(0,212,255,0.4),transparent);border-radius:50%;"></div></div><div style="position:absolute;top:15%;right:15%;font-family:monospace;font-size:9px;color:rgba(0,212,255,0.3);letter-spacing:2px;">#0042<br>2.4 ETH</div></div>
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-meta"><span class="proj-num-badge">03</span><span class="proj-type">NFT Marketplace</span><span class="proj-year">2025</span></div>
+            <h3 class="proj-title">NEXUS</h3>
+            <p class="proj-desc">NFT marketplace with particle network, 3D card tilt, wallet connect modal with 7 wallets, live crypto ticker, and countdown timer.</p>
+            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Web3</span><span class="proj-pill">NFT</span></div></div>
+          </div>
+        </a>
+        <a href="https://morgan1805.github.io/flowdesk/" target="_blank" class="proj h-lg">
+          <div class="proj-img" style="position:absolute;inset:0;width:100%;height:100%;background:linear-gradient(160deg,#f8f7f4 0%,#f0ede8 50%,#e8e4dc 100%);overflow:hidden;"><div style="position:absolute;inset:0;background-image:radial-gradient(circle,#c8c6c0 1px,transparent 1px);background-size:28px 28px;opacity:0.4;"></div><div style="position:absolute;top:20%;left:10%;right:10%;background:white;border-radius:8px;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,0.08);"><div style="display:flex;gap:6px;margin-bottom:10px;"><div style="width:8px;height:8px;border-radius:50%;background:#ff5f57;"></div><div style="width:8px;height:8px;border-radius:50%;background:#febc2e;"></div><div style="width:8px;height:8px;border-radius:50%;background:#28c840;"></div></div><div style="height:6px;background:#e8e5df;border-radius:3px;margin-bottom:6px;width:70%;"></div><div style="height:6px;background:#e8e5df;border-radius:3px;margin-bottom:6px;width:50%;"></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:10px;"><div style="height:36px;background:#f0f0f0;border-radius:4px;"></div><div style="height:36px;background:#f0f0f0;border-radius:4px;"></div><div style="height:36px;background:#1a6b3c22;border-radius:4px;border:1px solid #1a6b3c44;"></div></div></div></div>
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-meta"><span class="proj-num-badge">04</span><span class="proj-type">SaaS Landing Page</span><span class="proj-year">2025</span></div>
+            <h3 class="proj-title">FLOWDESK</h3>
+            <p class="proj-desc">Full SaaS product page. Dashboard preview, pricing toggle, feature grid, testimonials, FAQ, and 40+ interactive modal flows.</p>
+            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">SaaS</span><span class="proj-pill">Product</span></div></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="proj-grid row-3 reveal">
+        <a href="https://morgan1805.github.io/voidx/" target="_blank" class="proj h-cinema">
+          <div class="proj-img" style="position:absolute;inset:0;width:100%;height:100%;background:#080808;overflow:hidden;"><div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(232,41,11,0.06),transparent)"></div><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;"><div style="font-family:Impact,sans-serif;font-size:clamp(48px,8vw,100px);color:rgba(240,237,232,0.08);letter-spacing:12px;line-height:1;">WEAR<br>THE<br>VOID</div></div><div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(232,41,11,0.4),transparent);"></div><div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(240,237,232,0.1),transparent);"></div></div>
+          <div class="proj-overlay"></div>
+          <div class="proj-content">
+            <div class="proj-meta"><span class="proj-num-badge">05</span><span class="proj-type">Luxury Brand Website</span><span class="proj-year">2025</span></div>
+            <h3 class="proj-title">VOIDX</h3>
+            <p class="proj-desc">Luxury streetwear concept brand. Dark editorial aesthetic, custom animated cursor, scrolling ticker, product grid with hover effects, real product photography.</p>
+            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Brand</span><span class="proj-pill">Editorial</span><span class="proj-pill">Streetwear</span></div></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="services-bg">
+    <div class="section">
+      <div class="section-inner">
+        <div class="sec-number reveal">004 — Stack</div>
+        <h2 class="sec-title reveal">TOOLS<br><span>I USE</span></h2>
+        <div class="stack-grid reveal">
+          <div class="stack-item"><span class="stack-icon">⬛</span><div class="stack-name">HTML5</div><div class="stack-desc">Semantic, accessible, clean markup</div></div>
+          <div class="stack-item"><span class="stack-icon">🎨</span><div class="stack-name">CSS3</div><div class="stack-desc">Animations, Grid, Flexbox, Custom Properties</div></div>
+          <div class="stack-item"><span class="stack-icon">⚡</span><div class="stack-name">JavaScript</div><div class="stack-desc">Vanilla JS, DOM manipulation, Canvas API</div></div>
+          <div class="stack-item"><span class="stack-icon">🎯</span><div class="stack-name">Figma</div><div class="stack-desc">UI design & interactive prototyping</div></div>
+          <div class="stack-item"><span class="stack-icon">🐙</span><div class="stack-name">GitHub</div><div class="stack-desc">Version control & Pages hosting</div></div>
+          <div class="stack-item"><span class="stack-icon">🌐</span><div class="stack-name">Web3 UI</div><div class="stack-desc">dApp interfaces, wallet connect, DeFi</div></div>
+          <div class="stack-item"><span class="stack-icon">📱</span><div class="stack-name">Responsive</div><div class="stack-desc">Mobile-first, every device, every screen</div></div>
+          <div class="stack-item"><span class="stack-icon">🚀</span><div class="stack-name">Performance</div><div class="stack-desc">Fast load, optimised, zero bloat</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="contact">
+    <div class="section-inner">
+      <div class="sec-number reveal">005 — Contact</div>
+      <div class="contact-layout">
+        <div class="reveal-left">
+          <div class="contact-big">LET'S<br><span class="red">BUILD</span><br><span class="outline">TOGETHER</span></div>
+        </div>
+        <div class="reveal-right">
+          <p class="contact-desc">Open for freelance projects, remote full-time roles, and collaborations. If you need a site that looks premium and ships fast — let's talk.</p>
+          <div class="contact-links">
+            <a href="https://x.com/Morgan_1805" target="_blank" class="c-link"><span class="c-link-label">Twitter / X</span><span class="c-link-val">@Morgan_1805</span><span class="c-link-arrow">→</span></a>
+            <a href="#" class="c-link" id="discordBtn"><span class="c-link-label">Discord</span><span class="c-link-val">morgan_1805</span><span class="c-link-arrow">→</span></a>
+            <a href="https://www.linkedin.com/in/adeosun-ezekiel-58800a293" target="_blank" class="c-link"><span class="c-link-label">LinkedIn</span><span class="c-link-val">Adeosun Ezekiel</span><span class="c-link-arrow">→</span></a>
+            <a href="https://contra.com/adeosun_ezekiel_yv5k5caq" target="_blank" class="c-link"><span class="c-link-label">Contra</span><span class="c-link-val">View Freelance Profile</span><span class="c-link-arrow">→</span></a>
+            <a href="https://github.com/Morgan1805" target="_blank" class="c-link"><span class="c-link-label">GitHub</span><span class="c-link-val">github.com/Morgan1805</span><span class="c-link-arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-copy">© <span id="yr"></span> Morgan — Frontend Developer. .</span>
+    <div class="footer-links">
+      <a href="https://x.com/Morgan_1805" target="_blank">Twitter</a>
+      <a href="https://morgan1805.github.io/krypto/" target="_blank">KRYPTO</a>
+      <a href="https://morgan1805.github.io/ember/" target="_blank">EMBER</a>
+      <a href="https://morgan1805.github.io/nexus/" target="_blank">NEXUS</a>
+      <a href="https://morgan1805.github.io/flowdesk/" target="_blank">FLOWDESK</a>
+      <a href="https://morgan1805.github.io/voidx/" target="_blank">VOIDX</a>
+      <a href="#" id="discordLink">Discord</a>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">Discord copied!</div>
+
+  <script>
+    const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+    function animRing(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+    animRing();
+
+    const canvas=document.getElementById('bgc'),ctx=canvas.getContext('2d');
+    let W,H;
+    function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+    resize();window.addEventListener('resize',resize);
+    const pts=Array.from({length:50},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,dx:(Math.random()-.5)*.25,dy:(Math.random()-.5)*.25,r:Math.random()*1+.2}));
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      pts.forEach((p,i)=>{
+        p.x+=p.dx;p.y+=p.dy;
+        if(p.x<0||p.x>W)p.dx*=-1;if(p.y<0||p.y>H)p.dy*=-1;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='#e8290b';ctx.globalAlpha=.2;ctx.fill();
+        pts.slice(i+1).forEach(p2=>{const d=Math.hypot(p.x-p2.x,p.y-p2.y);if(d<140){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);ctx.strokeStyle='#e8290b';ctx.globalAlpha=(1-d/140)*.05;ctx.lineWidth=.5;ctx.stroke();}});
+      });
+      ctx.globalAlpha=1;requestAnimationFrame(draw);
+    }
+    draw();
+
+    function copyDiscord(){navigator.clipboard.writeText('morgan_1805').then(()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);});}
+    document.getElementById('discordBtn').addEventListener('click',e=>{e.preventDefault();copyDiscord();});
+    document.getElementById('discordLink').addEventListener('click',e=>{e.preventDefault();copyDiscord();});
+    document.getElementById('yr').textContent=new Date().getFullYear();
+
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08});
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+
+    window.addEventListener('scroll',()=>{
+      document.querySelectorAll('.proj-img').forEach(img=>{
+        const rect=img.parentElement.getBoundingClientRect();
+        const prog=(window.innerHeight-rect.top)/(window.innerHeight+rect.height);
+        img.style.transform=`scale(1.08) translateY(${(prog-.5)*20}px)`;
+      });
+    });
+  </script>
+</body>
+</html>
