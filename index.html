@@ -81,6 +81,7 @@
     .project-desc { font-size: 12px; color: var(--cream); line-height: 1.5; margin-bottom: 20px; }
     .project-link { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--white); border-bottom: 1px solid var(--red); padding-bottom: 2px; display: inline-block; transition: color 0.2s; }
     .project-card:hover .project-link { color: var(--red); }
+    .project-card-wide { grid-column: span 2; aspect-ratio: 16/6; }
     .stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border); }
     .stack-item { padding: 32px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: background 0.2s; }
     .stack-item:hover { background: var(--grey); }
@@ -116,6 +117,7 @@
       .services-grid { grid-template-columns: 1fr; }
       .service-card { border-right: none; border-bottom: 1px solid var(--border); }
       .projects-grid { grid-template-columns: 1fr; }
+      .project-card-wide { grid-column: span 1; aspect-ratio: 4/3; }
       .stack-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-inner { grid-template-columns: 1fr; gap: 40px; }
       .section { padding: 60px 20px; }
@@ -160,7 +162,7 @@
 
   <div class="ticker">
     <div class="ticker-inner">
-      <span>LANDING PAGES</span><span>·</span><span>BRAND WEBSITES</span><span>·</span><span>WEB3 UI</span><span>·</span><span>HTML/CSS/JS</span><span>·</span><span>FRONTEND DEV</span><span>·</span><span>OPEN FOR WORK</span><span>·</span><span>LANDING PAGES</span><span>·</span><span>BRAND WEBSITES</span><span>·</span><span>WEB3 UI</span><span>·</span><span>HTML/CSS/JS</span><span>·</span><span>FRONTEND DEV</span><span>·</span><span>OPEN FOR WORK</span><span>·</span>
+      <span>LANDING PAGES</span><span>·</span><span>BRAND WEBSITES</span><span>·</span><span>WEB3 UI</span><span>·</span><span>HTML/CSS/JS</span><span>·</span><span>FRONTEND DEV</span><span>·</span><span>OPEN FOR WORK</span><span>·</span><span>SAAS LANDING PAGES</span><span>·</span><span>LANDING PAGES</span><span>·</span><span>BRAND WEBSITES</span><span>·</span><span>WEB3 UI</span><span>·</span><span>HTML/CSS/JS</span><span>·</span><span>FRONTEND DEV</span><span>·</span><span>OPEN FOR WORK</span><span>·</span><span>SAAS LANDING PAGES</span><span>·</span>
     </div>
   </div>
 
@@ -170,149 +172,5 @@
     <div class="about-grid">
       <div class="about-text">
         <p>I'm a frontend developer based in Lagos, Nigeria, focused on building clean, modern interfaces that feel premium and load fast.</p>
-        <p>I specialise in landing pages, brand websites, and Web3 UI frontends — all built in pure HTML, CSS, and JavaScript. No frameworks. No bloat. Just clean, precise code that ships.</p>
-        <p>Every pixel is intentional. Every interaction is smooth. If you need a site that looks expensive and actually converts — I'm your guy.</p>
-      </div>
-      <div class="about-details">
-        <div class="detail-row"><span class="detail-key">Name</span><span class="detail-val">Morgan (Adeosun Ezekiel)</span></div>
-        <div class="detail-row"><span class="detail-key">Based in</span><span class="detail-val">Lagos, Nigeria</span></div>
-        <div class="detail-row"><span class="detail-key">Specialty</span><span class="detail-val">Frontend & Web3 UI</span></div>
-        <div class="detail-row"><span class="detail-key">Stack</span><span class="detail-val">HTML · CSS · JavaScript</span></div>
-        <div class="detail-row"><span class="detail-key">Tools</span><span class="detail-val">Figma · VS Code · GitHub</span></div>
-        <div class="detail-row"><span class="detail-key">Available</span><span class="detail-val" style="color: var(--red)">Yes — Let's build</span></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <div class="services-bg" id="services">
-    <div style="max-width:1200px; margin:0 auto; padding: 100px 40px 60px;">
-      <span class="section-tag">002 — Services</span>
-      <h2 class="section-title">WHAT I BUILD</h2>
-    </div>
-    <div class="services-grid" style="max-width:1200px; margin:0 auto; padding: 0 40px 100px;">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <h3 class="service-title">Landing Pages & Promo Sites</h3>
-        <p class="service-desc">High-converting pages built for speed, clarity, and strong calls-to-action. Clean layout, fast load, mobile-first.</p>
-        <div class="service-tags"><span class="service-tag">Conversion</span><span class="service-tag">Fast build</span><span class="service-tag">Responsive</span></div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <h3 class="service-title">Brand & Aesthetic Websites</h3>
-        <p class="service-desc">Visually striking multi-page sites with smooth animations, strong visual hierarchy, and premium styling.</p>
-        <div class="service-tags"><span class="service-tag">Premium UI</span><span class="service-tag">Motion</span><span class="service-tag">Modern design</span></div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <h3 class="service-title">Web3 UI Frontends</h3>
-        <p class="service-desc">Wallet-ready interfaces, dashboards, and dApp frontends — designed for clarity and optimised for trust.</p>
-        <div class="service-tags"><span class="service-tag">Dashboards</span><span class="service-tag">Wallets</span><span class="service-tag">dApp UI</span></div>
-      </div>
-    </div>
-  </div>
-
-  <section style="padding: 100px 0;" id="work">
-    <div style="max-width:1200px; margin:0 auto; padding: 0 40px 60px;">
-      <span class="section-tag">003 — Selected Work</span>
-      <h2 class="section-title">PROJECTS</h2>
-    </div>
-    <div class="projects-grid" style="max-width:1200px; margin:0 auto; padding: 0 40px;">
-      <a href="https://morgan1805.github.io/voidx/" target="_blank" class="project-card">
-        <img src="https://images.unsplash.com/photo-1673042949302-8ea6f18231a9?w=800" alt="VOIDX" class="project-img"/>
-        <div class="project-content">
-          <span class="project-type">Concept · Brand Website · 2025</span>
-          <h3 class="project-title">VOIDX</h3>
-          <p class="project-desc">Luxury streetwear brand website. Dark editorial aesthetic, custom cursor, animated ticker. Pure HTML/CSS/JS.</p>
-          <span class="project-link">View Live Site →</span>
-        </div>
-      </a>
-      <a href="https://morgan1805.github.io/nexus/" target="_blank" class="project-card">
-        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800" alt="NEXUS" class="project-img"/>
-        <div class="project-content">
-          <span class="project-type">Concept · Web3 / NFT · 2025</span>
-          <h3 class="project-title">NEXUS</h3>
-          <p class="project-desc">NFT marketplace. Particle animations, wallet connect modal, live crypto ticker. Pure HTML/CSS/JS.</p>
-          <span class="project-link">View Live Site →</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section class="section">
-    <span class="section-tag">004 — Stack</span>
-    <h2 class="section-title">TOOLS I USE</h2>
-    <div class="stack-grid">
-      <div class="stack-item"><span class="stack-icon">⬛</span><div class="stack-name">HTML5</div><div class="stack-desc">Semantic, accessible markup</div></div>
-      <div class="stack-item"><span class="stack-icon">🎨</span><div class="stack-name">CSS3</div><div class="stack-desc">Animations, Grid, Flexbox</div></div>
-      <div class="stack-item"><span class="stack-icon">⚡</span><div class="stack-name">JavaScript</div><div class="stack-desc">Vanilla JS, DOM, APIs</div></div>
-      <div class="stack-item"><span class="stack-icon">🎯</span><div class="stack-name">Figma</div><div class="stack-desc">UI design & prototyping</div></div>
-      <div class="stack-item"><span class="stack-icon">🐙</span><div class="stack-name">GitHub</div><div class="stack-desc">Version control & hosting</div></div>
-      <div class="stack-item"><span class="stack-icon">🌐</span><div class="stack-name">Web3</div><div class="stack-desc">dApp UI, wallet interfaces</div></div>
-      <div class="stack-item"><span class="stack-icon">📱</span><div class="stack-name">Responsive</div><div class="stack-desc">Mobile-first design</div></div>
-      <div class="stack-item"><span class="stack-icon">🚀</span><div class="stack-name">Performance</div><div class="stack-desc">Fast load, clean code</div></div>
-    </div>
-  </section>
-
-  <div class="contact-bg" id="contact">
-    <div class="contact-inner">
-      <div>
-        <h2 class="contact-title">LET'S<br>BUILD<br><span>TOGETHER</span></h2>
-      </div>
-      <div class="contact-right">
-        <p class="contact-desc">Open for freelance projects, collaborations, and full-time remote roles. If you need a site that looks premium and ships fast — let's talk.</p>
-        <div class="contact-links">
-          <a href="https://x.com/Morgan_1805" target="_blank" class="contact-link"><span class="contact-link-label">Twitter / X</span><span class="contact-link-value">@Morgan_1805</span></a>
-          <a href="#" class="contact-link" id="discordBtn"><span class="contact-link-label">Discord</span><span class="contact-link-value">morgan_1805</span></a>
-          <a href="https://www.linkedin.com/in/adeosun-ezekiel-58800a293" target="_blank" class="contact-link"><span class="contact-link-label">LinkedIn</span><span class="contact-link-value">Adeosun Ezekiel</span></a>
-          <a href="https://contra.com/adeosun_ezekiel_yv5k5caq" target="_blank" class="contact-link"><span class="contact-link-label">Contra</span><span class="contact-link-value">View Profile</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <span>© <span id="year"></span> Morgan — Frontend Developer</span>
-    <div class="footer-right">
-      <a href="https://x.com/Morgan_1805" target="_blank">Twitter</a>
-      <a href="https://morgan1805.github.io/voidx/" target="_blank">VOIDX</a>
-      <a href="https://morgan1805.github.io/nexus/" target="_blank">NEXUS</a>
-      <a href="#" id="discordLink">Discord</a>
-    </div>
-  </footer>
-
-  <div class="toast" id="toast">Discord username copied!</div>
-
-  <script>
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx - 5 + 'px';
-      cursor.style.top = my - 5 + 'px';
-    });
-    function animateRing() {
-      rx += (mx - rx - 18) * 0.12;
-      ry += (my - ry - 18) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-    function copyDiscord() {
-      navigator.clipboard.writeText('morgan_1805').then(() => {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2500);
-      });
-    }
-    document.getElementById('discordBtn').addEventListener('click', e => { e.preventDefault(); copyDiscord(); });
-    document.getElementById('discordLink').addEventListener('click', e => { e.preventDefault(); copyDiscord(); });
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+        <p>I specialise in landing pages, brand websites, SaaS products, and Web3 UI frontends — all built in pure HTML, CSS, and JavaScript. No frameworks. No bloat. Just clean, precise code that ships.</p>
+        <p>
