@@ -1,19 +1,20 @@
+
 <!DOCTYPE html>
-<!-- saved from url=(0044)file:///C:/Users/USER/Downloads/index_4.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Morgan — Frontend Developer &amp; Web3 Builder</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="./Morgan — Frontend Developer &amp; Web3 Builder_files/css2" rel="stylesheet">
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morgan — Frontend Developer & Web3 Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
     :root{--bg:#060606;--bg2:#0c0c0c;--white:#f2ede6;--cream:#c8bfb0;--dim:#4a4a46;--red:#e8290b;--border:#161614;--gold:#c8963c;}
     html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--white);font-family:'DM Mono',monospace;overflow-x:hidden;cursor:none;}
-    #cur{width:6px;height:6px;background:var(--red);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;}
-    #cur-ring{width:40px;height:40px;border:1px solid rgba(232,41,11,.3);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);}
+    body{background:var(--bg);color:var(--white);font-family:'DM Mono',monospace;overflow-x:hidden;cursor:auto;}
+    #cur{width:6px;height:6px;background:var(--red);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;display:none;}
+    #cur-ring{width:40px;height:40px;border:1px solid rgba(232,41,11,.3);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);display:none;}
     #bgc{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6;}
     body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.35;}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:64px;border-bottom:1px solid var(--border);background:rgba(6,6,6,.88);backdrop-filter:blur(20px);}
@@ -41,7 +42,7 @@
     .btn-secondary{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:14px 36px;background:transparent;color:var(--white);border:1px solid var(--dim);cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;}
     .btn-secondary:hover{border-color:var(--white);transform:translateY(-3px);}
     .hero-stats{display:flex;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);width:100%;max-width:800px;animation:fadeUp 1s .9s both;}
-    .h-stat{flex:1;padding:24px 32px;text-align:center;border-right:1px solid var(--border);position:relative;overflow:hidden;}
+    .h-stat{flex:1;padding:24px 16px;text-align:center;border-right:1px solid var(--border);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;}
     .h-stat:last-child{border-right:none;}
     .h-stat::before{content:'';position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s;z-index:-1;}
     .h-stat:hover::before{transform:scaleX(1);}
@@ -174,17 +175,17 @@
   </style>
 </head>
 <body>
-  <canvas id="bgc" width="1366" height="599"></canvas>
-  <div id="cur" style="left: 1186px; top: 9px;"></div>
-  <div id="cur-ring" style="left: 1186px; top: 9px;"></div>
+  <canvas id="bgc"></canvas>
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
 
   <nav>
-    <a href="file:///C:/Users/USER/Downloads/index_4.html#" class="nav-logo">Morgan</a>
+    <a href="#" class="nav-logo">Morgan</a>
     <ul class="nav-links">
-      <li><a href="file:///C:/Users/USER/Downloads/index_4.html#about">About</a></li>
-      <li><a href="file:///C:/Users/USER/Downloads/index_4.html#services">Services</a></li>
-      <li><a href="file:///C:/Users/USER/Downloads/index_4.html#work">Work</a></li>
-      <li><a href="file:///C:/Users/USER/Downloads/index_4.html#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-status"><div class="status-dot"></div>Available for work</div>
   </nav>
@@ -199,8 +200,8 @@
     </h1>
     <p class="hero-tagline">I craft digital experiences that feel expensive, move fast, and convert.<br>From Web3 frontends to luxury brand sites — pure code, zero shortcuts.</p>
     <div class="hero-cta">
-      <a href="file:///C:/Users/USER/Downloads/index_4.html#work" class="btn-primary">View My Work</a>
-      <a href="file:///C:/Users/USER/Downloads/index_4.html#contact" class="btn-secondary">Get In Touch</a>
+      <a href="#work" class="btn-primary" style="cursor:pointer;">View My Work</a>
+      <a href="#contact" class="btn-secondary" style="cursor:pointer;">Get In Touch</a>
     </div>
     <div class="hero-stats">
       <div class="h-stat"><span class="h-stat-val">5</span><span class="h-stat-label">Live Projects</span></div>
@@ -219,21 +220,21 @@
 
   <section class="section" id="about">
     <div class="section-inner">
-      <div class="sec-number reveal visible">001 — About</div>
-      <h2 class="sec-title reveal visible">WHO<br><span>I AM</span></h2>
+      <div class="sec-number reveal">001 — About</div>
+      <h2 class="sec-title reveal">WHO<br><span>I AM</span></h2>
       <div class="about-layout">
-        <div class="about-left reveal-left visible">
+        <div class="about-left reveal-left">
           <div class="about-bio">
             <p>I'm a frontend developer — obsessed with building interfaces that feel expensive, load instantly, and leave people speechless.</p>
             <p>I specialise in <em>Web3 frontends</em>, crypto exchanges, NFT marketplaces, SaaS landing pages, restaurant brands, and luxury brand sites. Every project is built in pure <em>HTML, CSS, and JavaScript</em>. No frameworks. No bloat. Just precise, performant code.</p>
             <p>Every pixel is deliberate. Every animation has purpose. If you need a site that looks like it cost $50,000 — I'm your guy.</p>
           </div>
           <div class="about-cta">
-            <a href="file:///C:/Users/USER/Downloads/index_4.html#work" class="btn-primary">See My Projects</a>
-            <a href="file:///C:/Users/USER/Downloads/index_4.html#contact" class="btn-secondary">Hire Me</a>
+            <a href="#work" class="btn-primary" style="cursor:pointer;">See My Projects</a>
+            <a href="#contact" class="btn-secondary" style="cursor:pointer;">Hire Me</a>
           </div>
         </div>
-        <div class="about-right reveal-right visible">
+        <div class="about-right reveal-right">
           <div class="info-row"><span class="info-key">Name</span><span class="info-val">Morgan</span></div>
           
           <div class="info-row"><span class="info-key">Specialty</span><span class="info-val">Frontend Developer</span></div>
@@ -250,11 +251,11 @@
   <div class="services-bg" id="services">
     <div class="section">
       <div class="section-inner">
-        <div class="sec-number reveal visible">002 — Services</div>
-        <h2 class="sec-title reveal visible">WHAT I<br><span>BUILD</span></h2>
-        <div class="services-grid reveal visible">
-          <div class="svc"><div class="svc-num">01</div><h3 class="svc-title">Landing Pages &amp; Promo Sites</h3><p class="svc-desc">High-converting pages built for speed, clarity, and strong calls-to-action. Clean layout, fast load, mobile-first. Clients get results.</p><div class="svc-tags"><span class="svc-tag">Conversion</span><span class="svc-tag">Fast</span><span class="svc-tag">Responsive</span></div></div>
-          <div class="svc"><div class="svc-num">02</div><h3 class="svc-title">SaaS &amp; Brand Websites</h3><p class="svc-desc">Full product sites with pricing, feature grids, testimonials, and smooth interactions. From restaurant brands to SaaS platforms.</p><div class="svc-tags"><span class="svc-tag">SaaS</span><span class="svc-tag">Premium UI</span><span class="svc-tag">Motion</span></div></div>
+        <div class="sec-number reveal">002 — Services</div>
+        <h2 class="sec-title reveal">WHAT I<br><span>BUILD</span></h2>
+        <div class="services-grid reveal">
+          <div class="svc"><div class="svc-num">01</div><h3 class="svc-title">Landing Pages & Promo Sites</h3><p class="svc-desc">High-converting pages built for speed, clarity, and strong calls-to-action. Clean layout, fast load, mobile-first. Clients get results.</p><div class="svc-tags"><span class="svc-tag">Conversion</span><span class="svc-tag">Fast</span><span class="svc-tag">Responsive</span></div></div>
+          <div class="svc"><div class="svc-num">02</div><h3 class="svc-title">SaaS & Brand Websites</h3><p class="svc-desc">Full product sites with pricing, feature grids, testimonials, and smooth interactions. From restaurant brands to SaaS platforms.</p><div class="svc-tags"><span class="svc-tag">SaaS</span><span class="svc-tag">Premium UI</span><span class="svc-tag">Motion</span></div></div>
           <div class="svc"><div class="svc-num">03</div><h3 class="svc-title">Web3 UI Frontends</h3><p class="svc-desc">Crypto exchanges, NFT marketplaces, wallet interfaces, and dApp frontends. Built for speed, trust, and that premium Web3 feel.</p><div class="svc-tags"><span class="svc-tag">Crypto</span><span class="svc-tag">NFT</span><span class="svc-tag">dApp</span></div></div>
         </div>
       </div>
@@ -263,7 +264,7 @@
 
   <section class="section" id="work">
     <div class="section-inner">
-      <div class="work-intro reveal visible">
+      <div class="work-intro reveal">
         <div>
           <div class="sec-number">003 — Selected Work</div>
           <h2 class="sec-title">THE<br><span>PROJECTS</span></h2>
@@ -271,9 +272,9 @@
         <div class="work-count">05</div>
       </div>
 
-      <div class="proj-grid row-1 reveal visible">
+      <div class="proj-grid row-1 reveal">
         <a href="https://morgan1805.github.io/krypto/" target="_blank" class="proj h-xl">
-          <img src="./Morgan — Frontend Developer &amp; Web3 Builder_files/krypto.jpg" alt="KRYPTO" class="proj-img" style="transform: scale(1.08) translateY(3.58757px);">
+          <img src="krypto.jpg" alt="KRYPTO" class="proj-img"/>
           <div class="proj-overlay"></div>
           <div class="proj-content">
             <div class="proj-meta"><span class="proj-num-badge">01</span><span class="proj-type">Crypto Exchange</span><span class="proj-year">2025</span></div>
@@ -283,7 +284,7 @@
           </div>
         </a>
         <a href="https://morgan1805.github.io/ember/" target="_blank" class="proj h-xl">
-          <img src="./Morgan — Frontend Developer &amp; Web3 Builder_files/ember.jpg" alt="EMBER" class="proj-img" style="transform: scale(1.08) translateY(3.58757px);">
+          <img src="ember.jpg" alt="EMBER" class="proj-img"/>
           <div class="proj-overlay"></div>
           <div class="proj-content">
             <div class="proj-meta"><span class="proj-num-badge">02</span><span class="proj-type">Restaurant Brand</span><span class="proj-year">2025</span></div>
@@ -294,9 +295,9 @@
         </a>
       </div>
 
-      <div class="proj-grid row-2 reveal visible">
+      <div class="proj-grid row-2 reveal">
         <a href="https://morgan1805.github.io/nexus/" target="_blank" class="proj h-lg">
-          <img src="./Morgan — Frontend Developer &amp; Web3 Builder_files/nexus.jpg" alt="NEXUS" class="proj-img" style="transform: scale(1.08) translateY(-6.42985px);">
+          <img src="nexus.jpg" alt="NEXUS" class="proj-img"/>
           <div class="proj-overlay"></div>
           <div class="proj-content">
             <div class="proj-meta"><span class="proj-num-badge">03</span><span class="proj-type">NFT Marketplace</span><span class="proj-year">2025</span></div>
@@ -306,7 +307,7 @@
           </div>
         </a>
         <a href="https://morgan1805.github.io/flowdesk/" target="_blank" class="proj h-lg">
-          <img src="./Morgan — Frontend Developer &amp; Web3 Builder_files/flowdesk.jpg" alt="Flowdesk" class="proj-img" style="transform: scale(1.08) translateY(-6.42985px);">
+          <img src="flowdesk.jpg" alt="Flowdesk" class="proj-img"/>
           <div class="proj-overlay"></div>
           <div class="proj-content">
             <div class="proj-meta"><span class="proj-num-badge">04</span><span class="proj-type">SaaS Landing Page</span><span class="proj-year">2025</span></div>
@@ -317,9 +318,9 @@
         </a>
       </div>
 
-      <div class="proj-grid row-3 reveal visible">
+      <div class="proj-grid row-3 reveal">
         <a href="https://morgan1805.github.io/voidx/" target="_blank" class="proj h-cinema">
-          <img src="./Morgan — Frontend Developer &amp; Web3 Builder_files/voidx.jpg" alt="VOIDX" class="proj-img" style="transform: scale(1.08) translateY(-16.5832px);">
+          <img src="voidx.jpg" alt="VOIDX" class="proj-img"/>
           <div class="proj-overlay"></div>
           <div class="proj-content">
             <div class="proj-meta"><span class="proj-num-badge">05</span><span class="proj-type">Luxury Brand Website</span><span class="proj-year">2025</span></div>
@@ -335,14 +336,14 @@
   <div class="services-bg">
     <div class="section">
       <div class="section-inner">
-        <div class="sec-number reveal visible">004 — Stack</div>
-        <h2 class="sec-title reveal visible">TOOLS<br><span>I USE</span></h2>
+        <div class="sec-number reveal">004 — Stack</div>
+        <h2 class="sec-title reveal">TOOLS<br><span>I USE</span></h2>
         <div class="stack-grid reveal">
           <div class="stack-item"><span class="stack-icon">⬛</span><div class="stack-name">HTML5</div><div class="stack-desc">Semantic, accessible, clean markup</div></div>
           <div class="stack-item"><span class="stack-icon">🎨</span><div class="stack-name">CSS3</div><div class="stack-desc">Animations, Grid, Flexbox, Custom Properties</div></div>
           <div class="stack-item"><span class="stack-icon">⚡</span><div class="stack-name">JavaScript</div><div class="stack-desc">Vanilla JS, DOM manipulation, Canvas API</div></div>
-          <div class="stack-item"><span class="stack-icon">🎯</span><div class="stack-name">Figma</div><div class="stack-desc">UI design &amp; interactive prototyping</div></div>
-          <div class="stack-item"><span class="stack-icon">🐙</span><div class="stack-name">GitHub</div><div class="stack-desc">Version control &amp; Pages hosting</div></div>
+          <div class="stack-item"><span class="stack-icon">🎯</span><div class="stack-name">Figma</div><div class="stack-desc">UI design & interactive prototyping</div></div>
+          <div class="stack-item"><span class="stack-icon">🐙</span><div class="stack-name">GitHub</div><div class="stack-desc">Version control & Pages hosting</div></div>
           <div class="stack-item"><span class="stack-icon">🌐</span><div class="stack-name">Web3 UI</div><div class="stack-desc">dApp interfaces, wallet connect, DeFi</div></div>
           <div class="stack-item"><span class="stack-icon">📱</span><div class="stack-name">Responsive</div><div class="stack-desc">Mobile-first, every device, every screen</div></div>
           <div class="stack-item"><span class="stack-icon">🚀</span><div class="stack-name">Performance</div><div class="stack-desc">Fast load, optimised, zero bloat</div></div>
@@ -362,7 +363,7 @@
           <p class="contact-desc">Open for freelance projects, remote full-time roles, and collaborations. If you need a site that looks premium and ships fast — let's talk.</p>
           <div class="contact-links">
             <a href="https://x.com/Morgan_1805" target="_blank" class="c-link"><span class="c-link-label">Twitter / X</span><span class="c-link-val">@Morgan_1805</span><span class="c-link-arrow">→</span></a>
-            <a href="file:///C:/Users/USER/Downloads/index_4.html#" class="c-link" id="discordBtn"><span class="c-link-label">Discord</span><span class="c-link-val">morgan_1805</span><span class="c-link-arrow">→</span></a>
+            <a href="#" class="c-link" id="discordBtn"><span class="c-link-label">Discord</span><span class="c-link-val">morgan_1805</span><span class="c-link-arrow">→</span></a>
             <a href="https://www.linkedin.com/in/adeosun-ezekiel-58800a293" target="_blank" class="c-link"><span class="c-link-label">LinkedIn</span><span class="c-link-val">Adeosun Ezekiel</span><span class="c-link-arrow">→</span></a>
             <a href="https://contra.com/adeosun_ezekiel_yv5k5caq" target="_blank" class="c-link"><span class="c-link-label">Contra</span><span class="c-link-val">View Freelance Profile</span><span class="c-link-arrow">→</span></a>
             <a href="https://github.com/Morgan1805" target="_blank" class="c-link"><span class="c-link-label">GitHub</span><span class="c-link-val">github.com/Morgan1805</span><span class="c-link-arrow">→</span></a>
@@ -373,7 +374,7 @@
   </section>
 
   <footer>
-    <span class="footer-copy">© <span id="yr">2026</span> Morgan — Frontend Developer. .</span>
+    <span class="footer-copy">© <span id="yr"></span> Morgan — Frontend Developer. .</span>
     <div class="footer-links">
       <a href="https://x.com/Morgan_1805" target="_blank">Twitter</a>
       <a href="https://morgan1805.github.io/krypto/" target="_blank">KRYPTO</a>
@@ -381,7 +382,7 @@
       <a href="https://morgan1805.github.io/nexus/" target="_blank">NEXUS</a>
       <a href="https://morgan1805.github.io/flowdesk/" target="_blank">FLOWDESK</a>
       <a href="https://morgan1805.github.io/voidx/" target="_blank">VOIDX</a>
-      <a href="file:///C:/Users/USER/Downloads/index_4.html#" id="discordLink">Discord</a>
+      <a href="#" id="discordLink">Discord</a>
     </div>
   </footer>
 
@@ -427,6 +428,5 @@
       });
     });
   </script>
-
-
-</body></html>
+</body>
+</html>
