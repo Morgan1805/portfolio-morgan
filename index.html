@@ -1,432 +1,751 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Morgan — Frontend Developer & Web3 Builder</title>
+  <title>Morgan &mdash; Frontend Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-    :root{--bg:#060606;--bg2:#0c0c0c;--white:#f2ede6;--cream:#c8bfb0;--dim:#4a4a46;--red:#e8290b;--border:#161614;--gold:#c8963c;}
+    :root{--bg:#fff;--bg2:#f8f8f6;--ink:#0f0f0e;--ink2:#5a5a54;--ink3:#a0a09a;--accent:#1a56db;--al:#eef3ff;--am:#c3d6ff;--green:#16a34a;--gb:#f0fdf4;--border:#e8e8e2;--b2:#c8c8c0;--r:10px;--rl:16px;}
     html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--white);font-family:'DM Mono',monospace;overflow-x:hidden;cursor:auto;}
-    #cur{width:6px;height:6px;background:var(--red);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;display:none;}
-    #cur-ring{width:40px;height:40px;border:1px solid rgba(232,41,11,.3);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);display:none;}
-    #bgc{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6;}
-    body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.35;}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:64px;border-bottom:1px solid var(--border);background:rgba(6,6,6,.88);backdrop-filter:blur(20px);}
-    .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:4px;color:var(--white);text-decoration:none;position:relative;}
-    .nav-logo::after{content:'®';font-size:8px;vertical-align:super;color:var(--red);margin-left:2px;}
-    .nav-links{display:flex;gap:40px;list-style:none;}
-    .nav-links a{color:var(--dim);font-size:10px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:color .3s;position:relative;}
-    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--red);transition:width .3s;}
-    .nav-links a:hover{color:var(--white);}
-    .nav-links a:hover::after{width:100%;}
-    .nav-status{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);}
-    .status-dot{width:6px;height:6px;background:#2ecc71;border-radius:50%;box-shadow:0 0 8px #2ecc71;animation:blink 2s infinite;}
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 48px;position:relative;z-index:2;text-align:center;overflow:hidden;}
-    .hero-ghost{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(160px,28vw,400px);color:transparent;-webkit-text-stroke:1px rgba(242,237,230,.03);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;letter-spacing:20px;user-select:none;}
-    .hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--dim);margin-bottom:32px;animation:fadeUp 1s .2s both;}
-    .eyebrow-line{width:40px;height:1px;background:var(--red);}
-    .hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,14vw,200px);line-height:.85;letter-spacing:-2px;color:var(--white);margin-bottom:0;animation:fadeUp 1s .3s both;position:relative;}
-    .hero-name .outline-text{color:transparent;-webkit-text-stroke:2px var(--white);display:block;}
-    .hero-name .red-text{color:var(--red);display:block;font-size:.55em;letter-spacing:8px;-webkit-text-stroke:0;}
-    .hero-tagline{font-family:'Fraunces',serif;font-size:clamp(16px,2.5vw,24px);font-weight:300;font-style:italic;color:var(--cream);margin:32px auto;max-width:600px;line-height:1.6;animation:fadeUp 1s .5s both;}
-    .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s .7s both;margin-bottom:80px;}
-    .btn-primary{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:14px 36px;background:var(--red);color:var(--white);border:none;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));}
-    .btn-primary:hover{background:var(--white);color:var(--bg);transform:translateY(-3px);box-shadow:0 16px 40px rgba(232,41,11,.3);}
-    .btn-secondary{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:14px 36px;background:transparent;color:var(--white);border:1px solid var(--dim);cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;}
-    .btn-secondary:hover{border-color:var(--white);transform:translateY(-3px);}
-    .hero-stats{display:flex;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);width:100%;max-width:800px;animation:fadeUp 1s .9s both;}
-    .h-stat{flex:1;padding:24px 16px;text-align:center;border-right:1px solid var(--border);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-    .h-stat:last-child{border-right:none;}
-    .h-stat::before{content:'';position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s;z-index:-1;}
-    .h-stat:hover::before{transform:scaleX(1);}
-    .h-stat-val{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;color:var(--white);display:block;}
-    .h-stat-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);margin-top:4px;display:block;}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-    .scroll-ind{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);animation:fadeUp 1s 1.2s both;z-index:2;}
-    .scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--red),transparent);animation:scrollAnim 2s ease-in-out infinite;}
-    @keyframes scrollAnim{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.5);opacity:.5}}
-    .section{padding:120px 48px;position:relative;z-index:2;}
-    .section-inner{max-width:1300px;margin:0 auto;}
-    .sec-number{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:12px;margin-bottom:16px;}
-    .sec-number::before{content:'';width:32px;height:1px;background:var(--red);}
-    .sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,96px);line-height:.9;letter-spacing:-1px;color:var(--white);}
-    .sec-title span{color:transparent;-webkit-text-stroke:1px var(--dim);}
-    .about-layout{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;margin-top:80px;}
-    .about-bio{font-family:'Fraunces',serif;font-size:clamp(18px,2.2vw,26px);font-weight:300;line-height:1.7;color:var(--cream);}
-    .about-bio em{font-style:italic;color:var(--white);}
-    .about-bio p+p{margin-top:24px;}
-    .about-cta{margin-top:48px;display:flex;gap:16px;flex-wrap:wrap;}
-    .about-right{display:flex;flex-direction:column;gap:0;}
-    .info-row{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--border);font-size:12px;transition:padding .2s;}
+    body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+    /* STICKY */
+    .sticky-cta{position:fixed;bottom:28px;right:28px;z-index:200;display:flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-size:13px;font-weight:500;padding:12px 22px;border-radius:100px;text-decoration:none;box-shadow:0 4px 24px rgba(0,0,0,.18);transition:transform .3s,opacity .3s,background .2s;opacity:0;transform:translateY(20px);cursor:pointer;border:none;}
+    .sticky-cta.visible{opacity:1;transform:translateY(0);}
+    .sticky-cta:hover{background:#222;transform:translateY(-2px);}
+    .sdot{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:glow 2s infinite;}
+    @keyframes glow{0%,100%{box-shadow:0 0 0 2px rgba(74,222,128,.25)}50%{box-shadow:0 0 0 5px rgba(74,222,128,.1)}}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 52px;height:60px;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+    nav.scrolled{box-shadow:0 1px 20px rgba(0,0,0,.06);}
+    .nav-logo{font-family:'Instrument Serif',serif;font-size:19px;color:var(--ink);text-decoration:none;}
+    .nav-links{display:flex;gap:32px;list-style:none;}
+    .nav-links a{color:var(--ink2);font-size:13px;text-decoration:none;transition:color .2s;}
+    .nav-links a:hover{color:var(--ink);}
+    .nav-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--green);background:var(--gb);border:1px solid #bbf7d0;padding:6px 14px;border-radius:100px;}
+    .ndot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:glow 2s infinite;}
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 52px 80px;max-width:1140px;margin:0 auto;}
+    .hero-kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:500;color:var(--accent);background:var(--al);border:1px solid var(--am);padding:6px 16px;border-radius:100px;margin-bottom:44px;width:fit-content;animation:fadeUp .9s .1s both;}
+    .hero-headline{font-family:'Instrument Serif',serif;font-size:clamp(54px,8vw,100px);line-height:1.02;letter-spacing:-3px;color:var(--ink);margin-bottom:30px;animation:fadeUp .9s .2s both;}
+    .hero-headline em{font-style:italic;color:var(--ink2);}
+    .wh{position:relative;display:inline-block;}
+    .wh::after{content:'';position:absolute;bottom:6px;left:0;right:0;height:4px;background:var(--accent);border-radius:2px;opacity:.3;}
+    .hero-sub{font-size:clamp(16px,1.8vw,19px);color:var(--ink2);line-height:1.75;max-width:520px;margin-bottom:48px;animation:fadeUp .9s .3s both;}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:80px;animation:fadeUp .9s .4s both;}
+    .btn-p{font-size:13px;font-weight:500;padding:13px 28px;background:var(--ink);color:#fff;border:none;border-radius:var(--r);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:background .2s,transform .15s;}
+    .btn-p:hover{background:#1a1a18;transform:translateY(-1px);}
+    .btn-s{font-size:13px;font-weight:500;padding:13px 28px;background:transparent;color:var(--ink);border:1px solid var(--b2);border-radius:var(--r);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:border-color .2s,transform .15s;}
+    .btn-s:hover{border-color:var(--ink);transform:translateY(-1px);}
+    .hero-proof{display:flex;align-items:center;gap:40px;flex-wrap:wrap;animation:fadeUp .9s .5s both;}
+    .pstat{display:flex;flex-direction:column;gap:2px;}
+    .pval{font-family:'Instrument Serif',serif;font-size:30px;color:var(--ink);letter-spacing:-1px;line-height:1;}
+    .plbl{font-size:12px;color:var(--ink3);}
+    .pdiv{width:1px;height:40px;background:var(--border);}
+    .scroll-cue{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--ink3);margin-top:64px;animation:fadeUp .9s .8s both;}
+    .scroll-line{width:32px;height:1px;background:var(--ink3);position:relative;overflow:hidden;}
+    .scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--ink);animation:scan 2s ease-in-out infinite;}
+    @keyframes scan{0%{left:-100%}100%{left:100%}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    /* TICKER */
+    .ticker{overflow:hidden;white-space:nowrap;padding:14px 0;background:var(--ink);}
+    .ticker-inner{display:inline-block;animation:tick 32s linear infinite;}
+    .ticker-inner span{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.4);padding:0 32px;font-weight:500;}
+    .ticker-inner .dot{color:rgba(255,255,255,.15);padding:0 4px;}
+    @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    /* SECTION */
+    .section{padding:100px 52px;}
+    .si{max-width:1140px;margin:0 auto;}
+    .slbl{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;}
+    .stitle{font-family:'Instrument Serif',serif;font-size:clamp(38px,5vw,62px);line-height:1.08;letter-spacing:-2px;color:var(--ink);margin-bottom:60px;}
+    .stitle em{font-style:italic;color:var(--ink2);}
+    .alt{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:80px;align-items:start;}
+    .about-bio{font-family:'Instrument Serif',serif;font-size:clamp(19px,2vw,24px);line-height:1.7;color:var(--ink2);}
+    .about-bio em{font-style:italic;color:var(--ink);}
+    .about-bio p+p{margin-top:22px;}
+    .about-cta{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap;}
+    .info-table{display:flex;flex-direction:column;}
+    .info-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--border);font-size:13px;transition:padding-left .2s;}
     .info-row:first-child{border-top:1px solid var(--border);}
-    .info-row:hover{padding-left:8px;}
-    .info-key{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);}
-    .info-val{color:var(--white);font-size:13px;}
-    .info-val.available{color:#2ecc71;}
-    .services-bg{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:80px;border:1px solid var(--border);}
-    .svc{padding:52px 44px;border-right:1px solid var(--border);position:relative;overflow:hidden;cursor:default;transition:background .3s;}
-    .svc:last-child{border-right:none;}
-    .svc::before{content:'';position:absolute;inset:0;background:var(--red);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.76,0,.24,1);z-index:0;}
-    .svc:hover::before{transform:scaleY(1);}
-    .svc>*{position:relative;z-index:1;}
-    .svc-num{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--border);line-height:1;margin-bottom:28px;transition:color .3s;}
-    .svc:hover .svc-num{color:rgba(242,237,230,.2);}
-    .svc-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--white);margin-bottom:16px;}
-    .svc-desc{font-size:13px;color:var(--dim);line-height:1.8;transition:color .3s;}
-    .svc:hover .svc-desc{color:rgba(242,237,230,.7);}
-    .svc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
-    .svc-tag{font-size:9px;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;color:var(--dim);transition:all .3s;}
-    .svc:hover .svc-tag{border-color:rgba(242,237,230,.3);color:rgba(242,237,230,.6);}
-    .work-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;}
-    .work-count{font-family:'Bebas Neue',sans-serif;font-size:80px;color:var(--border);line-height:1;}
-    .proj-grid{display:grid;gap:2px;}
-    .row-1{grid-template-columns:3fr 2fr;}
-    .row-2{grid-template-columns:1fr 1fr;margin-top:2px;}
-    .row-3{margin-top:2px;}
-    .proj{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:40px;text-decoration:none;background:var(--bg2);}
-    .proj-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.8);transition:transform 1s cubic-bezier(.25,.46,.45,.94),filter .6s;transform-origin:center;}
-    .proj:hover .proj-img{transform:scale(1.08);filter:brightness(.75) saturate(1);}
-    .proj-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.96) 0%,rgba(6,6,6,.4) 50%,rgba(6,6,6,.1) 100%);z-index:1;transition:opacity .4s;}
-    .proj:hover .proj-overlay{opacity:.8;}
-    .proj::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:3;}
-    .proj:hover::before{transform:scaleX(1);}
-    .proj-content{position:relative;z-index:2;}
-    .proj-meta{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-    .proj-num-badge{font-size:9px;letter-spacing:3px;color:var(--red);border:1px solid rgba(232,41,11,.4);padding:3px 10px;}
-    .proj-type{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);}
-    .proj-year{font-size:9px;letter-spacing:2px;color:var(--dim);margin-left:auto;}
-    .proj-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,72px);letter-spacing:1px;color:var(--white);line-height:.9;margin-bottom:12px;}
-    .proj-desc{font-size:12px;color:var(--cream);line-height:1.6;margin-bottom:24px;max-width:480px;opacity:1;transform:translateY(0);}
-    
-    .proj-footer{display:flex;align-items:center;justify-content:space-between;}
-    .proj-link{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--white);display:flex;align-items:center;gap:8px;transition:gap .3s;}
-    .proj:hover .proj-link{gap:16px;color:var(--red);}
-    .proj-link-arrow{transition:transform .3s;}
-    .proj:hover .proj-link-arrow{transform:translateX(4px);}
-    .proj-pill-row{display:flex;gap:6px;flex-wrap:wrap;}
-    .proj-pill{font-size:9px;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(242,237,230,.15);padding:3px 10px;color:rgba(242,237,230,.4);transition:all .3s;}
-    .proj:hover .proj-pill{border-color:rgba(242,237,230,.3);color:rgba(242,237,230,.6);}
-    .proj.h-xl{min-height:640px;}
-    .proj.h-lg{min-height:520px;}
-    .proj.h-cinema{min-height:380px;}
-    .ticker{overflow:hidden;white-space:nowrap;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;background:var(--red);position:relative;z-index:2;}
-    .ticker-inner{display:inline-block;animation:tickerAnim 24s linear infinite;}
-    .ticker-inner span{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:5px;color:var(--white);padding:0 48px;}
-    .ticker-inner .dot{color:rgba(242,237,230,.4);}
-    @keyframes tickerAnim{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    .stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);margin-top:80px;}
-    .stack-item{padding:40px 36px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background .3s;position:relative;overflow:hidden;}
-    .stack-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
-    .stack-item:hover{background:var(--bg2);}
-    .stack-item:hover::after{transform:scaleX(1);}
-    .stack-icon{font-size:32px;margin-bottom:16px;display:block;}
-    .stack-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--white);margin-bottom:6px;}
-    .stack-desc{font-size:11px;color:var(--dim);line-height:1.6;}
-    .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;margin-top:80px;}
-    .contact-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,10vw,140px);line-height:.85;letter-spacing:-2px;color:var(--white);}
-    .contact-big .red{color:var(--red);}
-    .contact-big .outline{color:transparent;-webkit-text-stroke:1px var(--dim);}
-    .contact-desc{font-family:'Fraunces',serif;font-size:18px;font-weight:300;font-style:italic;color:var(--cream);line-height:1.7;margin-bottom:40px;}
-    .contact-links{display:flex;flex-direction:column;gap:0;}
-    .c-link{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--white);transition:all .3s;position:relative;overflow:hidden;}
-    .c-link:first-child{border-top:1px solid var(--border);}
-    .c-link::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--red);transform:scaleY(0);transition:transform .3s;}
-    .c-link:hover{padding-left:16px;color:var(--red);}
-    .c-link:hover::before{transform:scaleY(1);}
-    .c-link-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;}
-    .c-link-val{font-size:12px;color:var(--dim);transition:color .3s;}
-    .c-link:hover .c-link-val{color:var(--red);}
-    .c-link-arrow{font-size:16px;color:var(--dim);transition:transform .3s,color .3s;}
-    .c-link:hover .c-link-arrow{transform:translateX(4px);color:var(--red);}
-    footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;}
-    .footer-copy{font-size:11px;color:var(--dim);letter-spacing:1px;}
-    .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
-    .footer-links a{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .2s;}
-    .footer-links a:hover{color:var(--red);}
-    .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--white);color:var(--bg);padding:12px 28px;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:transform .4s cubic-bezier(.34,1.56,.64,1);z-index:9999;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));}
-    .toast.show{transform:translateX(-50%) translateY(0);}
-    .reveal{opacity:1;transform:translateY(0);}
-    
-    .reveal-left{opacity:1;transform:translateX(0);}
-    
-    .reveal-right{opacity:1;transform:translateX(0);}
-    
-    @media(max-width:768px){
-      nav{padding:0 20px;}
-      .nav-links{display:none;}
-      .hero,.section{padding:80px 20px 60px;}
-      .about-layout,.contact-layout{grid-template-columns:1fr;gap:48px;}
-      .services-grid{grid-template-columns:1fr;}
-      .svc{border-right:none;border-bottom:1px solid var(--border);}
-      .row-1,.row-2{grid-template-columns:1fr;}
-      .proj.h-xl,.proj.h-lg,.proj.h-cinema{min-height:380px;}
-      .stack-grid{grid-template-columns:repeat(2,1fr);}
+    .info-row:hover{padding-left:6px;}
+    .ik{color:var(--ink3);font-size:11px;text-transform:uppercase;letter-spacing:.5px;}
+    .iv{color:var(--ink);font-weight:500;}
+    .iv.av{color:var(--green);}
+    /* SERVICES */
+    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .svc{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:36px 30px;transition:border-color .2s,transform .2s;position:relative;overflow:hidden;}
+    .svc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+    .svc:hover::before{transform:scaleX(1);}
+    .svc:hover{border-color:var(--b2);transform:translateY(-2px);}
+    .svc-icon{font-size:28px;margin-bottom:18px;display:block;}
+    .svc-title{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:10px;}
+    .svc-desc{font-size:13px;color:var(--ink2);line-height:1.7;}
+    .svc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px;}
+    .svc-tag{font-size:11px;color:var(--ink3);background:var(--bg2);border:1px solid var(--border);padding:3px 10px;border-radius:100px;}
+    /* WORK */
+    .work-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;}
+    .pgrid{display:grid;gap:14px;}
+    .r1{grid-template-columns:1.4fr 1fr;}
+    .r2{grid-template-columns:1fr 1fr;}
+    .proj{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:30px;text-decoration:none;background:var(--bg2);border-radius:var(--rl);border:1px solid var(--border);transition:border-color .3s,transform .3s;}
+    .proj:hover{border-color:var(--b2);transform:translateY(-3px);}
+    .proj-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.42) saturate(.6);transition:transform .7s cubic-bezier(.25,.46,.45,.94),filter .5s;border-radius:var(--rl);}
+    .proj:hover .proj-img{transform:scale(1.05);filter:brightness(.52) saturate(.85);}
+    .proj-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,14,.97) 0%,rgba(15,15,14,.3) 65%,transparent 100%);border-radius:var(--rl);z-index:1;}
+    .pc{position:relative;z-index:2;}
+    .pbadge{display:inline-flex;align-items:center;font-size:11px;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:4px 12px;border-radius:100px;margin-bottom:12px;}
+    .ptitle{font-family:'Instrument Serif',serif;font-size:clamp(30px,4vw,54px);color:#fff;letter-spacing:-1px;line-height:1;margin-bottom:10px;}
+    .pdesc{font-size:13px;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:14px;max-width:420px;}
+    .pct{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;color:rgba(255,255,255,.5);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:5px 12px;border-radius:100px;cursor:pointer;margin-bottom:14px;transition:background .2s;user-select:none;}
+    .pct:hover{background:rgba(255,255,255,.12);color:rgba(255,255,255,.8);}
+    .pct .arr{transition:transform .3s;display:inline-block;}
+    .pct.open .arr{transform:rotate(180deg);}
+    .pcase{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:14px 16px;margin-bottom:14px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.65;display:none;}
+    .pcase.open{display:block;}
+    .pcase strong{color:rgba(255,255,255,.85);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:4px;}
+    .pcase p+p{margin-top:8px;}
+    .pfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+    .plink{font-size:12px;font-weight:500;color:#fff;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:8px 16px;border-radius:100px;transition:background .2s;}
+    .proj:hover .plink{background:rgba(255,255,255,.18);}
+    .ppills{display:flex;gap:6px;flex-wrap:wrap;}
+    .ppill{font-size:11px;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);padding:3px 10px;border-radius:100px;}
+    .hxl{min-height:600px;} .hlg{min-height:480px;} .hwd{min-height:380px;}
+    /* PROCESS */
+    .proc-steps{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-top:60px;}
+    .proc-step{padding:36px 28px;border-right:1px solid var(--border);background:var(--bg);transition:background .2s;}
+    .proc-step:last-child{border-right:none;}
+    .proc-step:hover{background:var(--al);}
+    .pnum{font-family:'Instrument Serif',serif;font-size:48px;color:var(--b2);line-height:1;display:block;margin-bottom:16px;transition:color .2s;}
+    .proc-step:hover .pnum{color:var(--am);}
+    .ptit{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+    .pdsc{font-size:12px;color:var(--ink2);line-height:1.6;}
+    /* PRICING */
+    .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px;}
+    .pcard{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:36px 30px;display:flex;flex-direction:column;transition:transform .2s,border-color .2s;}
+    .pcard:hover{transform:translateY(-3px);border-color:var(--b2);}
+    .pcard.feat{border:2px solid var(--accent);position:relative;}
+    .pcard.feat::before{content:'Most popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:600;color:var(--accent);background:var(--al);border:1px solid var(--am);padding:3px 14px;border-radius:100px;white-space:nowrap;}
+    .ptier{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;}
+    .pamt{font-family:'Instrument Serif',serif;font-size:44px;color:var(--ink);letter-spacing:-2px;line-height:1;margin-bottom:4px;}
+    .pcard-desc{font-size:13px;color:var(--ink2);margin-bottom:24px;line-height:1.5;}
+    .pdivider{border:none;border-top:1px solid var(--border);margin-bottom:24px;}
+    .pfeats{list-style:none;display:flex;flex-direction:column;gap:10px;flex:1;margin-bottom:28px;}
+    .pfeats li{font-size:13px;color:var(--ink2);display:flex;align-items:flex-start;gap:9px;line-height:1.5;}
+    .pfeats li::before{content:'✓';color:var(--green);font-weight:600;font-size:13px;flex-shrink:0;margin-top:1px;}
+    .pcta{font-size:13px;font-weight:500;padding:12px 20px;border-radius:var(--r);text-decoration:none;text-align:center;display:block;transition:transform .15s,background .2s;cursor:pointer;border:none;}
+    .pcta:hover{transform:translateY(-1px);}
+    .pcta.dk{background:var(--ink);color:#fff;}
+    .pcta.dk:hover{background:#1a1a18;}
+    .pcta.ol{border:1px solid var(--b2);color:var(--ink);background:transparent;}
+    .pcta.ol:hover{border-color:var(--ink);}
+    /* CALCULATOR */
+    .calc{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:40px;margin-top:48px;}
+    .calc-title{font-family:'Instrument Serif',serif;font-size:28px;letter-spacing:-1px;color:var(--ink);margin-bottom:8px;}
+    .calc-sub{font-size:13px;color:var(--ink2);margin-bottom:32px;}
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+    .cst{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--ink3);margin-bottom:14px;}
+    .copts{display:flex;flex-direction:column;gap:10px;}
+    .copt{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:all .2s;user-select:none;}
+    .copt:hover{border-color:var(--accent);background:var(--al);}
+    .copt.sel{border-color:var(--accent);background:var(--al);}
+    .copt-l{display:flex;align-items:center;gap:10px;}
+    .cchk{width:18px;height:18px;border:1.5px solid var(--b2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .2s;flex-shrink:0;}
+    .copt.sel .cchk{background:var(--accent);border-color:var(--accent);color:#fff;}
+    .copt-name{font-size:13px;font-weight:500;color:var(--ink);}
+    .copt-desc{font-size:11px;color:var(--ink3);margin-top:1px;}
+    .copt-price{font-size:13px;font-weight:600;color:var(--ink);}
+    .cadd{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;margin-bottom:8px;transition:all .2s;user-select:none;}
+    .cadd:hover{border-color:var(--accent);background:var(--al);}
+    .cadd.sel{border-color:var(--accent);background:var(--al);}
+    .cadd-l{display:flex;align-items:center;gap:8px;}
+    .cadd-chk{width:16px;height:16px;border:1.5px solid var(--b2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all .2s;flex-shrink:0;}
+    .cadd.sel .cadd-chk{background:var(--accent);border-color:var(--accent);color:#fff;}
+    .cadd-name{font-size:12px;font-weight:500;color:var(--ink);}
+    .cadd-price{font-size:12px;font-weight:600;color:var(--ink2);}
+    .csum{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:24px;margin-bottom:20px;}
+    .csum-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--ink3);margin-bottom:16px;}
+    .clines{display:flex;flex-direction:column;gap:8px;min-height:80px;}
+    .cline{display:flex;justify-content:space-between;font-size:13px;color:var(--ink2);}
+    .cempty{font-size:13px;color:var(--ink3);font-style:italic;}
+    .ctot-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);margin-top:16px;padding-top:16px;}
+    .ctot-lbl{font-size:14px;font-weight:600;color:var(--ink);}
+    .ctot-amt{font-family:'Instrument Serif',serif;font-size:32px;color:var(--accent);letter-spacing:-1px;}
+    /* TESTI */
+    .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px;}
+    .tcard{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:28px;transition:transform .2s,border-color .2s;}
+    .tcard:hover{transform:translateY(-2px);border-color:var(--b2);}
+    .tname{font-size:13px;font-weight:600;color:var(--ink);}
+    /* STACK */
+    .stk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;}
+    .stk-item{background:var(--bg);padding:30px 26px;transition:background .2s;}
+    .stk-item:hover{background:var(--al);}
+    .stk-icon{font-size:22px;margin-bottom:10px;display:block;}
+    .stk-name{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+    .stk-desc{font-size:12px;color:var(--ink3);line-height:1.5;}
+    /* CONTACT */
+    .contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start;}
+    .contact-hl{font-family:'Instrument Serif',serif;font-size:clamp(44px,6vw,72px);line-height:1.08;letter-spacing:-2.5px;color:var(--ink);margin-bottom:20px;}
+    .contact-hl em{font-style:italic;color:var(--ink2);}
+    .contact-desc{font-size:15px;color:var(--ink2);line-height:1.7;margin-bottom:28px;}
+    .clinks{display:flex;flex-direction:column;margin-bottom:0;}
+    .clink{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--ink);transition:padding-left .2s;}
+    .clink:first-child{border-top:1px solid var(--border);}
+    .clink:hover{padding-left:8px;}
+    .clink-l{display:flex;flex-direction:column;gap:2px;}
+    .clink-lbl{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;font-weight:500;}
+    .clink-val{font-size:13px;font-weight:500;color:var(--ink);}
+    .clink-arr{font-size:13px;color:var(--ink3);transition:transform .2s,color .2s;}
+    .clink:hover .clink-arr{transform:translateX(4px);color:var(--accent);}
+    /* FORM */
+    .fbox{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:36px;}
+    .ftitle{font-size:18px;font-weight:600;color:var(--ink);margin-bottom:6px;letter-spacing:-.3px;}
+    .fsub{font-size:13px;color:var(--ink2);margin-bottom:28px;}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:0;}
+    .fg{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+    .fg label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--ink2);}
+    .fg input,.fg select,.fg textarea{font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:11px 14px;outline:none;transition:border-color .2s;width:100%;}
+    .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent);background:var(--bg);}
+    .fg textarea{resize:vertical;min-height:90px;}
+    .fg select{cursor:pointer;}
+    .order-display{font-size:13px;font-weight:600;color:var(--accent);background:var(--al);border:1px solid var(--am);padding:10px 14px;border-radius:var(--r);text-align:center;margin-bottom:14px;}
+    .fsubmit{width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;transition:background .2s,transform .15s;display:flex;align-items:center;justify-content:center;gap:8px;}
+    .fsubmit:hover{background:#1a1a18;transform:translateY(-1px);}
+    .fsubmit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+    .fsuccess{display:none;text-align:center;padding:40px 20px;}
+    .fsuccess-icon{font-size:48px;margin-bottom:16px;}
+    .fsuccess-title{font-family:'Instrument Serif',serif;font-size:26px;color:var(--ink);margin-bottom:10px;}
+    .fsuccess-msg{font-size:13px;color:var(--ink2);line-height:1.6;}
+    /* FOOTER */
+    footer{padding:28px 52px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+    .fcopy{font-size:12px;color:var(--ink3);}
+    .flinks{display:flex;gap:20px;flex-wrap:wrap;}
+    .flinks a{font-size:12px;color:var(--ink3);text-decoration:none;transition:color .2s;}
+    .flinks a:hover{color:var(--ink);}
+    /* TOAST */
+    .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(50px);background:var(--ink);color:#fff;padding:10px 22px;font-size:12px;font-weight:500;border-radius:100px;transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .2s;z-index:9999;opacity:0;}
+    .toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    /* MOBILE */
+    @media(max-width:900px){
+      nav{padding:0 20px;} .nav-links{display:none;}
+      .hero,.section{padding:100px 20px 60px;}
+      .hero-headline{letter-spacing:-2px;}
+      .about-grid,.contact-wrap{grid-template-columns:1fr;gap:40px;}
+      .svc-grid,.tgrid,.price-grid{grid-template-columns:1fr;}
+      .proc-steps{grid-template-columns:1fr 1fr;}
+      .proc-step{border-bottom:1px solid var(--border);}
+      .r1,.r2{grid-template-columns:1fr;}
+      .hxl,.hlg{min-height:380px;}
+      .stk-grid{grid-template-columns:repeat(2,1fr);}
+      .hero-proof{gap:24px;} .pdiv{display:none;}
       footer{flex-direction:column;gap:16px;text-align:center;padding:24px 20px;}
-      .work-intro{flex-direction:column;gap:16px;align-items:flex-start;}
+      .sticky-cta{bottom:16px;right:16px;}
+      .calc-grid{grid-template-columns:1fr;}
+      .frow{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
-  <canvas id="bgc"></canvas>
-  <div id="cur"></div>
-  <div id="cur-ring"></div>
 
-  <nav>
-    <a href="#" class="nav-logo">Morgan</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="nav-status"><div class="status-dot"></div>Available for work</div>
-  </nav>
+<button class="sticky-cta" id="stickyCta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+  <span class="sdot"></span>Hire me
+</button>
 
-  <section class="hero">
-    <div class="hero-ghost">MORGAN</div>
-    <div class="hero-eyebrow"><span class="eyebrow-line"></span>Frontend Developer · Web3 Builder · <span class="eyebrow-line"></span></div>
-    <h1 class="hero-name">
-      <span class="outline-text">BUILD</span>
-      <span style="color:var(--white);display:block;">DIFFERENT</span>
-      <span class="red-text">HTML · CSS · JS</span>
-    </h1>
-    <p class="hero-tagline">I craft digital experiences that feel expensive, move fast, and convert.<br>From Web3 frontends to luxury brand sites — pure code, zero shortcuts.</p>
+<nav id="navbar">
+  <a href="#" class="nav-logo">Morgan</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-badge"><div class="ndot"></div>Available for work</div>
+</nav>
+
+<section>
+  <div class="hero">
+    <div class="hero-kicker">&#10022; Frontend Developer &middot; Web3 &amp; SaaS Specialist</div>
+    <h1 class="hero-headline">I build sites that<br>make <span class="wh">SaaS founders</span><br>stop <em>scrolling.</em></h1>
+    <p class="hero-sub">Premium Web3 frontends and SaaS landing pages, built in pure HTML, CSS &amp; JavaScript. No frameworks, no bloat &mdash; just fast, polished interfaces that convert.</p>
     <div class="hero-cta">
-      <a href="#work" class="btn-primary" style="cursor:pointer;">View My Work</a>
-      <a href="#contact" class="btn-secondary" style="cursor:pointer;">Get In Touch</a>
+      <a href="#work" class="btn-p">View my work &rarr;</a>
+      <button class="btn-s" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in touch</button>
     </div>
-    <div class="hero-stats">
-      <div class="h-stat"><span class="h-stat-val">5</span><span class="h-stat-label">Live Projects</span></div>
-      <div class="h-stat"><span class="h-stat-val">Frontend</span><span class="h-stat-label">Specialty</span></div>
-      
-      <div class="h-stat"><span class="h-stat-val">Open</span><span class="h-stat-label">Status</span></div>
+    <div class="hero-proof">
+      <div class="pstat"><span class="pval">5</span><span class="plbl">Live projects</span></div>
+      <div class="pdiv"></div>
+      <div class="pstat"><span class="pval">2+</span><span class="plbl">Years building</span></div>
+      <div class="pdiv"></div>
+      <div class="pstat"><span class="pval">100%</span><span class="plbl">Vanilla JS</span></div>
+      <div class="pdiv"></div>
+      <div class="pstat"><span class="pval">Open</span><span class="plbl">For remote work</span></div>
     </div>
-    <div class="scroll-ind"><div class="scroll-line"></div>Scroll</div>
-  </section>
-
-  <div class="ticker">
-    <div class="ticker-inner">
-      <span>CRYPTO EXCHANGE</span><span class="dot">·</span><span>RESTAURANT BRAND</span><span class="dot">·</span><span>NFT MARKETPLACE</span><span class="dot">·</span><span>SAAS PRODUCT</span><span class="dot">·</span><span>LUXURY STREETWEAR</span><span class="dot">·</span><span>WEB3 UI</span><span class="dot">·</span><span>OPEN FOR WORK</span><span class="dot">·</span><span>CRYPTO EXCHANGE</span><span class="dot">·</span><span>RESTAURANT BRAND</span><span class="dot">·</span><span>NFT MARKETPLACE</span><span class="dot">·</span><span>SAAS PRODUCT</span><span class="dot">·</span><span>LUXURY STREETWEAR</span><span class="dot">·</span><span>WEB3 UI</span><span class="dot">·</span><span>OPEN FOR WORK</span><span class="dot">·</span>
-    </div>
+    <div class="scroll-cue"><div class="scroll-line"></div>Scroll to explore</div>
   </div>
+</section>
 
-  <section class="section" id="about">
-    <div class="section-inner">
-      <div class="sec-number reveal">001 — About</div>
-      <h2 class="sec-title reveal">WHO<br><span>I AM</span></h2>
-      <div class="about-layout">
-        <div class="about-left reveal-left">
-          <div class="about-bio">
-            <p>I'm a frontend developer — obsessed with building interfaces that feel expensive, load instantly, and leave people speechless.</p>
-            <p>I specialise in <em>Web3 frontends</em>, crypto exchanges, NFT marketplaces, SaaS landing pages, restaurant brands, and luxury brand sites. Every project is built in pure <em>HTML, CSS, and JavaScript</em>. No frameworks. No bloat. Just precise, performant code.</p>
-            <p>Every pixel is deliberate. Every animation has purpose. If you need a site that looks like it cost $50,000 — I'm your guy.</p>
-          </div>
-          <div class="about-cta">
-            <a href="#work" class="btn-primary" style="cursor:pointer;">See My Projects</a>
-            <a href="#contact" class="btn-secondary" style="cursor:pointer;">Hire Me</a>
-          </div>
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Crypto Exchange</span><span class="dot">&middot;</span><span>Restaurant Brand</span><span class="dot">&middot;</span><span>NFT Marketplace</span><span class="dot">&middot;</span><span>SaaS Product</span><span class="dot">&middot;</span><span>Luxury Streetwear</span><span class="dot">&middot;</span><span>Web3 UI</span><span class="dot">&middot;</span><span>Open for Work</span><span class="dot">&middot;</span><span>Crypto Exchange</span><span class="dot">&middot;</span><span>Restaurant Brand</span><span class="dot">&middot;</span><span>NFT Marketplace</span><span class="dot">&middot;</span><span>SaaS Product</span><span class="dot">&middot;</span><span>Luxury Streetwear</span><span class="dot">&middot;</span><span>Web3 UI</span><span class="dot">&middot;</span><span>Open for Work</span><span class="dot">&middot;</span>
+  </div>
+</div>
+
+<section class="section" id="about">
+  <div class="si">
+    <div class="slbl reveal">About</div>
+    <h2 class="stitle reveal">Who I am</h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-bio">
+          <p>I'm a frontend developer obsessed with building interfaces that feel expensive, load instantly, and <em>leave people speechless.</em></p>
+          <p>I specialise in <em>Web3 frontends</em>, crypto exchanges, NFT marketplaces, SaaS landing pages, and luxury brand sites. Every project is pure <em>HTML, CSS &amp; JavaScript</em> &mdash; no frameworks, no shortcuts.</p>
+          <p>If you need a site that looks like it cost $50,000 &mdash; I'm your guy.</p>
         </div>
-        <div class="about-right reveal-right">
-          <div class="info-row"><span class="info-key">Name</span><span class="info-val">Morgan</span></div>
-          
-          <div class="info-row"><span class="info-key">Specialty</span><span class="info-val">Frontend Developer</span></div>
-          <div class="info-row"><span class="info-key">Stack</span><span class="info-val">HTML · CSS · JavaScript</span></div>
-          <div class="info-row"><span class="info-key">Tools</span><span class="info-val">Figma · VS Code · GitHub</span></div>
-          <div class="info-row"><span class="info-key">Twitter</span><span class="info-val">@Morgan_1805</span></div>
-          <div class="info-row"><span class="info-key">Discord</span><span class="info-val">morgan_1805</span></div>
-          <div class="info-row"><span class="info-key">Available</span><span class="info-val available">Yes — Let's build something</span></div>
+        <div class="about-cta">
+          <a href="#work" class="btn-p">See my projects &rarr;</a>
+          <button class="btn-s" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire me</button>
         </div>
       </div>
-    </div>
-  </section>
-
-  <div class="services-bg" id="services">
-    <div class="section">
-      <div class="section-inner">
-        <div class="sec-number reveal">002 — Services</div>
-        <h2 class="sec-title reveal">WHAT I<br><span>BUILD</span></h2>
-        <div class="services-grid reveal">
-          <div class="svc"><div class="svc-num">01</div><h3 class="svc-title">Landing Pages & Promo Sites</h3><p class="svc-desc">High-converting pages built for speed, clarity, and strong calls-to-action. Clean layout, fast load, mobile-first. Clients get results.</p><div class="svc-tags"><span class="svc-tag">Conversion</span><span class="svc-tag">Fast</span><span class="svc-tag">Responsive</span></div></div>
-          <div class="svc"><div class="svc-num">02</div><h3 class="svc-title">SaaS & Brand Websites</h3><p class="svc-desc">Full product sites with pricing, feature grids, testimonials, and smooth interactions. From restaurant brands to SaaS platforms.</p><div class="svc-tags"><span class="svc-tag">SaaS</span><span class="svc-tag">Premium UI</span><span class="svc-tag">Motion</span></div></div>
-          <div class="svc"><div class="svc-num">03</div><h3 class="svc-title">Web3 UI Frontends</h3><p class="svc-desc">Crypto exchanges, NFT marketplaces, wallet interfaces, and dApp frontends. Built for speed, trust, and that premium Web3 feel.</p><div class="svc-tags"><span class="svc-tag">Crypto</span><span class="svc-tag">NFT</span><span class="svc-tag">dApp</span></div></div>
-        </div>
+      <div class="info-table reveal">
+        <div class="info-row"><span class="ik">Name</span><span class="iv">Morgan (Ezekiel)</span></div>
+        <div class="info-row"><span class="ik">Specialty</span><span class="iv">Frontend Developer</span></div>
+        <div class="info-row"><span class="ik">Stack</span><span class="iv">HTML &middot; CSS &middot; JavaScript</span></div>
+        <div class="info-row"><span class="ik">Tools</span><span class="iv">Figma &middot; VS Code &middot; GitHub</span></div>
+        <div class="info-row"><span class="ik">Email</span><span class="iv">adeosunezekiel004@gmail.com</span></div>
+        <div class="info-row"><span class="ik">Twitter</span><span class="iv">@Morgan_1805</span></div>
+        <div class="info-row"><span class="ik">Available</span><span class="iv av">Yes &mdash; let's build something</span></div>
       </div>
     </div>
   </div>
+</section>
 
-  <section class="section" id="work">
-    <div class="section-inner">
-      <div class="work-intro reveal">
+<div class="alt" id="services">
+  <div class="section">
+    <div class="si">
+      <div class="slbl reveal">Services</div>
+      <h2 class="stitle reveal">What I build</h2>
+      <div class="svc-grid reveal">
+        <div class="svc"><span class="svc-icon">&#9889;</span><div class="svc-title">Landing Pages &amp; Promo Sites</div><p class="svc-desc">High-converting pages built for speed, clarity, and strong CTAs. Clean layout, fast load, mobile-first.</p><div class="svc-tags"><span class="svc-tag">Conversion</span><span class="svc-tag">Fast</span><span class="svc-tag">Responsive</span></div></div>
+        <div class="svc"><span class="svc-icon">&#129329;</span><div class="svc-title">SaaS &amp; Brand Websites</div><p class="svc-desc">Full product sites with pricing, feature grids, testimonials, and smooth interactions. Investor-ready from day one.</p><div class="svc-tags"><span class="svc-tag">SaaS</span><span class="svc-tag">Premium UI</span><span class="svc-tag">Motion</span></div></div>
+        <div class="svc"><span class="svc-icon">&#127760;</span><div class="svc-title">Web3 UI Frontends</div><p class="svc-desc">Crypto exchanges, NFT marketplaces, wallet interfaces, and dApp frontends. Speed, trust, and premium Web3 feel.</p><div class="svc-tags"><span class="svc-tag">Crypto</span><span class="svc-tag">NFT</span><span class="svc-tag">dApp</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="work">
+  <div class="si">
+    <div class="work-hdr reveal">
+      <div><div class="slbl">Selected work</div><h2 class="stitle" style="margin-bottom:0;">The projects</h2></div>
+      <a href="https://github.com/Morgan1805" target="_blank" class="btn-s">All on GitHub &rarr;</a>
+    </div>
+    <div class="pgrid r1 reveal" style="margin-bottom:14px;">
+      <a href="https://morgan1805.github.io/krypto/" target="_blank" class="proj hxl">
+        <img src="krypto.jpg" alt="KRYPTO" class="proj-img"/><div class="proj-ov"></div>
+        <div class="pc">
+          <div class="pbadge">Crypto Exchange &middot; 2025</div><h3 class="ptitle">KRYPTO</h3>
+          <p class="pdesc">Full crypto exchange UI with live price ticker, trade widget, markets table, particle animations, 30+ modals.</p>
+          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
+          <div class="pcase"><strong>The challenge</strong><p>Most crypto pages feel too technical for new users or too simple for serious traders. KRYPTO bridges that gap.</p><strong style="margin-top:10px;">The result</strong><p>A frontend that passes for a funded exchange &mdash; built in pure HTML/CSS/JS.</p></div>
+          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Web3</span><span class="ppill">Crypto</span><span class="ppill">Vanilla JS</span></div></div>
+        </div>
+      </a>
+      <a href="https://morgan1805.github.io/ember/" target="_blank" class="proj hxl">
+        <img src="ember.jpg" alt="EMBER" class="proj-img"/><div class="proj-ov"></div>
+        <div class="pc">
+          <div class="pbadge">Restaurant Brand &middot; 2025</div><h3 class="ptitle">EMBER</h3>
+          <p class="pdesc">Premium Nigerian wood-fire restaurant. Parallax hero, dynamic menu, chef profiles, live reservation form.</p>
+          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
+          <div class="pcase"><strong>The challenge</strong><p>Nigerian restaurant sites look outdated or generic. EMBER needed to feel like a luxury African dining brand.</p><strong style="margin-top:10px;">The result</strong><p>A world-class site that could belong to a top Lagos restaurant.</p></div>
+          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Brand</span><span class="ppill">Food</span><span class="ppill">Luxury</span></div></div>
+        </div>
+      </a>
+    </div>
+    <div class="pgrid r2 reveal" style="margin-bottom:14px;">
+      <a href="https://morgan1805.github.io/nexus/" target="_blank" class="proj hlg">
+        <img src="nexus.jpg" alt="NEXUS" class="proj-img"/><div class="proj-ov"></div>
+        <div class="pc">
+          <div class="pbadge">NFT Marketplace &middot; 2025</div><h3 class="ptitle">NEXUS</h3>
+          <p class="pdesc">NFT marketplace with particle network, 3D card tilt, wallet connect (7 wallets), live ticker, countdown timer.</p>
+          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
+          <div class="pcase"><strong>The challenge</strong><p>NFT platforms must feel immersive and safe for real wallet connections &mdash; zero frameworks.</p><strong style="margin-top:10px;">The result</strong><p>An NFT frontend that feels like it belongs next to OpenSea.</p></div>
+          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Web3</span><span class="ppill">NFT</span></div></div>
+        </div>
+      </a>
+      <a href="https://morgan1805.github.io/flowdesk/" target="_blank" class="proj hlg">
+        <img src="flowdesk.jpg" alt="Flowdesk" class="proj-img"/><div class="proj-ov"></div>
+        <div class="pc">
+          <div class="pbadge">SaaS Landing Page &middot; 2025</div><h3 class="ptitle">FLOWDESK</h3>
+          <p class="pdesc">Full SaaS product page &mdash; dashboard preview, pricing toggle, feature grid, testimonials, FAQ, 40+ modals.</p>
+          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
+          <div class="pcase"><strong>The challenge</strong><p>SaaS pages must explain, convert, and handle objections at once. FLOWDESK is plug-and-play for any founder.</p><strong style="margin-top:10px;">The result</strong><p>A complete page any SaaS founder can ship from day one.</p></div>
+          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">SaaS</span><span class="ppill">Product</span></div></div>
+        </div>
+      </a>
+    </div>
+    <div class="reveal">
+      <a href="https://morgan1805.github.io/voidx/" target="_blank" class="proj hwd">
+        <img src="voidx.jpg" alt="VOIDX" class="proj-img"/><div class="proj-ov"></div>
+        <div class="pc">
+          <div class="pbadge">Luxury Brand Website &middot; 2025</div><h3 class="ptitle">VOIDX</h3>
+          <p class="pdesc">Luxury streetwear concept. Dark editorial aesthetic, custom animated cursor, smooth scroll, product grid.</p>
+          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
+          <div class="pcase"><strong>The challenge</strong><p>Streetwear brands live or die by aesthetic. VOIDX needed to feel like a Supreme or Fear of God drop.</p><strong style="margin-top:10px;">The result</strong><p>Premium UI isn't about the stack &mdash; it's about vision and execution.</p></div>
+          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Brand</span><span class="ppill">Editorial</span><span class="ppill">Streetwear</span></div></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="alt">
+  <div class="section">
+    <div class="si">
+      <div class="slbl reveal">How I work</div>
+      <h2 class="stitle reveal">My process</h2>
+      <div class="proc-steps reveal">
+        <div class="proc-step"><span class="pnum">01</span><div class="ptit">Discovery</div><p class="pdsc">We align on your goals, audience, and success metrics before a single line is written.</p></div>
+        <div class="proc-step"><span class="pnum">02</span><div class="ptit">Design</div><p class="pdsc">I design the UI in Figma &mdash; layouts, interactions, visual direction &mdash; for your review.</p></div>
+        <div class="proc-step"><span class="pnum">03</span><div class="ptit">Build</div><p class="pdsc">Clean, performant HTML/CSS/JS. Mobile-first, pixel-perfect, shipped fast &mdash; 5&ndash;10 days.</p></div>
+        <div class="proc-step"><span class="pnum">04</span><div class="ptit">Deliver</div><p class="pdsc">Full source code, free revisions, and a handoff call to make sure everything is perfect.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="pricing">
+  <div class="si">
+    <div class="slbl reveal">Pricing</div>
+    <h2 class="stitle reveal">Transparent rates</h2>
+    <div class="price-grid reveal">
+      <div class="pcard">
+        <div class="ptier">Starter</div>
+        <div class="pamt">$300</div>
+        <p class="pcard-desc">Single-page landing or promo site. Great for MVPs and quick launches.</p>
+        <hr class="pdivider">
+        <ul class="pfeats"><li>1-page responsive design</li><li>Mobile-first build</li><li>Up to 3 sections</li><li>Contact form or CTA</li><li>Delivered in 3 days</li><li>2 revision rounds</li></ul>
+        <button class="pcta ol" onclick="selectPlan('Starter Landing Page',300)">Order this &rarr;</button>
+      </div>
+      <div class="pcard feat">
+        <div class="ptier">Growth</div>
+        <div class="pamt">$700</div>
+        <p class="pcard-desc">Full SaaS or brand website. Ideal for startups wanting to look investor-ready.</p>
+        <hr class="pdivider">
+        <ul class="pfeats"><li>Multi-section website</li><li>Pricing, features, FAQ, testimonials</li><li>Animations &amp; interactions</li><li>Figma design included</li><li>Delivered in 7 days</li><li>3 revision rounds</li><li>Source code handoff</li></ul>
+        <button class="pcta dk" onclick="selectPlan('Growth SaaS Website',700)">Order this &rarr;</button>
+      </div>
+      <div class="pcard">
+        <div class="ptier">Web3 / Custom</div>
+        <div class="pamt">$1,200+</div>
+        <p class="pcard-desc">Full Web3 UI, NFT marketplace, or custom complex build.</p>
+        <hr class="pdivider">
+        <ul class="pfeats"><li>Crypto/NFT/dApp UI</li><li>Wallet connect integration</li><li>Live data &amp; animations</li><li>40+ interactive flows</li><li>Delivered in 10–14 days</li><li>Unlimited revisions</li><li>Full source code</li></ul>
+        <button class="pcta ol" onclick="selectPlan('Web3 / Custom Build',1200)">Order this &rarr;</button>
+      </div>
+    </div>
+
+    <div class="calc reveal">
+      <div class="calc-title">Build your custom order</div>
+      <p class="calc-sub">Pick exactly what you need &mdash; the total calculates live. Then send it straight to Morgan.</p>
+      <div class="calc-grid">
         <div>
-          <div class="sec-number">003 — Selected Work</div>
-          <h2 class="sec-title">THE<br><span>PROJECTS</span></h2>
+          <div class="cst">Base package</div>
+          <div class="copts" id="baseOpts">
+            <div class="copt" onclick="selectBase(this,300,'Starter Landing Page')">
+              <div class="copt-l"><div class="cchk">&#10003;</div><div><div class="copt-name">Starter Landing Page</div><div class="copt-desc">1-page, 3 sections, delivered in 3 days</div></div></div>
+              <div class="copt-price">$300</div>
+            </div>
+            <div class="copt" onclick="selectBase(this,700,'Growth SaaS Website')">
+              <div class="copt-l"><div class="cchk">&#10003;</div><div><div class="copt-name">Growth SaaS Website</div><div class="copt-desc">Multi-section, Figma included, 7 days</div></div></div>
+              <div class="copt-price">$700</div>
+            </div>
+            <div class="copt" onclick="selectBase(this,1200,'Web3 / Custom Build')">
+              <div class="copt-l"><div class="cchk">&#10003;</div><div><div class="copt-name">Web3 / Custom Build</div><div class="copt-desc">NFT, Crypto, dApp UI, 10–14 days</div></div></div>
+              <div class="copt-price">$1,200</div>
+            </div>
+          </div>
+          <div style="margin-top:24px;">
+            <div class="cst">Add-ons</div>
+            <div class="cadd" onclick="toggleAddon(this,150,'Extra revision rounds')"><div class="cadd-l"><div class="cadd-chk">&#10003;</div><div class="cadd-name">Extra revision rounds (+3)</div></div><div class="cadd-price">+$150</div></div>
+            <div class="cadd" onclick="toggleAddon(this,200,'Rush delivery (3 days)')"><div class="cadd-l"><div class="cadd-chk">&#10003;</div><div class="cadd-name">Rush delivery (3 days)</div></div><div class="cadd-price">+$200</div></div>
+            <div class="cadd" onclick="toggleAddon(this,100,'SEO setup &amp; meta tags')"><div class="cadd-l"><div class="cadd-chk">&#10003;</div><div class="cadd-name">SEO setup &amp; meta tags</div></div><div class="cadd-price">+$100</div></div>
+            <div class="cadd" onclick="toggleAddon(this,250,'Analytics integration')"><div class="cadd-l"><div class="cadd-chk">&#10003;</div><div class="cadd-name">Analytics integration</div></div><div class="cadd-price">+$250</div></div>
+            <div class="cadd" onclick="toggleAddon(this,180,'Custom animations pack')"><div class="cadd-l"><div class="cadd-chk">&#10003;</div><div class="cadd-name">Custom animations pack</div></div><div class="cadd-price">+$180</div></div>
+          </div>
         </div>
-        <div class="work-count">05</div>
-      </div>
-
-      <div class="proj-grid row-1 reveal">
-        <a href="https://morgan1805.github.io/krypto/" target="_blank" class="proj h-xl">
-          <img src="krypto.jpg" alt="KRYPTO" class="proj-img"/>
-          <div class="proj-overlay"></div>
-          <div class="proj-content">
-            <div class="proj-meta"><span class="proj-num-badge">01</span><span class="proj-type">Crypto Exchange</span><span class="proj-year">2025</span></div>
-            <h3 class="proj-title">KRYPTO</h3>
-            <p class="proj-desc">Full crypto exchange with live price ticker, interactive trade widget, markets table, particle animations, and 30+ clickable modals.</p>
-            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Web3</span><span class="proj-pill">Crypto</span><span class="proj-pill">JS</span></div></div>
+        <div style="display:flex;flex-direction:column;">
+          <div class="csum">
+            <div class="csum-title">Order summary</div>
+            <div class="clines" id="clines"><div class="cempty">Select a package to get started</div></div>
+            <div class="ctot-row"><div class="ctot-lbl">Total</div><div class="ctot-amt" id="ctot">$0</div></div>
           </div>
-        </a>
-        <a href="https://morgan1805.github.io/ember/" target="_blank" class="proj h-xl">
-          <img src="ember.jpg" alt="EMBER" class="proj-img"/>
-          <div class="proj-overlay"></div>
-          <div class="proj-content">
-            <div class="proj-meta"><span class="proj-num-badge">02</span><span class="proj-type">Restaurant Brand</span><span class="proj-year">2025</span></div>
-            <h3 class="proj-title">EMBER</h3>
-            <p class="proj-desc">Premium Nigerian wood-fire restaurant. Parallax hero, full menu with Naira pricing, chef profiles, live reservation form, and 25+ modals.</p>
-            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Brand</span><span class="proj-pill">Food</span><span class="proj-pill">JS</span></div></div>
-          </div>
-        </a>
-      </div>
-
-      <div class="proj-grid row-2 reveal">
-        <a href="https://morgan1805.github.io/nexus/" target="_blank" class="proj h-lg">
-          <img src="nexus.jpg" alt="NEXUS" class="proj-img"/>
-          <div class="proj-overlay"></div>
-          <div class="proj-content">
-            <div class="proj-meta"><span class="proj-num-badge">03</span><span class="proj-type">NFT Marketplace</span><span class="proj-year">2025</span></div>
-            <h3 class="proj-title">NEXUS</h3>
-            <p class="proj-desc">NFT marketplace with particle network, 3D card tilt, wallet connect modal with 7 wallets, live crypto ticker, and countdown timer.</p>
-            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Web3</span><span class="proj-pill">NFT</span></div></div>
-          </div>
-        </a>
-        <a href="https://morgan1805.github.io/flowdesk/" target="_blank" class="proj h-lg">
-          <img src="flowdesk.jpg" alt="Flowdesk" class="proj-img"/>
-          <div class="proj-overlay"></div>
-          <div class="proj-content">
-            <div class="proj-meta"><span class="proj-num-badge">04</span><span class="proj-type">SaaS Landing Page</span><span class="proj-year">2025</span></div>
-            <h3 class="proj-title">FLOWDESK</h3>
-            <p class="proj-desc">Full SaaS product page. Dashboard preview, pricing toggle, feature grid, testimonials, FAQ, and 40+ interactive modal flows.</p>
-            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">SaaS</span><span class="proj-pill">Product</span></div></div>
-          </div>
-        </a>
-      </div>
-
-      <div class="proj-grid row-3 reveal">
-        <a href="https://morgan1805.github.io/voidx/" target="_blank" class="proj h-cinema">
-          <img src="voidx.jpg" alt="VOIDX" class="proj-img"/>
-          <div class="proj-overlay"></div>
-          <div class="proj-content">
-            <div class="proj-meta"><span class="proj-num-badge">05</span><span class="proj-type">Luxury Brand Website</span><span class="proj-year">2025</span></div>
-            <h3 class="proj-title">VOIDX</h3>
-            <p class="proj-desc">Luxury streetwear concept brand. Dark editorial aesthetic, custom animated cursor, scrolling ticker, product grid with hover effects, real product photography.</p>
-            <div class="proj-footer"><span class="proj-link">View Live Site <span class="proj-link-arrow">→</span></span><div class="proj-pill-row"><span class="proj-pill">Brand</span><span class="proj-pill">Editorial</span><span class="proj-pill">Streetwear</span></div></div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <div class="services-bg">
-    <div class="section">
-      <div class="section-inner">
-        <div class="sec-number reveal">004 — Stack</div>
-        <h2 class="sec-title reveal">TOOLS<br><span>I USE</span></h2>
-        <div class="stack-grid reveal">
-          <div class="stack-item"><span class="stack-icon">⬛</span><div class="stack-name">HTML5</div><div class="stack-desc">Semantic, accessible, clean markup</div></div>
-          <div class="stack-item"><span class="stack-icon">🎨</span><div class="stack-name">CSS3</div><div class="stack-desc">Animations, Grid, Flexbox, Custom Properties</div></div>
-          <div class="stack-item"><span class="stack-icon">⚡</span><div class="stack-name">JavaScript</div><div class="stack-desc">Vanilla JS, DOM manipulation, Canvas API</div></div>
-          <div class="stack-item"><span class="stack-icon">🎯</span><div class="stack-name">Figma</div><div class="stack-desc">UI design & interactive prototyping</div></div>
-          <div class="stack-item"><span class="stack-icon">🐙</span><div class="stack-name">GitHub</div><div class="stack-desc">Version control & Pages hosting</div></div>
-          <div class="stack-item"><span class="stack-icon">🌐</span><div class="stack-name">Web3 UI</div><div class="stack-desc">dApp interfaces, wallet connect, DeFi</div></div>
-          <div class="stack-item"><span class="stack-icon">📱</span><div class="stack-name">Responsive</div><div class="stack-desc">Mobile-first, every device, every screen</div></div>
-          <div class="stack-item"><span class="stack-icon">🚀</span><div class="stack-name">Performance</div><div class="stack-desc">Fast load, optimised, zero bloat</div></div>
+          <button class="btn-p" style="width:100%;justify-content:center;padding:14px;" onclick="sendOrder()" id="sendBtn" disabled>Send this order to contact form &#8595;</button>
+          <p style="font-size:11px;color:var(--ink3);text-align:center;margin-top:10px;">You'll confirm details in the form below</p>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <section class="section" id="contact">
-    <div class="section-inner">
-      <div class="sec-number reveal">005 — Contact</div>
-      <div class="contact-layout">
-        <div class="reveal-left">
-          <div class="contact-big">LET'S<br><span class="red">BUILD</span><br><span class="outline">TOGETHER</span></div>
+<div class="alt">
+  <div class="section">
+    <div class="si">
+      <div class="slbl reveal">Working with me</div>
+      <h2 class="stitle reveal">What to expect</h2>
+      <div class="tgrid reveal">
+        <div class="tcard">
+          <div style="font-size:28px;margin-bottom:16px;">&#9993;</div>
+          <div class="tname" style="font-size:15px;margin-bottom:8px;">I reply fast.</div>
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7;">You'll hear from me within a few hours of reaching out &mdash; not days. I keep you updated at every stage so there are no surprises.</p>
         </div>
-        <div class="reveal-right">
-          <p class="contact-desc">Open for freelance projects, remote full-time roles, and collaborations. If you need a site that looks premium and ships fast — let's talk.</p>
-          <div class="contact-links">
-            <a href="https://x.com/Morgan_1805" target="_blank" class="c-link"><span class="c-link-label">Twitter / X</span><span class="c-link-val">@Morgan_1805</span><span class="c-link-arrow">→</span></a>
-            <a href="#" class="c-link" id="discordBtn"><span class="c-link-label">Discord</span><span class="c-link-val">morgan_1805</span><span class="c-link-arrow">→</span></a>
-            <a href="https://www.linkedin.com/in/adeosun-ezekiel-58800a293" target="_blank" class="c-link"><span class="c-link-label">LinkedIn</span><span class="c-link-val">Adeosun Ezekiel</span><span class="c-link-arrow">→</span></a>
-            <a href="https://contra.com/adeosun_ezekiel_yv5k5caq" target="_blank" class="c-link"><span class="c-link-label">Contra</span><span class="c-link-val">View Freelance Profile</span><span class="c-link-arrow">→</span></a>
-            <a href="https://github.com/Morgan1805" target="_blank" class="c-link"><span class="c-link-label">GitHub</span><span class="c-link-val">github.com/Morgan1805</span><span class="c-link-arrow">→</span></a>
+        <div class="tcard">
+          <div style="font-size:28px;margin-bottom:16px;">&#127775;</div>
+          <div class="tname" style="font-size:15px;margin-bottom:8px;">I care about the details.</div>
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7;">Every pixel, every interaction, every line of code is deliberate. I don't ship anything I wouldn't be proud to show as a portfolio piece.</p>
+        </div>
+        <div class="tcard">
+          <div style="font-size:28px;margin-bottom:16px;">&#128197;</div>
+          <div class="tname" style="font-size:15px;margin-bottom:8px;">I ship on time.</div>
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7;">Deadlines are commitments, not suggestions. If something changes, I'll tell you early &mdash; not on the due date.</p>
+        </div>
+        <div class="tcard">
+          <div style="font-size:28px;margin-bottom:16px;">&#128260;</div>
+          <div class="tname" style="font-size:15px;margin-bottom:8px;">Revisions until it's right.</div>
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7;">Feedback is part of the process, not an inconvenience. I iterate until you're genuinely happy with the result.</p>
+        </div>
+        <div class="tcard">
+          <div style="font-size:28px;margin-bottom:16px;">&#128196;</div>
+          <div class="tname" style="font-size:15px;margin-bottom:8px;">You own everything.</div>
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7;">Full source code handoff on every project. No lock-in, no dependencies on me. The code is yours to keep, modify, and build on.</p>
+        </div>
+        <div class="tcard">
+          <div style="font-size:28px;margin-bottom:16px;">&#127757;</div>
+          <div class="tname" style="font-size:15px;margin-bottom:8px;">Remote-first, timezone-friendly.</div>
+          <p style="font-size:13px;color:var(--ink2);line-height:1.7;">I've worked with clients across the US, UK, and Europe. Async communication is my default &mdash; I make remote collaboration feel seamless.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="si">
+    <div class="slbl reveal">Stack</div>
+    <h2 class="stitle reveal">Tools I use</h2>
+    <div class="stk-grid reveal">
+      <div class="stk-item"><span class="stk-icon">&#11035;</span><div class="stk-name">HTML5</div><div class="stk-desc">Semantic, accessible, clean markup</div></div>
+      <div class="stk-item"><span class="stk-icon">&#127912;</span><div class="stk-name">CSS3</div><div class="stk-desc">Animations, Grid, Flexbox, Custom Properties</div></div>
+      <div class="stk-item"><span class="stk-icon">&#9889;</span><div class="stk-name">JavaScript</div><div class="stk-desc">Vanilla JS, DOM manipulation, Canvas API</div></div>
+      <div class="stk-item"><span class="stk-icon">&#127919;</span><div class="stk-name">Figma</div><div class="stk-desc">UI design &amp; interactive prototyping</div></div>
+      <div class="stk-item"><span class="stk-icon">&#128025;</span><div class="stk-name">GitHub</div><div class="stk-desc">Version control &amp; Pages hosting</div></div>
+      <div class="stk-item"><span class="stk-icon">&#127760;</span><div class="stk-name">Web3 UI</div><div class="stk-desc">dApp interfaces, wallet connect, DeFi</div></div>
+      <div class="stk-item"><span class="stk-icon">&#128241;</span><div class="stk-name">Responsive</div><div class="stk-desc">Mobile-first, every device, every screen</div></div>
+      <div class="stk-item"><span class="stk-icon">&#128640;</span><div class="stk-name">Performance</div><div class="stk-desc">Fast load, optimised, zero bloat</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="alt" id="contact">
+  <div class="section">
+    <div class="si">
+      <div class="slbl reveal">Contact</div>
+      <div class="contact-wrap">
+        <div class="reveal">
+          <h2 class="contact-hl">Let's build<br><em>something</em><br>great.</h2>
+          <p class="contact-desc">Open for freelance projects, remote roles, and collaborations. Fill the form &mdash; I reply within 24 hours.</p>
+          <div class="clinks">
+            <a href="https://x.com/Morgan_1805" target="_blank" class="clink"><div class="clink-l"><span class="clink-lbl">Twitter / X</span><span class="clink-val">@Morgan_1805</span></div><span class="clink-arr">&rarr;</span></a>
+            <a href="#" class="clink" id="discordBtn"><div class="clink-l"><span class="clink-lbl">Discord</span><span class="clink-val">morgan_1805</span></div><span class="clink-arr">Copy</span></a>
+            <a href="https://www.linkedin.com/in/adeosun-ezekiel-58800a293" target="_blank" class="clink"><div class="clink-l"><span class="clink-lbl">LinkedIn</span><span class="clink-val">Adeosun Ezekiel</span></div><span class="clink-arr">&rarr;</span></a>
+            <a href="https://contra.com/adeosun_ezekiel_yv5k5caq" target="_blank" class="clink"><div class="clink-l"><span class="clink-lbl">Contra</span><span class="clink-val">View freelance profile</span></div><span class="clink-arr">&rarr;</span></a>
+            <a href="https://github.com/Morgan1805" target="_blank" class="clink"><div class="clink-l"><span class="clink-lbl">GitHub</span><span class="clink-val">github.com/Morgan1805</span></div><span class="clink-arr">&rarr;</span></a>
+            <a href="mailto:adeosunezekiel004@gmail.com" class="clink"><div class="clink-l"><span class="clink-lbl">Email directly</span><span class="clink-val">adeosunezekiel004@gmail.com</span></div><span class="clink-arr">&rarr;</span></a>
+          </div>
+        </div>
+        <div class="fbox reveal">
+          <div id="formContent">
+            <div class="ftitle">Send me a message</div>
+            <p class="fsub">Goes straight to my Gmail. I'll reply within 24 hours.</p>
+            <form id="contactForm">
+              <div class="frow">
+                <div class="fg"><label>Your name *</label><input type="text" name="name" placeholder="John Smith" required /></div>
+                <div class="fg"><label>Your email *</label><input type="email" name="email" id="femail" placeholder="john@company.com" required /></div>
+              </div>
+              <div class="fg"><label>Project type *</label>
+                <select name="project_type" required>
+                  <option value="">Select a project type...</option>
+                  <option>Landing Page</option>
+                  <option>SaaS Website</option>
+                  <option>Web3 / NFT / Crypto UI</option>
+                  <option>Brand / Restaurant Website</option>
+                  <option>Custom / Other</option>
+                </select>
+              </div>
+              <div class="fg"><label>Budget range *</label>
+                <select name="budget" id="fbudget" required>
+                  <option value="">Select your budget...</option>
+                  <option>$300 - $500</option>
+                  <option>$500 - $1,000</option>
+                  <option>$1,000 - $2,000</option>
+                  <option>$2,000+</option>
+                  <option>Let's discuss</option>
+                </select>
+              </div>
+              <div class="fg" id="orderField" style="display:none;">
+                <label>Order from calculator</label>
+                <div class="order-display" id="orderDisplay">-</div>
+                <input type="hidden" name="order_summary" id="orderInput" />
+              </div>
+              <div class="fg"><label>Tell me about your project *</label><textarea name="message" placeholder="What are you building? What's the goal? Any deadline?" required></textarea></div>
+              <input type="hidden" name="_subject" value="New project inquiry - Morgan's Portfolio" />
+              <button type="submit" class="fsubmit" id="submitBtn">
+                <span id="submitTxt">Send message &rarr;</span>
+              </button>
+            </form>
+          </div>
+          <div class="fsuccess" id="formSuccess">
+            <div class="fsuccess-icon">&#127881;</div>
+            <div class="fsuccess-title">Message sent!</div>
+            <p class="fsuccess-msg">Thanks for reaching out! I'll reply to <strong id="successEmail"></strong> within 24 hours.</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <footer>
-    <span class="footer-copy">© <span id="yr"></span> Morgan — Frontend Developer. .</span>
-    <div class="footer-links">
-      <a href="https://x.com/Morgan_1805" target="_blank">Twitter</a>
-      <a href="https://morgan1805.github.io/krypto/" target="_blank">KRYPTO</a>
-      <a href="https://morgan1805.github.io/ember/" target="_blank">EMBER</a>
-      <a href="https://morgan1805.github.io/nexus/" target="_blank">NEXUS</a>
-      <a href="https://morgan1805.github.io/flowdesk/" target="_blank">FLOWDESK</a>
-      <a href="https://morgan1805.github.io/voidx/" target="_blank">VOIDX</a>
-      <a href="#" id="discordLink">Discord</a>
-    </div>
-  </footer>
+<footer>
+  <span class="fcopy">&copy; 2024 Morgan &mdash; Frontend Developer</span>
+  <div class="flinks">
+    <a href="https://x.com/Morgan_1805" target="_blank">Twitter</a>
+    <a href="https://morgan1805.github.io/krypto/" target="_blank">KRYPTO</a>
+    <a href="https://morgan1805.github.io/ember/" target="_blank">EMBER</a>
+    <a href="https://morgan1805.github.io/nexus/" target="_blank">NEXUS</a>
+    <a href="https://morgan1805.github.io/flowdesk/" target="_blank">FLOWDESK</a>
+    <a href="https://morgan1805.github.io/voidx/" target="_blank">VOIDX</a>
+  </div>
+</footer>
 
-  <div class="toast" id="toast">Discord copied!</div>
+<div class="toast" id="toast">Discord username copied!</div>
 
-  <script>
-    const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-    function animRing(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
-    animRing();
-
-    const canvas=document.getElementById('bgc'),ctx=canvas.getContext('2d');
-    let W,H;
-    function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-    resize();window.addEventListener('resize',resize);
-    const pts=Array.from({length:50},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,dx:(Math.random()-.5)*.25,dy:(Math.random()-.5)*.25,r:Math.random()*1+.2}));
-    function draw(){
-      ctx.clearRect(0,0,W,H);
-      pts.forEach((p,i)=>{
-        p.x+=p.dx;p.y+=p.dy;
-        if(p.x<0||p.x>W)p.dx*=-1;if(p.y<0||p.y>H)p.dy*=-1;
-        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='#e8290b';ctx.globalAlpha=.2;ctx.fill();
-        pts.slice(i+1).forEach(p2=>{const d=Math.hypot(p.x-p2.x,p.y-p2.y);if(d<140){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);ctx.strokeStyle='#e8290b';ctx.globalAlpha=(1-d/140)*.05;ctx.lineWidth=.5;ctx.stroke();}});
-      });
-      ctx.globalAlpha=1;requestAnimationFrame(draw);
-    }
-    draw();
-
-    function copyDiscord(){navigator.clipboard.writeText('morgan_1805').then(()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);});}
-    document.getElementById('discordBtn').addEventListener('click',e=>{e.preventDefault();copyDiscord();});
-    document.getElementById('discordLink').addEventListener('click',e=>{e.preventDefault();copyDiscord();});
-    document.getElementById('yr').textContent=new Date().getFullYear();
-
-    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08});
-    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
-
-    window.addEventListener('scroll',()=>{
-      document.querySelectorAll('.proj-img').forEach(img=>{
-        const rect=img.parentElement.getBoundingClientRect();
-        const prog=(window.innerHeight-rect.top)/(window.innerHeight+rect.height);
-        img.style.transform=`scale(1.08) translateY(${(prog-.5)*20}px)`;
-      });
+<script>
+  document.getElementById('discordBtn').addEventListener('click', e => {
+    e.preventDefault();
+    navigator.clipboard.writeText('morgan_1805').then(() => {
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
     });
-  </script>
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY > 60;
+    document.getElementById('navbar').classList.toggle('scrolled', s);
+    document.getElementById('stickyCta').classList.toggle('visible', s);
+  });
+
+  function toggleCase(btn) {
+    btn.classList.toggle('open');
+    btn.nextElementSibling.classList.toggle('open');
+  }
+  document.querySelectorAll('.pct').forEach(b => b.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); }));
+
+  // CALCULATOR
+  let basePrice = 0, baseName = '', addonTotal = 0, addons = [];
+
+  function selectBase(el, price, name) {
+    document.querySelectorAll('#baseOpts .copt').forEach(o => o.classList.remove('sel'));
+    el.classList.add('sel');
+    basePrice = price; baseName = name;
+    updateCalc();
+  }
+
+  function toggleAddon(el, price, name) {
+    el.classList.toggle('sel');
+    if (el.classList.contains('sel')) { addonTotal += price; addons.push({name, price}); }
+    else { addonTotal -= price; addons = addons.filter(a => a.name !== name); }
+    updateCalc();
+  }
+
+  function updateCalc() {
+    const total = basePrice + addonTotal;
+    const lines = document.getElementById('clines');
+    document.getElementById('ctot').textContent = '$' + total.toLocaleString();
+    document.getElementById('sendBtn').disabled = basePrice === 0;
+    if (basePrice === 0) { lines.innerHTML = '<div class="cempty">Select a package to get started</div>'; return; }
+    let html = '<div class="cline"><span>' + baseName + '</span><span>$' + basePrice.toLocaleString() + '</span></div>';
+    addons.forEach(a => { html += '<div class="cline"><span>' + a.name + '</span><span>+$' + a.price + '</span></div>'; });
+    lines.innerHTML = html;
+  }
+
+  function selectPlan(name, price) {
+    setTimeout(() => {
+      document.querySelectorAll('#baseOpts .copt').forEach(o => {
+        if (o.querySelector('.copt-name').textContent.trim() === name) {
+          o.classList.add('sel'); basePrice = price; baseName = name; updateCalc();
+        }
+      });
+      document.querySelector('.calc').scrollIntoView({behavior:'smooth', block:'center'});
+    }, 300);
+    document.getElementById('pricing').scrollIntoView({behavior:'smooth'});
+  }
+
+  function sendOrder() {
+    const total = basePrice + addonTotal;
+    let summary = baseName;
+    if (addons.length) summary += ' + ' + addons.map(a => a.name).join(', ');
+    summary += ' = $' + total.toLocaleString();
+    document.getElementById('orderInput').value = summary;
+    document.getElementById('orderDisplay').textContent = summary;
+    document.getElementById('orderField').style.display = 'flex';
+    const b = document.getElementById('fbudget');
+    if (total >= 2000) b.value = '$2,000+';
+    else if (total >= 1000) b.value = '$1,000 - $2,000';
+    else if (total >= 500) b.value = '$500 - $1,000';
+    else b.value = '$300 - $500';
+    document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+    setTimeout(() => document.querySelector('#contactForm input[name="name"]').focus(), 700);
+  }
+
+  // FORM SUBMIT via Formspree
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const txt = document.getElementById('submitTxt');
+    const email = document.getElementById('femail').value;
+    btn.disabled = true; txt.textContent = 'Sending...';
+    try {
+      const res = await fetch('https://formspree.io/f/mzdqjqlw', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(this)
+      });
+      if (res.ok) {
+        document.getElementById('formContent').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+        document.getElementById('successEmail').textContent = email;
+      } else {
+        txt.textContent = 'Error — email me directly';
+        btn.disabled = false;
+      }
+    } catch(err) {
+      txt.textContent = 'Error — email me directly';
+      btn.disabled = false;
+    }
+  });
+</script>
 </body>
 </html>
