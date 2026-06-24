@@ -70,7 +70,7 @@
     .ik{color:var(--ink3);font-size:11px;text-transform:uppercase;letter-spacing:.5px;}
     .iv{color:var(--ink);font-weight:500;}
     .iv.av{color:var(--green);}
-    .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
     .svc{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:36px 30px;transition:border-color .2s,transform .2s;position:relative;overflow:hidden;}
     .svc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
     .svc:hover::before{transform:scaleX(1);}
@@ -339,7 +339,6 @@
         <div class="svc"><span class="svc-icon">&#9889;</span><div class="svc-title">Landing Pages &amp; Promo Sites</div><p class="svc-desc">High-converting pages built for speed, clarity, and strong CTAs. Clean layout, fast load, mobile-first.</p><div class="svc-tags"><span class="svc-tag">Conversion</span><span class="svc-tag">Fast</span><span class="svc-tag">Responsive</span></div></div>
         <div class="svc"><span class="svc-icon">&#129329;</span><div class="svc-title">SaaS &amp; Brand Websites</div><p class="svc-desc">Full product sites with pricing, feature grids, testimonials, and smooth interactions. Investor-ready from day one.</p><div class="svc-tags"><span class="svc-tag">SaaS</span><span class="svc-tag">Premium UI</span><span class="svc-tag">Motion</span></div></div>
         <div class="svc"><span class="svc-icon">&#127760;</span><div class="svc-title">Web3 UI Frontends</div><p class="svc-desc">Crypto exchanges, NFT marketplaces, wallet interfaces, and dApp frontends. Speed, trust, and premium Web3 feel.</p><div class="svc-tags"><span class="svc-tag">Crypto</span><span class="svc-tag">NFT</span><span class="svc-tag">dApp</span></div></div>
-        <div class="svc"><span class="svc-icon">&#129302;</span><div class="svc-title">AI SaaS Products</div><p class="svc-desc">Fully working AI-powered web apps integrated with real APIs like Claude and GPT-4. Not just landing pages — actual working products.</p><div class="svc-tags"><span class="svc-tag">Claude API</span><span class="svc-tag">GPT-4</span><span class="svc-tag">AI</span></div></div>
       </div>
     </div>
   </div>
@@ -352,9 +351,81 @@
       <a href="https://github.com/Morgan1805" target="_blank" class="btn-s">All on GitHub &rarr;</a>
     </div>
 
-    <!-- ROW 1: JOBBOARD — full-width hero (most complex, most features, newest) -->
-    <div class="pgrid reveal" style="margin-bottom:14px;">
-      <a href="jobs.html" target="_blank" class="proj hxl proj-jobboard">
+    <!-- ROW 1: HAVENLY + FLOWDESK (original order) -->
+    <div class="pgrid r1 reveal" style="margin-bottom:14px;">
+      <a href="https://morgan1805.github.io/havenly/" target="_blank" class="proj hxl">
+        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80" alt="HAVENLY" class="proj-img"/><div class="proj-ov"></div>
+        <div class="pc">
+          <div class="pbadge">Real Estate Platform &middot; 2025</div><h3 class="ptitle">HAVENLY</h3>
+          <p class="pdesc">Full real estate listing platform. 32 properties, 11 Nigerian states, live filters, currency converter, booking system and contact agent flows.</p>
+          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
+          <div class="pcase"><strong>The challenge</strong><p>Build a fully functional property platform that feels like a funded product — filters, modals, image galleries, booking forms and a USD to NGN converter all in vanilla JS.</p><strong style="margin-top:10px;">The result</strong><p>A platform that rivals Propertypro and PropertyFinder in UX, built with zero frameworks or libraries.</p></div>
+          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Real Estate</span><span class="ppill">Platform</span><span class="ppill">Vanilla JS</span></div></div>
+        </div>
+      </a>
+      <a href="https://morgan1805.github.io/flowdesk/" target="_blank" class="proj hxl">
+        <img src="flowdesk.jpg" alt="FLOWDESK" class="proj-img"/><div class="proj-ov"></div>
+        <div class="pc">
+          <div class="pbadge">SaaS Landing Page &middot; 2025</div><h3 class="ptitle">FLOWDESK</h3>
+          <p class="pdesc">Full SaaS product page. Dashboard preview, pricing toggle, feature grid, testimonials, FAQ and 40+ interactive modal flows.</p>
+          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
+          <div class="pcase"><strong>The challenge</strong><p>SaaS pages must explain, convert, and handle objections all at once. FLOWDESK is plug-and-play for any early-stage founder.</p><strong style="margin-top:10px;">The result</strong><p>A complete page any SaaS founder can plug their product into and start selling from day one.</p></div>
+          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">SaaS</span><span class="ppill">Product</span><span class="ppill">Vanilla JS</span></div></div>
+        </div>
+      </a>
+    </div>
+
+    <!-- ROW 2: KRYPTO + NEXUS -->
+    <div class="pgrid r2 reveal" style="margin-bottom:14px;">
+      <a href="https://morgan1805.github.io/krypto/" target="_blank" class="proj hlg">
+        <img src="krypto.jpg" alt="KRYPTO" class="proj-img"/><div class="proj-ov"></div>
+        <div class="pc">
+          <div class="pbadge">Crypto Exchange &middot; 2025</div><h3 class="ptitle">KRYPTO</h3>
+          <p class="pdesc">Full crypto exchange UI with live price ticker, trade widget, markets table, particle animations and 30+ modals.</p>
+          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
+          <div class="pcase"><strong>The challenge</strong><p>Most crypto pages feel too technical for new users or too simple for serious traders. KRYPTO bridges that gap and feels like a real funded product.</p><strong style="margin-top:10px;">The result</strong><p>A frontend that passes for a funded exchange built in pure HTML/CSS/JS.</p></div>
+          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Web3</span><span class="ppill">Crypto</span><span class="ppill">Vanilla JS</span></div></div>
+        </div>
+      </a>
+      <a href="https://morgan1805.github.io/nexus/" target="_blank" class="proj hlg">
+        <img src="nexus.jpg" alt="NEXUS" class="proj-img"/><div class="proj-ov"></div>
+        <div class="pc">
+          <div class="pbadge">NFT Marketplace &middot; 2025</div><h3 class="ptitle">NEXUS</h3>
+          <p class="pdesc">NFT marketplace with particle network, 3D card tilt, wallet connect supporting 7 wallets, live ticker and countdown timer.</p>
+          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
+          <div class="pcase"><strong>The challenge</strong><p>NFT platforms must feel immersive and safe for real wallet connections, all in vanilla JS with zero frameworks.</p><strong style="margin-top:10px;">The result</strong><p>An NFT frontend that feels like it belongs next to OpenSea.</p></div>
+          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Web3</span><span class="ppill">NFT</span><span class="ppill">Vanilla JS</span></div></div>
+        </div>
+      </a>
+    </div>
+
+    <!-- ROW 3: EMBER + VOIDX -->
+    <div class="pgrid r2 reveal" style="margin-bottom:14px;">
+      <a href="https://morgan1805.github.io/ember/" target="_blank" class="proj hlg">
+        <img src="ember.jpg" alt="EMBER" class="proj-img"/><div class="proj-ov"></div>
+        <div class="pc">
+          <div class="pbadge">Restaurant Brand &middot; 2025</div><h3 class="ptitle">EMBER</h3>
+          <p class="pdesc">Premium Nigerian wood-fire restaurant. Parallax hero, dynamic menu, chef profiles, live reservation form and 25+ modals.</p>
+          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
+          <div class="pcase"><strong>The challenge</strong><p>Nigerian restaurant sites either look outdated or use generic templates. EMBER needed to feel like a luxury African dining brand.</p><strong style="margin-top:10px;">The result</strong><p>A world-class site that could belong to a top Lagos or Abuja restaurant.</p></div>
+          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Brand</span><span class="ppill">Food</span><span class="ppill">Luxury</span></div></div>
+        </div>
+      </a>
+      <a href="https://morgan1805.github.io/voidx/" target="_blank" class="proj hlg">
+        <img src="voidx.jpg" alt="VOIDX" class="proj-img"/><div class="proj-ov"></div>
+        <div class="pc">
+          <div class="pbadge">Luxury Brand Website &middot; 2025</div><h3 class="ptitle">VOIDX</h3>
+          <p class="pdesc">Luxury streetwear concept. Dark editorial aesthetic, custom animated cursor, smooth scroll and product grid with hover effects.</p>
+          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
+          <div class="pcase"><strong>The challenge</strong><p>Streetwear brands live or die by aesthetic. VOIDX needed to feel like a Supreme or Fear of God drop, pure HTML/CSS/JS.</p><strong style="margin-top:10px;">The result</strong><p>Premium UI is not about the stack. It is about vision and execution.</p></div>
+          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Brand</span><span class="ppill">Editorial</span><span class="ppill">Streetwear</span></div></div>
+        </div>
+      </a>
+    </div>
+
+    <!-- ROW 4: JOBBOARD — full-width closer -->
+    <div class="pgrid reveal" style="margin-bottom:0;">
+      <a href="jobs.html" target="_blank" class="proj hmd proj-jobboard">
         <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400&q=85" alt="JobBoard" class="proj-img" style="filter:brightness(.38) saturate(.5);"/>
         <div class="proj-ov" style="background:linear-gradient(to top,rgba(10,14,30,.98) 0%,rgba(10,14,30,.4) 60%,transparent 100%);"></div>
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:30px;z-index:1;">
@@ -394,82 +465,10 @@
         <div class="pc">
           <div class="pbadge">Job Board Platform &middot; 2026</div>
           <h3 class="ptitle">JOBBOARD</h3>
-          <p class="pdesc">Full job board with 42+ live listings, smart filters, sign-in &amp; sign-up system, employer post-a-job flow, and detailed job modals. Built entirely in vanilla JS.</p>
+          <p class="pdesc">Full job board with 42+ live listings, smart filters, sign-in &amp; sign-up system, employer post-a-job flow, and full application modal. Built entirely in vanilla JS.</p>
           <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
           <div class="pcase"><strong>The challenge</strong><p>Build a complete, production-grade job board with multi-filter search, auth flows, and employer tools — all without a single framework or database.</p><strong style="margin-top:10px;">The result</strong><p>A polished, LinkedIn-inspired platform with 42 listings, live filtering, sign-in/sign-up, and a full post-a-job form — pure HTML, CSS &amp; JS.</p></div>
           <div class="pfoot"><span class="plink">Browse jobs &rarr;</span><div class="ppills"><span class="ppill">Product</span><span class="ppill">Platform</span><span class="ppill">Vanilla JS</span></div></div>
-        </div>
-      </a>
-    </div>
-
-    <!-- ROW 2: KRYPTO (big) + HAVENLY — most technically impressive pair -->
-    <div class="pgrid r1 reveal" style="margin-bottom:14px;">
-      <a href="https://morgan1805.github.io/krypto/" target="_blank" class="proj hxl">
-        <img src="krypto.jpg" alt="KRYPTO" class="proj-img"/><div class="proj-ov"></div>
-        <div class="pc">
-          <div class="pbadge">Crypto Exchange &middot; 2025</div><h3 class="ptitle">KRYPTO</h3>
-          <p class="pdesc">Full crypto exchange UI with live price ticker, trade widget, markets table, particle animations and 30+ modals.</p>
-          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
-          <div class="pcase"><strong>The challenge</strong><p>Most crypto pages feel too technical for new users or too simple for serious traders. KRYPTO bridges that gap and feels like a real funded product.</p><strong style="margin-top:10px;">The result</strong><p>A frontend that passes for a funded exchange built in pure HTML/CSS/JS.</p></div>
-          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Web3</span><span class="ppill">Crypto</span><span class="ppill">Vanilla JS</span></div></div>
-        </div>
-      </a>
-      <a href="https://morgan1805.github.io/havenly/" target="_blank" class="proj hxl">
-        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80" alt="HAVENLY" class="proj-img"/><div class="proj-ov"></div>
-        <div class="pc">
-          <div class="pbadge">Real Estate Platform &middot; 2025</div><h3 class="ptitle">HAVENLY</h3>
-          <p class="pdesc">Full real estate listing platform. 32 properties, 11 Nigerian states, live filters, currency converter, booking system and contact agent flows.</p>
-          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
-          <div class="pcase"><strong>The challenge</strong><p>Build a fully functional property platform that feels like a funded product — filters, modals, image galleries, booking forms and a USD to NGN converter all in vanilla JS.</p><strong style="margin-top:10px;">The result</strong><p>A platform that rivals Propertypro and PropertyFinder in UX, built with zero frameworks or libraries.</p></div>
-          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Real Estate</span><span class="ppill">Platform</span><span class="ppill">Vanilla JS</span></div></div>
-        </div>
-      </a>
-    </div>
-
-    <!-- ROW 3: NEXUS + FLOWDESK -->
-    <div class="pgrid r2 reveal" style="margin-bottom:14px;">
-      <a href="https://morgan1805.github.io/nexus/" target="_blank" class="proj hlg">
-        <img src="nexus.jpg" alt="NEXUS" class="proj-img"/><div class="proj-ov"></div>
-        <div class="pc">
-          <div class="pbadge">NFT Marketplace &middot; 2025</div><h3 class="ptitle">NEXUS</h3>
-          <p class="pdesc">NFT marketplace with particle network, 3D card tilt, wallet connect supporting 7 wallets, live ticker and countdown timer.</p>
-          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
-          <div class="pcase"><strong>The challenge</strong><p>NFT platforms must feel immersive and safe for real wallet connections, all in vanilla JS with zero frameworks.</p><strong style="margin-top:10px;">The result</strong><p>An NFT frontend that feels like it belongs next to OpenSea.</p></div>
-          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Web3</span><span class="ppill">NFT</span><span class="ppill">Vanilla JS</span></div></div>
-        </div>
-      </a>
-      <a href="https://morgan1805.github.io/flowdesk/" target="_blank" class="proj hlg">
-        <img src="flowdesk.jpg" alt="FLOWDESK" class="proj-img"/><div class="proj-ov"></div>
-        <div class="pc">
-          <div class="pbadge">SaaS Landing Page &middot; 2025</div><h3 class="ptitle">FLOWDESK</h3>
-          <p class="pdesc">Full SaaS product page. Dashboard preview, pricing toggle, feature grid, testimonials, FAQ and 40+ interactive modal flows.</p>
-          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
-          <div class="pcase"><strong>The challenge</strong><p>SaaS pages must explain, convert, and handle objections all at once. FLOWDESK is plug-and-play for any early-stage founder.</p><strong style="margin-top:10px;">The result</strong><p>A complete page any SaaS founder can plug their product into and start selling from day one.</p></div>
-          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">SaaS</span><span class="ppill">Product</span><span class="ppill">Vanilla JS</span></div></div>
-        </div>
-      </a>
-    </div>
-
-    <!-- ROW 4: EMBER + VOIDX -->
-    <div class="pgrid r2 reveal" style="margin-bottom:0;">
-      <a href="https://morgan1805.github.io/ember/" target="_blank" class="proj hlg">
-        <img src="ember.jpg" alt="EMBER" class="proj-img"/><div class="proj-ov"></div>
-        <div class="pc">
-          <div class="pbadge">Restaurant Brand &middot; 2025</div><h3 class="ptitle">EMBER</h3>
-          <p class="pdesc">Premium Nigerian wood-fire restaurant. Parallax hero, dynamic menu, chef profiles, live reservation form and 25+ modals.</p>
-          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
-          <div class="pcase"><strong>The challenge</strong><p>Nigerian restaurant sites either look outdated or use generic templates. EMBER needed to feel like a luxury African dining brand.</p><strong style="margin-top:10px;">The result</strong><p>A world-class site that could belong to a top Lagos or Abuja restaurant.</p></div>
-          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Brand</span><span class="ppill">Food</span><span class="ppill">Luxury</span></div></div>
-        </div>
-      </a>
-      <a href="https://morgan1805.github.io/voidx/" target="_blank" class="proj hlg">
-        <img src="voidx.jpg" alt="VOIDX" class="proj-img"/><div class="proj-ov"></div>
-        <div class="pc">
-          <div class="pbadge">Luxury Brand Website &middot; 2025</div><h3 class="ptitle">VOIDX</h3>
-          <p class="pdesc">Luxury streetwear concept. Dark editorial aesthetic, custom animated cursor, smooth scroll and product grid with hover effects.</p>
-          <div class="pct" onclick="toggleCase(this)">Case study <span class="arr">&#8595;</span></div>
-          <div class="pcase"><strong>The challenge</strong><p>Streetwear brands live or die by aesthetic. VOIDX needed to feel like a Supreme or Fear of God drop, pure HTML/CSS/JS.</p><strong style="margin-top:10px;">The result</strong><p>Premium UI is not about the stack. It is about vision and execution.</p></div>
-          <div class="pfoot"><span class="plink">View live site &rarr;</span><div class="ppills"><span class="ppill">Brand</span><span class="ppill">Editorial</span><span class="ppill">Streetwear</span></div></div>
         </div>
       </a>
     </div>
