@@ -456,6 +456,172 @@
     </div>
   </div>
 </div>
+  <!-- ===================== FAQ SECTION v2 ===================== -->
+<!-- This REPLACES the earlier faq-section.html if you already pasted it. -->
+<!-- Paste this whole block as its own <section>, right after the      -->
+<!-- "How I work" / process block and before <div class="alt" id="contact">. -->
+
+<style>
+.faq-intro{font-size:14px;color:var(--ink2);margin:-28px 0 40px;max-width:520px;}
+.faq-wrap{display:flex;flex-direction:column;gap:12px;max-width:820px;}
+.faq-item{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;position:relative;transition:border-color .2s,transform .2s,box-shadow .2s;}
+.faq-item:hover{border-color:var(--b2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.05);}
+.faq-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .25s;}
+.faq-item.open{border-color:var(--am);}
+.faq-item.open::before{transform:scaleY(1);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;cursor:pointer;user-select:none;}
+.faq-q-left{display:flex;flex-direction:column;gap:7px;flex:1;min-width:0;}
+.faq-tag{font-size:10.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--accent);background:var(--al);border:1px solid var(--am);padding:2px 9px;border-radius:100px;width:fit-content;}
+.faq-q span.qtxt{font-size:15px;font-weight:500;color:var(--ink);line-height:1.4;}
+.faq-chevron{width:26px;height:26px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .2s;}
+.faq-item.open .faq-chevron{transform:rotate(180deg);background:var(--al);}
+.faq-chevron svg{width:11px;height:11px;stroke:var(--ink2);fill:none;stroke-width:2.5;}
+.faq-item.open .faq-chevron svg{stroke:var(--accent);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-item.open .faq-a{max-height:260px;}
+.faq-a p{font-size:13.5px;color:var(--ink2);line-height:1.7;padding:0 22px 22px;max-width:640px;}
+</style>
+
+<section class="section" id="faq">
+  <div class="si">
+    <div class="slbl reveal">FAQ</div>
+    <h2 class="stitle reveal">Questions, answered</h2>
+    <p class="faq-intro reveal">What people usually ask before reaching out. Anything else, use the chat bubble or the form below.</p>
+    <div class="faq-wrap reveal">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Pricing</span><span class="qtxt">How much does a project cost?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Starter is $300 for a single-page site (3 days), Growth is $700 for a full SaaS/brand site (7 days), and Web3/Custom starts at $1,200 for crypto, NFT or complex builds (10-14 days). There's also a live calculator in the pricing section for custom quotes with add-ons.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Timeline</span><span class="qtxt">How long does it take?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>3 days for Starter, 7 days for Growth, 10-14 days for Web3/Custom. Need it faster? Rush delivery (3 days) is available as a $200 add-on on any package.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Trust</span><span class="qtxt">How do I know the quality is good before hiring?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Every project in the work section is live and clickable, not mockups. HAVENLY, KRYPTO, NEXUS, EMBER, VOIDX, FLOWDESK and JOBBOARD are all shipped, working products you can test right now.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Payment</span><span class="qtxt">How does payment work?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Typically a deposit upfront with the balance due on delivery. Exact method and currency are worked out directly once a project is confirmed, whatever's easiest for you.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Process</span><span class="qtxt">What if my project doesn't fit one package exactly?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>That's normal. The pricing calculator lets you mix a base package with add-ons (rush delivery, SEO, analytics, extra revisions, animations), or just describe your project in the contact form and get a custom quote.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Process</span><span class="qtxt">How many revisions do I get?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>2 rounds on Starter, 3 on Growth, and unlimited on Web3/Custom. Extra revision rounds can also be added separately via the pricing calculator.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Support</span><span class="qtxt">What happens if something breaks after launch?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Post-launch fixes and updates can be arranged separately after delivery, just reach out when the need comes up.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Tech</span><span class="qtxt">What's the tech stack?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>100% vanilla HTML, CSS and JavaScript, no React, no Vue, no build tools, no bloat. That means faster load times and no framework lock-in for you.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Tech</span><span class="qtxt">Will it work well on mobile?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Every project is built mobile-first and fully responsive across phones, tablets, and desktop, not an afterthought bolted on at the end.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Ownership</span><span class="qtxt">Do I own the code once it's done?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Yes. Every project ships with full source code handoff, no dependency on Morgan to maintain or host it afterward. It's yours to keep, edit, and build on.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Services</span><span class="qtxt">Do you build Shopify stores?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Yes, custom Shopify themes, product page design, and checkout flow optimisation. Pricing depends on scope, so reach out for a quote.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Services</span><span class="qtxt">Can you build Web3, crypto, or NFT frontends?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Yes, this is a specialty. Crypto exchange UIs, NFT marketplaces, wallet-connect flows and dApp frontends, all in pure JavaScript. See KRYPTO and NEXUS in the work section for live examples.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Tech</span><span class="qtxt">Do you handle hosting and domains?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>You get the full source code to deploy anywhere (GitHub Pages, Netlify, Vercel, your own host). Domain purchase isn't included by default, but Morgan can help set up deployment if you'd like.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Remote</span><span class="qtxt">Do you work with international clients?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Yes, fully remote and async, with clients across multiple time zones. Communication happens over email or Discord, with a handoff call at delivery.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-left"><span class="faq-tag">Get Started</span><span class="qtxt">How do I get started?</span></div>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="faq-a"><p>Fill out the contact form below, or email morganbuilds004@gmail.com directly with what you're building. Reply within 24 hours.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleFaq(headerEl){
+  const item = headerEl.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+</script>
+<!-- =================== END FAQ SECTION v2 =================== -->
 
 <section class="section" id="pricing">
   <div class="si">
@@ -868,21 +1034,64 @@ function closeJobBoard(){
 <script>
 (function(){
   const KB = [
-    {kw:["hi","hello","hey","yo","sup"],a:"Hey! Ask me about services, pricing, past projects, timelines, or how to get in touch."},
-    {kw:["who","morgan","about you","developer","ezekiel"],a:"Morgan (Ezekiel) is a frontend developer based in Lagos specialising in Web3 UIs, SaaS landing pages, and Shopify stores, built in pure HTML, CSS and JavaScript, no frameworks."},
-    {kw:["build","service","what do you build","offer"],a:"Morgan builds: landing pages & promo sites, SaaS/brand websites, Web3 UI frontends (crypto, NFT, dApps), and custom Shopify stores.",scroll:"services"},
-    {kw:["price","pricing","cost","how much","rate","budget","saas site"],a:"Three tiers: Starter ($300, single-page site, 3 days), Growth ($700, full SaaS/brand site, 7 days), and Web3/Custom ($1,200+, 10-14 days). There's a live calculator on the site too.",scroll:"pricing"},
-    {kw:["fast","how long","timeline","deliver","process","how does it work","steps"],a:"Starter ships in 3 days, Growth in 7 days, Web3/Custom in 10-14 days. Process: Discovery, then Design in Figma, then Build, then Deliver with source code, revisions and a handoff call."},
-    {kw:["revision","changes","edit after"],a:"Starter gets 2 revision rounds, Growth gets 3, and Web3/Custom includes unlimited revisions."},
-    {kw:["stack","tech","technology","framework","react","vue"],a:"100% vanilla: HTML5, CSS3, and JavaScript. No React, no Vue, no build tools."},
-    {kw:["project","work","portfolio","example","showcase"],a:"HAVENLY (real estate platform), FLOWDESK (SaaS page), KRYPTO (crypto exchange UI), NEXUS (NFT marketplace), EMBER (restaurant brand), VOIDX (streetwear brand), and JOBBOARD (full job board app), all live.",scroll:"work"},
+    {kw:["hi","hello","hey","yo","sup","hiya","good morning","good afternoon","good evening"],a:"Hey! Ask me about services, pricing, past projects, timelines, or how to get in touch."},
+
+    // identity / trust
+    {kw:["who","morgan","about you","developer","ezekiel","who are you","who made you"],a:"Morgan (Ezekiel) is a frontend developer based in Lagos specialising in Web3 UIs, SaaS landing pages, and Shopify stores, built in pure HTML, CSS and JavaScript, no frameworks."},
+    {kw:["experience","years","how long have you been","how experienced"],a:"Morgan has 2+ years building frontends, with 7 live projects across real estate, SaaS, crypto, NFT, restaurant branding, streetwear and job board platforms."},
+    {kw:["testimonial","review","reference","client feedback","proof","past client"],a:"The best proof is the live work itself, check HAVENLY, KRYPTO, NEXUS, EMBER, VOIDX, FLOWDESK and JOBBOARD in the work section, all shipped and live.",scroll:"work"},
+    {kw:["guarantee","refund","money back","satisfaction"],a:"Every tier includes revision rounds until you're happy (2 for Starter, 3 for Growth, unlimited for Web3/Custom). For refund specifics on a particular project, ask Morgan directly.",scroll:"contact"},
+    {kw:["nda","confidential","non disclosure","contract","agreement"],a:"Happy to sign an NDA or contract if your project needs it, just raise it when you reach out.",scroll:"contact"},
+    {kw:["student","are you in school","university","studying"],a:"Morgan also studies statistics at the University of Ilorin alongside freelance frontend work."},
+
+    // services / scope
+    {kw:["build","service","offer","what do you do"],a:"Morgan builds: landing pages & promo sites, SaaS/brand websites, Web3 UI frontends (crypto, NFT, dApps), and custom Shopify stores.",scroll:"services"},
+    {kw:["mobile app","native app","ios app","android app","app store"],a:"Morgan builds web frontends, not native mobile apps (no iOS/Android app store builds). Everything is responsive and works great on mobile browsers though."},
+    {kw:["wordpress","webflow","wix","squarespace","no code","no-code","builder"],a:"No, everything is hand-coded in HTML, CSS and JavaScript, no WordPress, Webflow, Wix or drag-and-drop builders. That's what keeps sites fast and bloat-free."},
+    {kw:["database","backend","server side","api integration","login system","authentication"],a:"Morgan focuses on frontend, but has built full auth flows, forms and interactive logic (see JOBBOARD's sign-in/sign-up and post-a-job flow) using vanilla JS. For a real backend/database, that's discussed case by case, ask directly.",scroll:"contact"},
+    {kw:["ecommerce","e-commerce","online store","sell products online"],a:"Yes, via custom Shopify store builds, themes, product pages, and checkout optimisation."},
+    {kw:["blog","cms","content management","admin panel"],a:"Static sites don't ship with a CMS by default, but blog sections and simple admin-style interfaces can be built into the design, ask about your specific need.",scroll:"contact"},
+    {kw:["logo","branding","brand identity","illustration design"],a:"Morgan focuses on frontend development rather than logo/brand design, but can build the site around brand assets you already have, or point you toward a designer."},
+    {kw:["copywriting","content writing","write my copy","write text for me"],a:"Morgan can write placeholder or structural copy while building, but for polished marketing copywriting it's best if you supply the text, or we discuss it directly.",scroll:"contact"},
+    {kw:["seo","search engine","rank on google","google ranking"],a:"SEO setup and meta tags are available as an add-on ($100) in the pricing calculator, covering titles, meta descriptions and basic on-page SEO.",scroll:"pricing"},
+    {kw:["hosting","domain","where do i host","deploy my site"],a:"Morgan delivers full source code, you (or Morgan, on request) can deploy it to GitHub Pages, Netlify, Vercel, or your own hosting. Domain purchase isn't included by default, ask if you'd like help setting it up.",scroll:"contact"},
+    {kw:["maintenance","support after launch","fix bugs later","ongoing support","update my site"],a:"Post-launch fixes and updates can be arranged separately after delivery, just reach out when the need comes up.",scroll:"contact"},
+    {kw:["redesign","rebuild my site","improve my existing site","migrate my site"],a:"Yes, redesigns and rebuilds of existing sites are welcome, send the current site link when you reach out.",scroll:"contact"},
+    {kw:["animation","interactive","motion design","parallax"],a:"Animations and interactions are built into every project (see the custom animations pack add-on), and are core to sites like NEXUS (3D card tilt) and EMBER (parallax hero).",scroll:"pricing"},
+    {kw:["responsive","mobile friendly","works on phone"],a:"Every project is mobile-first and fully responsive across phones, tablets and desktop."},
+
+    // pricing / payment
+    {kw:["price","pricing","cost","how much","rate","budget"],a:"Three tiers: Starter ($300, single-page site, 3 days), Growth ($700, full SaaS/brand site, 7 days), and Web3/Custom ($1,200+, 10-14 days). There's a live calculator on the site too.",scroll:"pricing"},
+    {kw:["discount","cheaper","lower the price","negotiate","student discount"],a:"Pricing is fairly fixed to keep quality consistent, but for larger or long-term projects it's worth asking directly, there may be room to work something out.",scroll:"contact"},
+    {kw:["expensive","why so much","that's a lot","too pricey"],a:"The pricing reflects fully custom, hand-coded builds with no template shortcuts, full source code ownership, and revisions until you're happy, not a mass-produced theme."},
+    {kw:["payment method","how do i pay","paypal","bank transfer","crypto payment","stripe"],a:"Payment details (method, currency, deposit) are worked out directly once a project is confirmed, reach out to discuss what works for you.",scroll:"contact"},
+    {kw:["deposit","upfront payment","pay in advance","installment","pay later"],a:"Typically a deposit upfront with the balance on delivery, exact terms are confirmed per project when you reach out.",scroll:"contact"},
+    {kw:["invoice","receipt"],a:"An invoice can be provided once the project scope and payment terms are agreed, just ask when you reach out.",scroll:"contact"},
+    {kw:["currency","naira","dollars","pounds","exchange rate"],a:"Pricing is listed in USD, but payment currency can be discussed based on where you're based."},
+
+    // timeline / process
+    {kw:["fast","how long","timeline","deliver","process","steps","how does it work"],a:"Starter ships in 3 days, Growth in 7 days, Web3/Custom in 10-14 days. Process: Discovery, then Design in Figma, then Build, then Deliver with source code, revisions and a handoff call."},
+    {kw:["rush","urgent","asap","2 days","one day","same day","tight deadline","quick turnaround"],a:"Rush delivery (3 days) is available as a $200 add-on on top of any package, tightest realistic turnaround for a quality build. For something faster than that, ask directly to see what's possible.",scroll:"pricing"},
+    {kw:["revision","changes","edit after","how many edits"],a:"Starter gets 2 revision rounds, Growth gets 3, and Web3/Custom includes unlimited revisions."},
+    {kw:["meeting","call","zoom","video call","discuss project"],a:"A handoff call is included at delivery, and check-ins happen throughout the build. Morgan works async-first (Discord, email, WhatsApp) since clients span multiple timezones."},
+    {kw:["whatsapp","discord","slack","how do we communicate"],a:"Communication is mostly async via email or Discord (morgan_1805), with a handoff call at the end. WhatsApp works too if that's easier for you."},
+
+    // tech / ownership
+    {kw:["stack","tech","technology","framework","react","vue","angular"],a:"100% vanilla: HTML5, CSS3, and JavaScript. No React, no Vue, no Angular, no build tools."},
+    {kw:["project","projects","portfolio","example","showcase","past work"],a:"HAVENLY (real estate platform), FLOWDESK (SaaS page), KRYPTO (crypto exchange UI), NEXUS (NFT marketplace), EMBER (restaurant brand), VOIDX (streetwear brand), and JOBBOARD (full job board app), all live.",scroll:"work"},
     {kw:["web3","crypto","nft","dapp","wallet","blockchain"],a:"Yes, crypto exchange UIs, NFT marketplaces, wallet-connect flows and dApp frontends. See KRYPTO and NEXUS in the work section."},
-    {kw:["shopify","ecommerce","e-commerce","store"],a:"Custom Shopify themes, product page design, and checkout flow optimisation. Pricing depends on scope, reach out directly for a quote."},
-    {kw:["contact","email","reach","hire","get in touch","talk"],a:"Fill the contact form on this site, or email morganbuilds004@gmail.com directly. Morgan replies within 24 hours.",scroll:"contact"},
-    {kw:["remote","timezone","location","where","lagos","nigeria"],a:"Based in Lagos, Nigeria, working remote-first with clients across the US, UK, and Europe."},
-    {kw:["available","availability","free","open for work"],a:"Yes, currently open for freelance projects, remote roles, and collaborations."},
-    {kw:["source code","own","ownership"],a:"Every project ships with full source code handoff, no lock-in, it's yours to keep and modify."},
-    {kw:["thanks","thank you","cool","nice","great"],a:"Anytime! Anything else you want to know?"}
+    {kw:["shopify","store setup"],a:"Custom Shopify themes, product page design, and checkout flow optimisation. Pricing depends on scope, reach out directly for a quote."},
+    {kw:["source code","own","ownership","who owns the code"],a:"Every project ships with full source code handoff, no lock-in, it's yours to keep and modify."},
+
+    // location / availability
+    {kw:["contact","email","reach","hire","touch","talk","get started"],a:"Fill the contact form on this site, or email morganbuilds004@gmail.com directly. Morgan replies within 24 hours.",scroll:"contact"},
+    {kw:["remote","timezone","location","where","lagos","nigeria","based"],a:"Based in Lagos, Nigeria, working remote-first with clients across the US, UK, and Europe."},
+    {kw:["available","availability","free","open for work","taking clients"],a:"Yes, currently open for freelance projects, remote roles, and collaborations."},
+    {kw:["weekend","holiday","after hours","work on sunday"],a:"Communication is async, so messages get picked up regularly even outside strict business hours, exact scheduling is discussed per project."},
+
+    // closing
+    {kw:["thanks","thank you","cool","nice","great","awesome"],a:"Anytime! Anything else you want to know?"},
+    {kw:["bye","goodbye","see you","later"],a:"Take care! Reach out anytime via the contact form or morganbuilds004@gmail.com."}
   ];
 
   const FALLBACK = "Not sure I've got a great answer for that, best to email Morgan directly at <a href=\"mailto:morganbuilds004@gmail.com\">morganbuilds004@gmail.com</a>.";
@@ -910,12 +1119,17 @@ function closeJobBoard(){
     quick.querySelectorAll('.mqchip').forEach(c => c.addEventListener('click', () => handleInput(c.dataset.q)));
   }
 
+  function keywordMatches(text, keyword){
+    const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp('\\b' + escaped + '\\b', 'i');
+    return re.test(text);
+  }
+
   function findAnswer(text){
-    const t = text.toLowerCase();
     let best = null, bestScore = 0;
     KB.forEach(entry => {
       let score = 0;
-      entry.kw.forEach(k => { if(t.includes(k)) score++; });
+      entry.kw.forEach(k => { if(keywordMatches(text, k)) score++; });
       if(score > bestScore){ bestScore = score; best = entry; }
     });
     return best;
@@ -967,7 +1181,6 @@ function closeJobBoard(){
   sendBtn.addEventListener('click', () => handleInput(input.value));
   input.addEventListener('keydown', e => { if(e.key === 'Enter') handleInput(input.value); });
 
-  // attract attention a few seconds after page load, if the chat hasn't been opened yet
   setTimeout(() => { if(!isOpen) hint.classList.add('show'); }, 3500);
   setTimeout(() => { if(!isOpen) hint.classList.remove('show'); }, 9500);
 })();
