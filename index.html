@@ -798,6 +798,154 @@ function closeJobBoard(){
   document.body.style.overflow='';
 }
 </script>
+<!-- ===================== MELANIN AI ASSISTANT ===================== -->
+<!-- Paste this whole block right before the closing </body> tag       -->
+<!-- of your portfolio index.html.                                     -->
 
+<style>
+#melaninBtn{position:fixed;bottom:28px;left:28px;z-index:300;width:56px;height:56px;border-radius:50%;background:var(--ink);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,.22);transition:transform .2s;}
+#melaninBtn:hover{transform:scale(1.06);}
+#melaninBtn svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;}
+#melaninBtn .micon-close{display:none;}
+#melaninBtn.open .micon-chat{display:none;}
+#melaninBtn.open .micon-close{display:block;}
+#melaninPanel{position:fixed;bottom:96px;left:28px;z-index:300;width:360px;max-width:calc(100vw - 40px);max-height:calc(100vh - 140px);background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.25);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px) scale(.98);pointer-events:none;transition:opacity .2s,transform .2s;}
+#melaninPanel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all;}
+#melaninHead{padding:16px 18px;background:var(--ink);flex-shrink:0;}
+#melaninNm{font-size:14px;font-weight:700;letter-spacing:1px;color:#fff;text-transform:uppercase;}
+#melaninSt{font-size:12px;color:rgba(255,255,255,.55);margin-top:3px;}
+#melaninMsgs{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;max-height:280px;}
+.mmsg{font-size:13.5px;line-height:1.6;color:var(--ink);}
+.mmsg.user{align-self:flex-end;background:var(--ink);color:#fff;padding:9px 14px;border-radius:12px;border-bottom-right-radius:3px;max-width:80%;}
+.mmsg a{color:var(--accent);text-decoration:underline;}
+#melaninTyping{align-self:flex-start;display:flex;gap:4px;padding:6px 0;}
+#melaninTyping span{width:6px;height:6px;background:var(--ink3);border-radius:50%;animation:mbounce 1.2s infinite;}
+#melaninTyping span:nth-child(2){animation-delay:.15s;}
+#melaninTyping span:nth-child(3){animation-delay:.3s;}
+@keyframes mbounce{0%,60%,100%{transform:translateY(0);opacity:.4;}30%{transform:translateY(-4px);opacity:1;}}
+#melaninQuick{display:flex;flex-direction:column;gap:8px;padding:0 18px 16px;flex-shrink:0;}
+.mqchip{font-size:13px;font-weight:500;color:var(--ink);background:var(--bg2);border:1px solid var(--border);padding:9px 15px;border-radius:100px;cursor:pointer;transition:all .15s;text-align:left;}
+.mqchip:hover{border-color:var(--b2);background:var(--al);}
+#melaninInputRow{display:flex;gap:8px;padding:14px 18px;border-top:1px solid var(--border);flex-shrink:0;}
+#melaninInput{flex:1;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);background:var(--bg2);border:1px solid var(--border);border-radius:100px;padding:10px 16px;outline:none;transition:border-color .15s;}
+#melaninInput:focus{border-color:var(--accent);background:#fff;}
+#melaninSendBtn{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:0 20px;border-radius:100px;background:var(--ink);border:none;color:#fff;cursor:pointer;flex-shrink:0;transition:background .15s;}
+#melaninSendBtn:hover{background:#1a1a18;}
+@media(max-width:520px){
+  #melaninPanel{left:16px;right:16px;width:auto;bottom:88px;}
+  #melaninBtn{left:16px;bottom:16px;}
+}
+</style>
+
+<button id="melaninBtn" aria-label="Chat with Melanin">
+  <svg class="micon-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+  <svg class="micon-close" viewBox="0 0 24 24" style="stroke-width:2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+</button>
+
+<div id="melaninPanel">
+  <div id="melaninHead">
+    <div id="melaninNm">Melanin</div>
+    <div id="melaninSt">Morgan's AI assistant &mdash; work, pricing, timelines.</div>
+  </div>
+  <div id="melaninMsgs"></div>
+  <div id="melaninQuick"></div>
+  <div id="melaninInputRow">
+    <input type="text" id="melaninInput" placeholder="Type a message..." />
+    <button id="melaninSendBtn">Send</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const KB = [
+    {kw:["hi","hello","hey","yo","sup"],a:"Hey! Ask me about services, pricing, past projects, timelines, or how to get in touch."},
+    {kw:["who","morgan","about you","developer","ezekiel"],a:"Morgan (Ezekiel) is a frontend developer based in Lagos specialising in Web3 UIs, SaaS landing pages, and Shopify stores &mdash; built in pure HTML, CSS and JavaScript, no frameworks."},
+    {kw:["build","service","what do you build","offer"],a:"Morgan builds: landing pages & promo sites, SaaS/brand websites, Web3 UI frontends (crypto, NFT, dApps), and custom Shopify stores.",scroll:"services"},
+    {kw:["price","pricing","cost","how much","rate","budget","saas site"],a:"Three tiers: Starter ($300, single-page site, 3 days), Growth ($700, full SaaS/brand site, 7 days), and Web3/Custom ($1,200+, 10-14 days). There's a live calculator on the site too.",scroll:"pricing"},
+    {kw:["fast","how long","timeline","deliver","process","how does it work","steps"],a:"Starter ships in 3 days, Growth in 7 days, Web3/Custom in 10-14 days. Process: Discovery \u2192 Design (Figma) \u2192 Build \u2192 Deliver (source code + revisions + handoff call)."},
+    {kw:["revision","changes","edit after"],a:"Starter gets 2 revision rounds, Growth gets 3, and Web3/Custom includes unlimited revisions."},
+    {kw:["stack","tech","technology","framework","react","vue"],a:"100% vanilla \u2014 HTML5, CSS3, and JavaScript. No React, no Vue, no build tools."},
+    {kw:["project","work","portfolio","example","showcase"],a:"HAVENLY (real estate platform), FLOWDESK (SaaS page), KRYPTO (crypto exchange UI), NEXUS (NFT marketplace), EMBER (restaurant brand), VOIDX (streetwear brand), and JOBBOARD (full job board app) \u2014 all live.",scroll:"work"},
+    {kw:["web3","crypto","nft","dapp","wallet","blockchain"],a:"Yes \u2014 crypto exchange UIs, NFT marketplaces, wallet-connect flows and dApp frontends. See KRYPTO and NEXUS in the work section."},
+    {kw:["shopify","ecommerce","e-commerce","store"],a:"Custom Shopify themes, product page design, and checkout flow optimisation. Pricing depends on scope \u2014 reach out directly for a quote."},
+    {kw:["contact","email","reach","hire","get in touch","talk"],a:"Fill the contact form on this site, or email morganbuilds004@gmail.com directly. Morgan replies within 24 hours.",scroll:"contact"},
+    {kw:["remote","timezone","location","where","lagos","nigeria"],a:"Based in Lagos, Nigeria, working remote-first with clients across the US, UK, and Europe."},
+    {kw:["available","availability","free","open for work"],a:"Yes, currently open for freelance projects, remote roles, and collaborations."},
+    {kw:["source code","own","ownership"],a:"Every project ships with full source code handoff \u2014 no lock-in, it's yours to keep and modify."},
+    {kw:["thanks","thank you","cool","nice","great"],a:"Anytime! Anything else you want to know?"}
+  ];
+
+  const FALLBACK = "Not sure I've got a great answer for that \u2014 best to email Morgan directly at <a href=\"mailto:morganbuilds004@gmail.com\">morganbuilds004@gmail.com</a>.";
+  const QUICK = ["What does Morgan build?","How much for a SaaS site?","How fast can you deliver?"];
+
+  const btn = document.getElementById('melaninBtn');
+  const panel = document.getElementById('melaninPanel');
+  const msgs = document.getElementById('melaninMsgs');
+  const quick = document.getElementById('melaninQuick');
+  const input = document.getElementById('melaninInput');
+  const sendBtn = document.getElementById('melaninSendBtn');
+  let opened = false;
+
+  function addMsg(text, who){
+    const d = document.createElement('div');
+    d.className = 'mmsg ' + who;
+    d.innerHTML = text;
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function renderQuick(){
+    quick.innerHTML = QUICK.map(q => `<div class="mqchip" data-q="${q}">${q}</div>`).join('');
+    quick.querySelectorAll('.mqchip').forEach(c => c.addEventListener('click', () => handleInput(c.dataset.q)));
+  }
+
+  function findAnswer(text){
+    const t = text.toLowerCase();
+    let best = null, bestScore = 0;
+    KB.forEach(entry => {
+      let score = 0;
+      entry.kw.forEach(k => { if(t.includes(k)) score++; });
+      if(score > bestScore){ bestScore = score; best = entry; }
+    });
+    return best;
+  }
+
+  function handleInput(text){
+    if(!text || !text.trim()) return;
+    addMsg(text, 'user');
+    input.value = '';
+    quick.innerHTML = '';
+    const typing = document.createElement('div');
+    typing.id = 'melaninTyping';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(typing);
+    msgs.scrollTop = msgs.scrollHeight;
+    setTimeout(() => {
+      typing.remove();
+      const match = findAnswer(text);
+      addMsg(match ? match.a : FALLBACK, 'bot');
+      if(match && match.scroll){
+        setTimeout(() => {
+          const el = document.getElementById(match.scroll);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        }, 400);
+      }
+    }, 500 + Math.random()*350);
+  }
+
+  btn.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    if(!opened){
+      opened = true;
+      addMsg("Hi, I'm MELANIN. Ask me anything about Morgan's work.", 'bot');
+      renderQuick();
+    }
+  });
+  sendBtn.addEventListener('click', () => handleInput(input.value));
+  input.addEventListener('keydown', e => { if(e.key === 'Enter') handleInput(input.value); });
+})();
+</script>
+<!-- =================== END MELANIN AI ASSISTANT =================== -->
 </body>
 </html>
